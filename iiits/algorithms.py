@@ -1,4 +1,5 @@
 from iiits.lang import *
+from iiits.models import *
 from math import floor, ceil
 class PaginationAlgorithm:
 	def __init__(self, num_entries_per_page):
@@ -72,4 +73,64 @@ class PaginationAlgorithm:
 			return True
 		return False	
 
+class FacultySearch:
+	def __init__(self,dept,title, ra, vs, instfac):
+		if dept != 'all':
+			self.department= Department.objects.get(code=dept)
+		else:
+			self.department= 'all'
+		if title != 'all':		
+			self.title= FacultyTitle.objects.get(code=title)
+		else: 	
+			self.title = 'all'
+		if ra != 'all':	
+			self.ra = ResearchArea.objects.get(code=ra)
+		else:
+			self.ra = 'all'	
+		self.vs = vs
+		self.instfac = instfac
+	def getAllFaculty(self):
+		results=dict()
+		results['instfac'] = Faculty.objects.order_by('getFullName')
+		results['vsfac']   = VisitingFaculty.objects.order_by('getFullName')
+		return results
+	def getInstFaculty(self):
+		results = dict()
+		results['instfac'] = Faculty.objects.order_by('getFullName')
+		results['vsfac'] = None
+		return results
+	def getVisFaculty(self):
+		results = dict()
+		results['instfac']=None
+		results['vsfac'] = VisitingFaculty.objects.order_by('getFullName')
+		return results
+	def getFacultyByDept(self):	
+		results = dict()
+		results['instfac']=Faculty.objects.filter(department=self.department).order_by('getFullName')
+		results['vsfac']=None
+		return results
+	def getFacultyByTitle(self):
+		results = dict()
+		results['instfac']=Faculty.objects.filter(title=self.title).order_by('getFullName')
+		results['vsfac']=None
+		return results
+	def getFacultyByResearch(self):
+		results = dict()
+		results['instfac']=Faculty.objects.filter(dept=self.dept).order_by('getFullName')
+		results['vsfac']=None
+		return results		
+	def search(self):
+		if self.dept != 'all':
+			results = getFacultyByDept()
+		elif self.title != 'all': 
+		    results = getFacultyByTitle()
+		elif self.ra != 'all':
+			results = getFacultyByResearch()
+		elif self.vs == 'true' and self.instfac == 'false':
+			results = getVisFaculty()
+		elif self.vs == 'false' and self.instfac == 'true':
+			results = getInstFaculty()
+		else:
+			results = getAllFaculty()
+		return results		
 	

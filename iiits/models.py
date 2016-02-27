@@ -21,13 +21,16 @@ class Faculty(Model):
 	contact_no=TextField()
 	professional_edu=TextField()
 	website=TextField()
+	def getFullName(self):
+		return self.user.get_full_name()
 
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
 	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	institute = TextField()
 	courses= TextField()
-	
+	def getFullName(self):
+		return self.user.get_full_name()
 class Publications(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=TextField()

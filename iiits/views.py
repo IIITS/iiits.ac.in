@@ -32,16 +32,18 @@ class FacultyProfileView(TemplateView):
 		context = super(FacultyProfileView,self).get_context_data(**kwargs)
 		context = dict()
 		dept=self.request.GET.get('dept')
-		ifNone(dept,'all')
+		dept =ifNone(dept,'all')
 		title=self.request.GET.get('title')
-		ifNone(title,'all')
+		title = ifNone(title,'all')
 		ra=self.request.GET.get('ra')
-		ifNone(ra, 'all')
+		ra = ifNone(ra, 'all')
 		vs=self.request.GET.get('vs')
-		ifNone(vs,'true')
+		vs = ifNone(vs,'true')
 		instfac = self.request.GET.get('instfac')
-		ifNone(instfac,'true')
-		if(dept != 'all' 
-		InstFacultyListByDept = Faculty.objects.filter('department__code'=dept)
-		VisitingFacultyList = VisitingFaculty.filter()
+		instfac = ifNone(instfac,'true')
+		
+		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
+		faculty=fac.search()
+		context['faculty'] = faculty
 		return context		
+
