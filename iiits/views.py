@@ -49,6 +49,14 @@ class FacultyProfileView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(FacultyProfileView,self).get_context_data(**kwargs)	
 		context=dict()
-		context['path']=self.request.path
+		path=self.request.path
+		public_uri_name = getPublicURI(path)
+		try:
+			faculty=Faculty.objects.get(public_uri_name=public_uri_name)
+			
+			context['faculty']=faculty
+			context['search_status']=200
+		except ObjectDoesNotExist:
+			context['search_status']=404	
 		return context
 

@@ -8,6 +8,8 @@ class Department(Model):
 class FacultyTitle(Model):
 	title = CharField(max_length=100)
 	code = CharField(db_index=True,max_length=20)
+	def __str__(self):
+		return self.title
 class ResearchArea(Model):
 	title = CharField(max_length=150)
 	code = CharField(db_index=True,max_length=50)
@@ -21,12 +23,19 @@ class Faculty(Model):
 	contact_no=TextField()
 	professional_edu=TextField()
 	website=TextField()
+	public_uri_name=CharField(max_length=100, db_index=True,default='NA')
+
+	def getFullName(self):
+		return self.user.get_full_name()
+	def __str__(self):
+		return self.getFullName()	
 
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
 	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	institute = TextField()
 	courses= TextField()
+	public_uri_name=CharField(max_length=100, db_index=True, default='NA')
 	
 class Publications(Model):
 	title= CharField(db_index=True,max_length=200)

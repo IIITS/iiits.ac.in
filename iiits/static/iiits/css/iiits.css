@@ -218,3 +218,36 @@
 .margin-top-20{
   margin-top: 20px;
 }
+.iiits-profile-img img{
+  height: 110px;
+    width: 110px;
+    border-radius: 8px;
+    margin: 15px;
+    vertical-align: middle;
+}
+.iiits-profile-header{
+  color:white;
+  font-variant: small-caps;
+  font-size: 32px;
+  margin-top: 5px;
+}
+.iiits-apply-now button{
+    padding: 5px;
+    border-radius: 2px;
+    background: transparent;
+    color: white;
+    font-size: 18px;
+}
+.iiits-apply-now button:hover{
+    background-color: white;
+    color:maroon;
+}
+.iiits-profile-subheader{
+  color:white;
+  font-size: 16px;
+}
+#iiits-faculty-header{
+    background: url('../images/red.png');
+    background-repeat: repeat-x;
+    height: 150px;
+}

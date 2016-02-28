@@ -4,7 +4,8 @@ from iiits.views import *
 urlpatterns = [
     url(r'^$', 								HomeView.as_view(), name='home'),
     url(r'^faculty/$', 	                    FacultyView.as_view(), name='faculty'),
-    url(r'^faculty/(~*)([a-z-._A-Z]*)$',	FacultyPageView.as_view(),	name='facultyprofile'),
+    url(r'^faculty/list/$',                 FacultyPageView.as_view(), name='facultypage'),
+    url(r'^faculty/(~*)([a-z-._A-Z]*)$',	FacultyProfileView.as_view(),	name='facultyprofile'),
 
     #url(r'^students/(~*)([a-z-._A-Z]*)$',	StudentsView.as_view(),	name='students'),
     #url(r'^staff/(~*)([a-z-._A-Z]*)$',		StaffView.as_view(),	name='staff'),

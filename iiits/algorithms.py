@@ -91,7 +91,7 @@ class FacultySearch:
 			self.vs = vs
 		else:
 			self.vs = 'true'
-		if instfac != None	
+		if instfac != None:	
 			self.instfac = instfac
 		else: 
 			self.instfac = 'true'	
