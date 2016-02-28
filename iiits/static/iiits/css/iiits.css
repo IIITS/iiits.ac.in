@@ -246,8 +246,26 @@
   color:white;
   font-size: 16px;
 }
+.iiits-tab-header-4{
+  display: inline-block;
+  margin:-2px;
+  padding:15px 25px;
+  border-bottom: 1px solid grey;
+}
+.iiits-tab-header-4:hover{
+  cursor: pointer;
+}
+.iiits-tab-header-4-active{
+  border-bottom: 3px solid chocolate;
+  cursor: pointer;
+}
+.iiits-tab-text{
+  display: inline-block;
+}
+
 #iiits-faculty-header{
     background: url('../images/red.png');
     background-repeat: repeat-x;
     height: 150px;
 }
+

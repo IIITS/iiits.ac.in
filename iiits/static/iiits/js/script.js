@@ -8,10 +8,21 @@ $(document).ready(function(){
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }	
-	
-	console.log(getParameterByName('dept'));
-	console.log(getParameterByName('title'));
-	console.log(getParameterByName('ra'));
-	console.log(getParameterByName('vs'));
-	console.log(getParameterByName('instfac'));	
+	$('#iiits-faculty-bio').addClass('iiits-tab-header-4-active');
+	$('#iiits-faculty-bio').click(function(){
+			$(this).addClass('iiits-tab-header-4-active');	
+			$('#iiits-faculty-teaching').removeClass('iiits-tab-header-4-active');
+			$('#iiits-faculty-publications').removeClass('iiits-tab-header-4-active');
+		});
+		$('#iiits-faculty-teaching').click(function(){
+			$(this).addClass('iiits-tab-header-4-active');
+			$('#iiits-faculty-bio').removeClass('iiits-tab-header-4-active');
+			$('#iiits-faculty-publications').removeClass('iiits-tab-header-4-active');
+		});
+		$('#iiits-faculty-publications').click(function(){
+			$(this).addClass('iiits-tab-header-4-active');	
+			$('#iiits-faculty-bio').removeClass('iiits-tab-header-4-active');
+			$('#iiits-faculty-teaching').removeClass('iiits-tab-header-4-active');
+
+	});
 });

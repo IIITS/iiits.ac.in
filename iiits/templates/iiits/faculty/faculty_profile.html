@@ -21,13 +21,13 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="faculty-subnav">
 		<div class="iiits-tab-header-4" id="iiits-faculty-bio">
 			<span class="iiits-tab-text">
 				BIO
 			</span>
-		</div class="iiits-tab-header-4" id="iiits-faculty-teaching">
-		<div>
+		</div>
+		<div class="iiits-tab-header-4" id="iiits-faculty-teaching">
 			<span class="iiits-tab-text">
 				TEACHING
 			</span>
@@ -37,7 +37,16 @@
 				PUBLICATIONS
 			</span>
 		</div>
-	</div>	
+	</center>
+	<div id="iiits-faculty-bio-content">
+		{% include 'iiits/faculty/faculty_bio.html' %}
+	</div>
+	<div id="iiits-faculty-teaching-content">
+		{% include 'iiits/faculty/faculty_teaching.html' %}
+	</div>
+	<div id="iiits-faculty-publications">
+		{% include 'iiits/faculty/faculty_publications.html' %}
+	</div>			
 </div>
 {% endifequal%}
 {%ifequal search_status 404 %}
