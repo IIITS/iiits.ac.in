@@ -26,10 +26,10 @@ class FacultyView(TemplateView):
 
 		return context		
 
-class FacultyProfileView(TemplateView):
-	template_name = 'iiits/faculty/faculty_profile.html'
+class FacultyPageView(TemplateView):
+	template_name = 'iiits/faculty/faculty_page.html'
 	def get_context_data(self, **kwargs):
-		context = super(FacultyProfileView,self).get_context_data(**kwargs)
+		context = super(FacultyPageView,self).get_context_data(**kwargs)
 		context = dict()
 		
 		dept=self.request.GET.get('dept')
@@ -42,5 +42,13 @@ class FacultyProfileView(TemplateView):
 		faculty=fac.search()
 
 		context['faculty'] = faculty
-		return context		
+		return context
+
+class FacultyProfileView(TemplateView):
+	template_name='iiits/faculty/faculty_profile.html'
+	def get_context_data(self, **kwargs):
+		context = super(FacultyProfileView,self).get_context_data(**kwargs)	
+		context=dict()
+		context['path']=self.request.path
+		return context
 
