@@ -262,7 +262,10 @@
 .iiits-tab-text{
   display: inline-block;
 }
-
+.table-borderless tr td{
+  font-weight: 600px;
+  font-size: 15px;
+}
 #iiits-faculty-header{
     background: url('../images/red.png');
     background-repeat: repeat-x;
