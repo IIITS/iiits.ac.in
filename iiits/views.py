@@ -31,19 +31,16 @@ class FacultyProfileView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(FacultyProfileView,self).get_context_data(**kwargs)
 		context = dict()
+		
 		dept=self.request.GET.get('dept')
-		dept =ifNone(dept,'all')
 		title=self.request.GET.get('title')
-		title = ifNone(title,'all')
 		ra=self.request.GET.get('ra')
-		ra = ifNone(ra, 'all')
 		vs=self.request.GET.get('vs')
-		vs = ifNone(vs,'true')
 		instfac = self.request.GET.get('instfac')
-		instfac = ifNone(instfac,'true')
 		
 		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
 		faculty=fac.search()
+
 		context['faculty'] = faculty
 		return context		
 

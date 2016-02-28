@@ -43,6 +43,5 @@ class UGStudent(Model):
 class PGStudent(Model):
 class DoctoralStudent(Model):
 class ResearchScholar(Model):
-class Alumni(Model):
-class 
+class Alumni(Model): 
 '''

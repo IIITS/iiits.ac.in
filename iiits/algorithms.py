@@ -75,20 +75,26 @@ class PaginationAlgorithm:
 
 class FacultySearch:
 	def __init__(self,dept,title, ra, vs, instfac):
-		if dept != 'all':
+		if dept != None:
 			self.department= Department.objects.get(code=dept)
 		else:
 			self.department= 'all'
-		if title != 'all':		
+		if title != None:		
 			self.title= FacultyTitle.objects.get(code=title)
 		else: 	
 			self.title = 'all'
-		if ra != 'all':	
+		if ra != None:	
 			self.ra = ResearchArea.objects.get(code=ra)
 		else:
 			self.ra = 'all'	
-		self.vs = vs
-		self.instfac = instfac
+		if vs != None:
+			self.vs = vs
+		else:
+			self.vs = 'true'
+		if instfac != None	
+			self.instfac = instfac
+		else: 
+			self.instfac = 'true'	
 	def getAllFaculty(self):
 		results=dict()
 		results['instfac'] = Faculty.objects.order_by('getFullName')
