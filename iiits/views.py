@@ -6,6 +6,7 @@ from iiits.models import *
 from iiits.methods import *
 from iiits.algorithms import *
 
+FAC_ENTRIES_PER_PAGE = 10
 class HomeView(TemplateView):
 	template_name = 'iiits/index.html'
 	
@@ -40,6 +41,8 @@ class FacultyPageView(TemplateView):
 		
 		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
 		faculty=fac.search()
+		paginate = PaginationAlgorithm(FAC_ENTRIES_PER_PAGE)
+		fac_list = paginate.divide(faculty,len(faculty))
 
 		context['faculty'] = faculty
 		return context
