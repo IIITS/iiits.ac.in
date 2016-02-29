@@ -6,7 +6,8 @@ urlpatterns = [
     url(r'^faculty/$', 	                    FacultyView.as_view(), name='faculty'),
     url(r'^faculty/list/$',                 FacultyPageView.as_view(), name='facultypage'),
     url(r'^faculty/(~*)([a-z-._A-Z]*)$',	FacultyProfileView.as_view(),	name='facultyprofile'),
-
+    url(r'^newsroom/$', 					NewsRoomView.as_view(), name='newsroom'),
+    url(r'^addnews/$', 						AddNews.as_view()	,   name='addnews'),
     #url(r'^students/(~*)([a-z-._A-Z]*)$',	StudentsView.as_view(),	name='students'),
     #url(r'^staff/(~*)([a-z-._A-Z]*)$',		StaffView.as_view(),	name='staff'),
     #url(r'^alumni/(~*)([a-z-._A-Z]*)$',	AlumniView.as_view(),	name='alumni'),
