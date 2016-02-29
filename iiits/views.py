@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView
+from django.views.generic.list import ListView
 from django.conf import settings
 from iiits.models import *
 from iiits.methods import *
 from iiits.algorithms import *
 from iiits.forms import *
+
 FAC_ENTRIES_PER_PAGE = 10
 class AjaxableResponseMixin(object):
     """
@@ -93,6 +95,11 @@ class AddNews(AjaxableResponseMixin ,CreateView):
 	form_class=AddNewsForm
 	template_name='iiits/news/add.html'
 	success_url= '/newsroom/'
-'''
+
 class NewsRoomView(ListView):	
-'''	
+	template_name = 'iiits/news/list.html'
+	model = News
+	def get_context_data(self, *args, **kwargs):
+		context = super(NewsRoomView,self).get_context_data(*args,**kwargs)
+		return context
+	
