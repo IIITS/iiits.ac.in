@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-
+from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
 class Department(Model):
@@ -17,6 +17,7 @@ class ResearchArea(Model):
 	code = CharField(db_index=True,max_length=50)
 	def __str__(self):
 		return self.title
+		
 class Faculty(Model):
 	user = OneToOneField(User)
 	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
@@ -47,7 +48,7 @@ class Faculty(Model):
 
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
-	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
+	photo = photo=ImageField(upload_to=settings.STATIC_URL+'iiits/images/faculty/')
 	institute = TextField()
 	courses= TextField()
 	public_uri_name=CharField(max_length=100, db_index=True, default='NA')
@@ -60,6 +61,12 @@ class Publications(Model):
 	year=CharField(db_index=True,max_length=4)	
 	starred=BooleanField(db_index=True,default=False)
 	
+class News(Model):
+	title 	= CharField(db_index= True,max_length=200)
+	content	= TextField(default='NA')
+	fileupload = FileField(upload_to=settings.STATIC_URL+'iiits/files/news/',null=True,blank=True)
+	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/news/',null=True, blank=True)
+	date = DateTimeField(auto_now_add = True)
 
 '''
 class Staff(Model):
