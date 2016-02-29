@@ -1,6 +1,10 @@
 from iiits.lang import *
 from iiits.models import *
+
+from iiits.methods import *
+from iiits import parsers
 from math import floor, ceil
+
 class PaginationAlgorithm:
 	def __init__(self, num_entries_per_page):
 		self.num_pages = 0
@@ -74,69 +78,68 @@ class PaginationAlgorithm:
 		return False	
 
 class FacultySearch:
+	parser = parsers
 	def __init__(self,dept,title, ra, vs, instfac):
 		if dept != None:
 			self.department= Department.objects.get(code=dept)
 		else:
-			self.department= 'all'
+			self.department= parsers.FACULTY_SEARCH['department']['default_value']
 		if title != None:		
 			self.title= FacultyTitle.objects.get(code=title)
 		else: 	
-			self.title = 'all'
+			self.title = parsers.FACULTY_SEARCH['title']['default_value']
 		if ra != None:	
 			self.ra = ResearchArea.objects.get(code=ra)
 		else:
-			self.ra = 'all'	
+			self.ra = parsers.FACULTY_SEARCH['research_area']['default_value']	
 		if vs != None:
 			self.vs = vs
 		else:
-			self.vs = 'true'
+			self.vs = parsers.FACULTY_SEARCH['visiting_faculty']['default_value']
 		if instfac != None:	
 			self.instfac = instfac
 		else: 
-			self.instfac = 'true'	
-	def getAllFaculty(self):
-		results=dict()
-		results['instfac'] = Faculty.objects.order_by('getFullName')
-		results['vsfac']   = VisitingFaculty.objects.order_by('getFullName')
-		return results
-	def getInstFaculty(self):
-		results = dict()
-		results['instfac'] = Faculty.objects.order_by('getFullName')
-		results['vsfac'] = None
-		return results
-	def getVisFaculty(self):
-		results = dict()
-		results['instfac']=None
-		results['vsfac'] = VisitingFaculty.objects.order_by('getFullName')
-		return results
-	def getFacultyByDept(self):	
-		results = dict()
-		results['instfac']=Faculty.objects.filter(department=self.department).order_by('getFullName')
-		results['vsfac']=None
-		return results
-	def getFacultyByTitle(self):
-		results = dict()
-		results['instfac']=Faculty.objects.filter(title=self.title).order_by('getFullName')
-		results['vsfac']=None
-		return results
-	def getFacultyByResearch(self):
-		results = dict()
-		results['instfac']=Faculty.objects.filter(dept=self.dept).order_by('getFullName')
-		results['vsfac']=None
-		return results		
+			self.instfac = parsers.FACULTY_SEARCH['institute_faculty']['default_value']	
+	def classifier(self, TS, ES):
+		length = len(TS)
+		identified = list()
+		for i in range(0, length):
+			if TS[i] != ES[i].get('default_value'):
+				identified.append(i)
+				break
+		return identified		
 	def search(self):
-		if self.dept != 'all':
-			results = getFacultyByDept()
-		elif self.title != 'all': 
-		    results = getFacultyByTitle()
-		elif self.ra != 'all':
-			results = getFacultyByResearch()
-		elif self.vs == 'true' and self.instfac == 'false':
-			results = getVisFaculty()
-		elif self.vs == 'false' and self.instfac == 'true':
-			results = getInstFaculty()
+
+		deptParser = parsers.FACULTY_SEARCH.get('department')
+		titleParser = parsers.FACULTY_SEARCH.get('title')
+		researchAreaParser = parsers.FACULTY_SEARCH.get('research_area')
+		instfacParser = parsers.FACULTY_SEARCH.get('institute_faculty')
+		vsParser = parsers.FACULTY_SEARCH.get('visiting_faculty')
+		TrainerSet = list(self.department, self.title, self.ra, self.vs, self.instfac)
+		ExpectedSet = list(deptParser,titleParser,researchAreaParser,instfacParser, vsParser)
+		classified = self.classifier(TrainerSet, ExpectedSet)		
+		if len(classified) == 0:
+			results = {
+			'instfac' : Faculty.objects.all(),
+			'vsfac': VisitingFaculty.objects.all()
+			}
 		else:
-			results = getAllFaculty()
-		return results		
-	
+			DECISION = {1:self.department,2:self.title,3:self.ra,4:self.vs,5:self.instfac}
+			if 1 + classified[0] > 3:
+				results = {'instfac':  Faculty.objects.order_by('getFullName') , 'vsfac':None} if (1 + classified[0]) == 4 else { 'instfac':None, 'vsfac': VisitingFaculty.objects.order_by('getFullName')}
+			else:
+				if   1 + classified[0] == 1:
+					results = {
+						'instfac': Faculty.objects.filter(department=self.department).order_by('getFullName'),
+						'vsfac':None
+					}
+				elif 1 + classified[0] == 2:
+					results = {
+						'instfac': Faculty.objects.filter(title=self.title).order_by('getFullName'),
+						'vsfac':None
+					}	
+				elif 1 + classified[0] == 3:
+					results = {
+						'instfac': getAllFacultyByRA(self.ra.id),
+						'vsfac':None
+					}
