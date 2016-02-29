@@ -1,0 +1,6 @@
+{% extends 'iiits/base/base_home.html' %}
+{% block main %}
+{% for news in object_list %}
+ <li>{{ news.title }}</li>
+{% endfor %}
+{% endblock %}
