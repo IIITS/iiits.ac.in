@@ -1,6 +1,39 @@
 {% extends 'iiits/base/base_home.html' %}
 {% block main %}
-{% for news in object_list %}
- <li>{{ news.title }}</li>
-{% endfor %}
+	<div class="container">
+
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			{% for news in page_news %}
+	 			<h5><a href="#" style="text-decoration:underline;">{{ news.title }}</a></h5>
+                {% ifnotequal news.content 'NA' %}
+                    <p>{{ news.title | linebreaks }}</p>
+                {% endifnotequal %}
+			{% endfor %}
+			<center>
+				<nav>
+  				<ul class="pagination">
+    				<li>
+    	    			{% if page_news.has_previous %}
+    	       			 <a href="?page={{ page_news.previous_page_number }}" aria-label="Previous"><span aria-hidden="true"> &laquo; </span></a>
+        				{% endif %}      				
+    				</li>
+    				{% for pb in pagebuttons %}
+
+        			<li><a id="pb-{{pb}}" href="/newsroom/?page={{pb}}">{{pb}}</a></li>
+        			{% endfor %}
+    				<li>
+    					{% if page_news.has_next %}
+            				<a href="?page={{ page_news.next_page_number }}" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
+        				{% endif %}
+    				</li>
+  				</ul>
+				</nav>
+			</center>	
+		</div>	
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			
+		</div>
+	</div>		
+
+
 {% endblock %}

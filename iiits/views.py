@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView
 from django.views.generic.list import ListView
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
 from iiits.models import *
 from iiits.methods import *
@@ -9,6 +10,7 @@ from iiits.algorithms import *
 from iiits.forms import *
 
 FAC_ENTRIES_PER_PAGE = 10
+NEWS_ENTRIES_PER_PAGE = 5
 class AjaxableResponseMixin(object):
     """
     Mixin to add AJAX support to a form.
@@ -96,10 +98,28 @@ class AddNews(AjaxableResponseMixin ,CreateView):
 	template_name='iiits/news/add.html'
 	success_url= '/newsroom/'
 
-class NewsRoomView(ListView):	
+class NewsRoomView(TemplateView):	
 	template_name = 'iiits/news/list.html'
 	model = News
 	def get_context_data(self, *args, **kwargs):
 		context = super(NewsRoomView,self).get_context_data(*args,**kwargs)
+		all_news = News.objects.all().order_by('-date') #latest news first
+		paginator = Paginator(all_news, NEWS_ENTRIES_PER_PAGE)
+		page = self.request.GET.get('page')
+		try:
+			page=int(page)
+		except TypeError:
+			page=1	
+		 
+		context['pagebuttons'] = getPageButtons(paginator.num_pages, page, NEWS_ENTRIES_PER_PAGE)
+		
+		try:
+        		page_news = paginator.page(page)
+    		except PageNotAnInteger:
+        		page_news = paginator.page(1)
+    		except EmptyPage:
+        		page_news = paginator.page(paginator.num_pages)
+        	context['page_news']=page_news
+
 		return context
 	

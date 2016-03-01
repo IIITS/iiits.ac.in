@@ -37,4 +37,7 @@ $(document).ready(function(){
 			$('#iiits-faculty-teaching-content').hide();
 
 	});
+	var page = getParameterByName('page');
+	$('#pb-'+page).addClass('active');
+
 });
