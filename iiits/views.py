@@ -61,13 +61,26 @@ class FacultyPageView(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(FacultyPageView,self).get_context_data(**kwargs)
 		context = dict()
-		
-		dept=self.request.GET.get('dept')
-		title=self.request.GET.get('title')
-		ra=self.request.GET.get('ra')
-		vs=self.request.GET.get('vs')
-		instfac = self.request.GET.get('instfac')
-		
+		try:
+			dept=self.request.GET.get('dept')
+		except ObjectDoesNotExist:	
+			dept = 'all'
+		try:	
+			title=self.request.GET.get('title')
+		except ObjectDoesNotExist:
+			title='all'
+		try:		
+			ra=self.request.GET.get('ra')
+		except ObjectDoesNotExist:
+			ra='all'
+		try:		
+			vs=self.request.GET.get('vs')
+		except ObjectDoesNotExist:
+			vs = 'false'	
+		try	:
+			instfac = self.request.GET.get('instfac')
+		except ObjectDoesNotExist:	
+			instfac = 'true'
 		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
 		faculty=fac.search()
 		paginate = PaginationAlgorithm(FAC_ENTRIES_PER_PAGE)

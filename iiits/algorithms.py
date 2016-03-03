@@ -80,25 +80,25 @@ class PaginationAlgorithm:
 class FacultySearch:
 	parser = parsers
 	def __init__(self,dept,title, ra, vs, instfac):
-		if dept != None:
+		try:
 			self.department= Department.objects.get(code=dept)
-		else:
+		except ObjectDoesNotExist:
 			self.department= parsers.FACULTY_SEARCH['department']['default_value']
-		if title != None:		
+		try	:	
 			self.title= FacultyTitle.objects.get(code=title)
-		else: 	
+		except ObjectDoesNotExist: 	
 			self.title = parsers.FACULTY_SEARCH['title']['default_value']
-		if ra != None:	
+		try:	
 			self.ra = ResearchArea.objects.get(code=ra)
-		else:
+		except ObjectDoesNotExist:
 			self.ra = parsers.FACULTY_SEARCH['research_area']['default_value']	
-		if vs != None:
+		try:
 			self.vs = vs
-		else:
+		except ObjectDoesNotExist:
 			self.vs = parsers.FACULTY_SEARCH['visiting_faculty']['default_value']
-		if instfac != None:	
+		try:	
 			self.instfac = instfac
-		else: 
+		except ObjectDoesNotExist: 
 			self.instfac = parsers.FACULTY_SEARCH['institute_faculty']['default_value']	
 	def classifier(self, TS, ES):
 		length = len(TS)
@@ -115,8 +115,8 @@ class FacultySearch:
 		researchAreaParser = parsers.FACULTY_SEARCH.get('research_area')
 		instfacParser = parsers.FACULTY_SEARCH.get('institute_faculty')
 		vsParser = parsers.FACULTY_SEARCH.get('visiting_faculty')
-		TrainerSet = list(self.department, self.title, self.ra, self.vs, self.instfac)
-		ExpectedSet = list(deptParser,titleParser,researchAreaParser,instfacParser, vsParser)
+		TrainerSet = [self.department, self.title, self.ra, self.vs, self.instfac]
+		ExpectedSet = [deptParser,titleParser,researchAreaParser,instfacParser, vsParser]
 		classified = self.classifier(TrainerSet, ExpectedSet)		
 		if len(classified) == 0:
 			results = {

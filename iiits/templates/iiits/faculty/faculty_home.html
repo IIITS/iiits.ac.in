@@ -2,27 +2,33 @@
 {% block main %}
 	<div class="container margin-top-20">
 		<ul class="navigation-list">
-			<li><a href="?dept=all&amp;title=all&amp;ra=all&amp;vs=true&amp;instfac=true">All Faculty</a></li>
-			<li><a href="#">By Department</a></li>
-			<ul>
+			<li><a href="/faculty/list/?dept=all&amp;title=all&amp;ra=all&amp;vs=true&amp;instfac=true">All Faculty</a></li>
+			<li><a href="#" id="fac-dept-link">By Department</a></li>
+			<ul id="fac-dept">
 				{% for dept in departments %}			
-					<li><a href="?dept={{dept.code}}&amp;title=all&amp;ra=all&amp;vs=false&amp;instfac=true">{{dept.name}}</a></li>
+					<li><a href="/faculty/list/?dept={{dept.code}}&amp;title=all&amp;ra=all&amp;vs=false&amp;instfac=true">{{dept.name}}</a></li>
 				{%endfor%}	
 			</ul>
-			<li><a href="#">By Title</a></li>
+			<li><a href="">By Title</a></li>
 			<ul>
 				{% for title in facultytitles %}
-					<li><a href="?dept=all&amp;title={{title.code}}&amp;ra=all&amp;vs=false&amp;instfac=true">{{title.title}}</a></li>
+					<li><a href="/faculty/list/?dept=all&amp;title={{title.code}}&amp;ra=all&amp;vs=false&amp;instfac=true">{{title.title}}</a></li>
 				{% endfor %}	
 			</ul>
 			<li><a href="#">By Research Areas</a></li>
 			<ul>
 				{% for area in researchareas %}
-					<li><a href="?dept=all&amp;title=all&amp;ra={{area.code}}&amp;vs=false&amp;instfac=true">{{area.title}}</a></li>
+					<li><a href="/faculty/list/?dept=all&amp;title=all&amp;ra={{area.code}}&amp;vs=false&amp;instfac=true">{{area.title}}</a></li>
 				{% endfor %}
 			</ul>
-			<li><a href="?dept=all&amp;title=all&amp;ra=all&amp;vs=false&amp;instfac=true">Institute Faculty</a></li>
-			<li><a href="?dept=all&amp;title=all&amp;ra=all&amp;vs=true&amp;instfac=false">Visiting Faculty</a></li>
+			<li><a href="/faculty/list/?dept=all&amp;title=all&amp;ra=all&amp;vs=false&amp;instfac=true">Institute Faculty</a></li>
+			<li><a href="/faculty/list/?dept=all&amp;title=all&amp;ra=all&amp;vs=true&amp;instfac=false">Visiting Faculty</a></li>
 		</ul>
 	</div>
+	<script>
+	$('#fac-dept').hide();
+	$('#fac-dept-link').on('click', function(){
+			$('#fac-dept').toggle();
+	});
+	</script>
 {% endblock %}
