@@ -11,7 +11,7 @@ class PaginationAlgorithm:
 		self.num_entries_per_page = num_entries_per_page 
 		self.num_alpha_per_set = 0
 		self.lang = 'EN'
-	def divide(self, entries):
+	def divide(self, data, entries):
 		'''
 		Divides the page into number of pages.	
 		'''
@@ -126,7 +126,8 @@ class FacultySearch:
 		else:
 			DECISION = {1:self.department,2:self.title,3:self.ra,4:self.vs,5:self.instfac}
 			if 1 + classified[0] > 3:
-				results = {'instfac':  Faculty.objects.order_by('getFullName') , 'vsfac':None} if (1 + classified[0]) == 4 else { 'instfac':None, 'vsfac': VisitingFaculty.objects.order_by('getFullName')}
+				print "here", classified[0]
+				results = {'instfac':  Faculty.objects.order_by('getFullName') , 'vsfac':None} if (1 + classified[0]) == 4 else { 'instfac':None, 'vsfac': VisitingFaculty.objects.order_by('user__first_name')}
 			else:
 				if   1 + classified[0] == 1:
 					results = {
@@ -143,3 +144,4 @@ class FacultySearch:
 						'instfac': getAllFacultyByRA(self.ra.id),
 						'vsfac':None
 					}
+		return results			
