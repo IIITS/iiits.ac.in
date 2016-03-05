@@ -83,10 +83,9 @@ class FacultyPageView(TemplateView):
 			instfac = 'true'
 		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
 		faculty=fac.search()
-		paginate = PaginationAlgorithm(FAC_ENTRIES_PER_PAGE)
-		fac_list = paginate.divide(faculty,len(faculty))
-
-		context['faculty'] = faculty
+		print faculty
+		context['instfac'] = faculty['instfac']
+		context['vsfac'] = faculty['vsfac']
 		return context
 
 class FacultyProfileView(TemplateView):
