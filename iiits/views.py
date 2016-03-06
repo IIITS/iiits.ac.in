@@ -4,6 +4,7 @@ from django.views.generic.edit import FormView, CreateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
+from django.http import JsonResponse
 from iiits.models import *
 from iiits.methods import *
 from iiits.algorithms import *
@@ -81,11 +82,7 @@ class FacultyPageView(TemplateView):
 			instfac = self.request.GET.get('instfac')
 		except ObjectDoesNotExist:	
 			instfac = 'true'
-		fac = FacultySearch(dept=dept,title=title,ra=ra,vs=vs,instfac=instfac)
-		faculty=fac.search()
-		print faculty
-		context['instfac'] = faculty['instfac']
-		context['vsfac'] = faculty['vsfac']
+
 		return context
 
 class FacultyProfileView(TemplateView):
@@ -135,3 +132,41 @@ class NewsRoomView(TemplateView):
 
 		return context
 	
+def getFacultyByDept(request,dept):
+	result=dict()
+	result['faculty']=Faculty.objects.filter(department__code=dept).order_by('user__first_name')
+	result['instfac']='true'
+	result['vsfac']='false'
+	return JsonResponse(result,safe=False)
+def getFacultyByRA(request,raid):
+	result=dict()
+	result['faculty']=Faculty.objects.filter(research_areas__contains=raid).order_by('user__first_name')
+	result['instfac']='true'
+	result['vsfac']='false'
+	return JsonResponse(result,safe=False)
+def getFacultyByTitle(request,title):
+	result=dict()
+	result['faculty']=Faculty.objects.filter(title=title).order_by('user__first_name')
+	result['instfac']='true'
+	result['vsfac']='false'
+	return JsonResponse(result,safe=False)
+def getAllFaculty(request):
+	result=dict()
+	result['faculty']=Faculty.objects.all().order_by('user__first_name')
+	result['vsfaculty']=VisitingFaculty.objects.all().order_by('user__first_name')
+	result['vs']
+	result['instfac']='true'
+	result['vsfac']='true'
+	return JsonResponse(result,safe=False)
+def getInstituteFaculty(request):
+	result=dict()
+	result['faculty']=Faculty.objects.all().order_by('user__first_name')
+	result['instfac']='true'
+	result['vsfac']='false'
+	return JsonResponse(result,safe=False)
+def getVisitingFaculty(request):	
+	result=dict()
+	result['vsfaculty']=VisitingFaculty.objects.all().order_by('user__first_name')
+	result['instfac']='false'
+	result['vsfac']='true'
+	return JsonResponse(result,safe=False)
