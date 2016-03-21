@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView, RedirectView
-from django.views.generic.edit import FormView, CreateView
+from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.conf import settings
@@ -131,7 +131,15 @@ class NewsRoomView(TemplateView):
         	context['page_news']=page_news
 
 		return context
+
+class AdmissionView(TemplateView):
+	template_name = '' 
+	def get_context_data(self, *args, **kwargs):
+		context = super(AdmissionView,self).get_context_data(*args,**kwargs)
+		return context
+
 	
+
 def getFacultyByDept(request,dept):
 	result=dict()
 	result['faculty']=Faculty.objects.filter(department__code=dept).order_by('user__first_name')
@@ -170,3 +178,4 @@ def getVisitingFaculty(request):
 	result['instfac']='false'
 	result['vsfac']='true'
 	return JsonResponse(result,safe=False)
+

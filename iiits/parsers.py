@@ -13,5 +13,5 @@ FACULTY_SEARCH['institute_faculty']={
 		'default_value' : 'true'
 	}
 FACULTY_SEARCH['visiting_faculty']={
-		'default_value' : 'false'
+		'default_value' : 'true'
 	}	

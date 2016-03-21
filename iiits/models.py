@@ -2,6 +2,13 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
+
+#############################################################################################
+#																							#
+# 							Core Models Begin Here											#
+#																							#
+#############################################################################################
+
 class Department(Model):
 	name = CharField(max_length=100)
 	code = CharField(db_index=True,max_length=20)
@@ -52,7 +59,8 @@ class VisitingFaculty(Model):
 	institute = TextField()
 	courses= TextField()
 	public_uri_name=CharField(max_length=100, db_index=True, default='NA')
-	
+	def getFullName(self):
+		return self.user.get_full_name()
 class Publications(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=TextField()
@@ -68,11 +76,23 @@ class News(Model):
 	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
 
-'''
-class Staff(Model):
-class UGStudent(Model):
-class PGStudent(Model):
-class DoctoralStudent(Model):
-class ResearchScholar(Model):
-class Alumni(Model): 
-'''
+
+
+
+#################################################################################################
+#																								#
+# 									CMS Models Begin Here										#
+#																								#
+#################################################################################################
+
+class AdmissionsFeeStructure(Model):
+class AdmissionsUGAdmissions(Model):
+class AdmissionsPHDAdmissions(Model):
+class AdmissionsMSAdmissions(Model):
+class AdmissionsMTechAdmissions(Model):
+class AdmissionsPGAdmissions(Model):
+class 
+class 
+class
+
+		
