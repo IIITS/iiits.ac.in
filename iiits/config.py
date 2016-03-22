@@ -42,18 +42,18 @@ templates={
 
 
 	}
-	"display":{
-	"display_image_slider":"",
-	"display_navbar":"",
-	"display_faculty_page":"",
-	"display_faculty_list":"",
-	"display_faculty_profile":"",
-	"display_newsroom":"",
-	"display_media":"",
-	"display_students_page":"",
-	"display_students_profile":"",
-	"display_staff_list":"",
-	"display_":""
+	"site":{
+	"site_image_slider":"",
+	"site_navbar":"",
+	"site_faculty_page":"",
+	"site_faculty_list":"",
+	"site_faculty_profile":"",
+	"site_newsroom":"",
+	"site_media":"",
+	"site_students_page":"",
+	"site_students_profile":"",
+	"site_staff_list":"",
+	"site_":""
 	}
 }
 

@@ -10,57 +10,50 @@ from iiits.methods import *
 from iiits.algorithms import *
 from iiits.forms import *
 
-FAC_ENTRIES_PER_PAGE = 10
-NEWS_ENTRIES_PER_PAGE = 5
-class AjaxableResponseMixin(object):
-    """
-    Mixin to add AJAX support to a form.
-    Must be used with an object-based FormView (e.g. CreateView)
-    """
-    def form_invalid(self, form):
-        response = super(AjaxableResponseMixin, self).form_invalid(form)
-        if self.request.is_ajax():
-            return JsonResponse(form.errors, status=400)
-        else:
-            return response
 
-    def form_valid(self, form):
-        # We make sure to call the parent's form_valid() method because
-        # it might do some processing (in the case of CreateView, it will
-        # call form.save() for example).
-        response = super(AjaxableResponseMixin, self).form_valid(form)
-        if self.request.is_ajax():
-            data = {
-                'pk': self.object.pk,
-            }
-            return JsonResponse(data)
-        else:
-            return response
-
-class HomeView(TemplateView):
-	template_name = 'iiits/index.html'
-	
+class About(TemplateView):
 	def get_context_data(self, **kwargs):
+		context = super(About,self).get_context_data(**kwargs)
+		context = dict()
+		return context
 		
-		context = super(HomeView,self).get_context_data(**kwargs)
-		context = {
-
-		}
-		
+class Academics(TemplateView):
+	template_name=''
+	def get_context_data(self, *args, **kwargs):
+		context = super(Academics, self).get_context_data(*args, **kwargs)
 		return context
 
-class FacultyView(TemplateView):
+class Admissions(TemplateView):
+	template_name = '' 
+	def get_context_data(self, *args, **kwargs):
+		context = super(Admissions,self).get_context_data(*args,**kwargs)
+		return context
+
+class Alumni(TemplateView):		
+	template_name = ''
+	def get_context_data(self, **kwargs):
+		context = super(Alumni,self).get_context_data(**kwargs)
+		context = dict()
+		return context
+
+class CampusLife(TemplateView):
+	template_name = ''
+	def get_context_data(self, **kwargs):
+		context = super(CampusLife,self).get_context_data(**kwargs)
+		context = dict()
+		return context
+
+class Faculty(TemplateView):
 	template_name = 'iiits/faculty/faculty_home.html'
 	def get_context_data(self, **kwargs):
-		context = super(FacultyView,self).get_context_data(**kwargs)
+		context = super(Faculty,self).get_context_data(**kwargs)
 		context = dict()
+		return context
 
-		return context		
-
-class FacultyPageView(TemplateView):
+class FacultyPage(TemplateView):
 	template_name = 'iiits/faculty/faculty_page.html'
 	def get_context_data(self, **kwargs):
-		context = super(FacultyPageView,self).get_context_data(**kwargs)
+		context = super(FacultyPage,self).get_context_data(**kwargs)
 		context = dict()
 		try:
 			dept=self.request.GET.get('dept')
@@ -85,10 +78,10 @@ class FacultyPageView(TemplateView):
 
 		return context
 
-class FacultyProfileView(TemplateView):
+class FacultyProfile(TemplateView):
 	template_name='iiits/faculty/faculty_profile.html'
 	def get_context_data(self, **kwargs):
-		context = super(FacultyProfileView,self).get_context_data(**kwargs)	
+		context = super(FacultyProfile,self).get_context_data(**kwargs)	
 		context=dict()
 		path=self.request.path
 		public_uri_name = getPublicURI(path)
@@ -102,21 +95,40 @@ class FacultyProfileView(TemplateView):
 		return context
 
 
+class Home(TemplateView):
+	template_name = 'iiits/index.html'
+	
+	def get_context_data(self, **kwargs):
+		
+		context = super(Home,self).get_context_data(**kwargs)
+		context = {
 
-class NewsRoomView(TemplateView):	
+		}
+		
+		return context
+
+class MediaRoom(TemplateView):
+	template_name=''
+	def get_context_data(self, **kwargs):
+		context = super(MediaRoom,self).get_context_data(**kwargs)
+		context = dict()
+
+		return context
+
+class NewsRoom(TemplateView):	
 	template_name = 'iiits/news/list.html'
 	model = News
 	def get_context_data(self, *args, **kwargs):
-		context = super(NewsRoomView,self).get_context_data(*args,**kwargs)
+		context = super(NewsRoom,self).get_context_data(*args,**kwargs)
 		all_news = News.objects.all().order_by('-date') #latest news first
-		paginator = Paginator(all_news, NEWS_ENTRIES_PER_PAGE)
+		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
 		try:
 			page=int(page)
 		except TypeError:
 			page=1	
 		 
-		context['pagebuttons'] = getPageButtons(paginator.num_pages, page, NEWS_ENTRIES_PER_PAGE)
+		context['pagebuttons'] = getPageButtons(paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		
 		try:
         		page_news = paginator.page(page)
@@ -128,12 +140,39 @@ class NewsRoomView(TemplateView):
 
 		return context
 
-class AdmissionView(TemplateView):
-	template_name = '' 
-	def get_context_data(self, *args, **kwargs):
-		context = super(AdmissionView,self).get_context_data(*args,**kwargs)
+
+
+class Research(TemplateView):
+	template_name=''
+	def get_context_data(self, **kwargs):
+		context = super(Research,self).get_context_data(**kwargs)
+		context = dict()
+
 		return context
 
+class Staff(TemplateView):
+	template_name=''
+	def get_context_data(self, **kwargs):
+		context = super(Staff,self).get_context_data(**kwargs)
+		context = dict()
+
+		return context
+
+class Students(TemplateView):
+	template_name=''
+	def get_context_data(self, **kwargs):
+		context = super(Students,self).get_context_data(**kwargs)
+		context = dict()
+
+		return context
+
+class StudentProfile(TemplateView): 		
+	template_name=''
+	def get_context_data(self, **kwargs):
+		context = super(StudentProfile,self).get_context_data(**kwargs)
+		context = dict()
+
+		return context
 	
 
 
