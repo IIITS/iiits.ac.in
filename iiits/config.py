@@ -30,7 +30,7 @@ templates={
 
 		},
 		"news":{
-
+			"add_news":"iiits/news/add.html"
 		},
 		"about":{
 			"change_board_governers":"",
@@ -58,7 +58,14 @@ templates={
 }
 
 urls={
-	
+	"cms":{
+		"news":{
+			"add_success":"/success/add/newsroom/"
+		},
+		"notice":{
+			"add_success":"/success/add/notice/"
+		}
+	}
 }	
 values={
 	"IMAGE_SLIDER_MAX_PHOTOS":"5",

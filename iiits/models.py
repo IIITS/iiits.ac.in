@@ -84,7 +84,7 @@ class News(Model):
 # 									CMS Models Begin Here										#
 #																								#
 #################################################################################################
-
+'''
 class AdmissionsFeeStructure(Model):
 class AdmissionsUGAdmissions(Model):
 class AdmissionsPHDAdmissions(Model):
@@ -94,5 +94,4 @@ class AdmissionsPGAdmissions(Model):
 class 
 class 
 class
-
-		
+'''	
