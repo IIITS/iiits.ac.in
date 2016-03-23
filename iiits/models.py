@@ -76,6 +76,11 @@ class News(Model):
 	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
 
+class Notice(Model):
+	noticeno = CharField(max_length=20, db_index=True)
+	title = CharField(max_length=200)
+	fileupload = FileField(upload_to = settings.STATIC_URL+'iiits/files/notice/', null=True, blank=True)
+	date = DateTimeField(auto_now_add=True)
 
 
 
@@ -84,8 +89,26 @@ class News(Model):
 # 									CMS Models Begin Here										#
 #																								#
 #################################################################################################
-'''
+
 class AdmissionsFeeStructure(Model):
+	academic_year = CharField(max_length=200, default='2016-2017')
+	tution_fee = TextField()
+	admission = TextField()
+	caution_deposit = TextField()
+	hostel_water_electric = TextField()
+	mess = TextField()
+	textbooks = TextField()
+	def __str__(self):
+		return self.academic_year
+
+class AdmissionsFinancialAssistance(Model):
+	title = CharField(max_length=50)
+	content = TextField()
+	order_no = 	PositiveIntegerField()
+
+class AdmissionsPolicy(Model):	
+	text = TextField()
+'''	
 class AdmissionsUGAdmissions(Model):
 class AdmissionsPHDAdmissions(Model):
 class AdmissionsMSAdmissions(Model):

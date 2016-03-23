@@ -1,0 +1,17 @@
+{% extends admissions_base %}
+{% block main %}
+<div class="container-fluid">
+	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+		<a href="#undergrad" onclick="slideTo(undergrad)"><div>Under Graduate</div></a>
+		<a href="#postgrad" onclick="slideTo(postgrad)"><div>Post Graduate</div></a>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+		<div id="undergrad">
+			{% include admissions_undergraduate %}
+		</div>
+		<div id="postgrad">
+			{% include admissions_postgraduate %}
+		</div>
+	</div>		
+</div>
+{% endblock %}

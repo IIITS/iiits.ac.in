@@ -9,14 +9,14 @@ from iiits.models import *
 from iiits.methods import *
 from iiits.algorithms import *
 from iiits.forms import *
-
+from iiits.config import *
 
 class About(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(About,self).get_context_data(**kwargs)
 		context = dict()
 		return context
-		
+
 class Academics(TemplateView):
 	template_name=''
 	def get_context_data(self, *args, **kwargs):
@@ -24,9 +24,12 @@ class Academics(TemplateView):
 		return context
 
 class Admissions(TemplateView):
-	template_name = '' 
+	template_name =  templates['site']['admissions']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Admissions,self).get_context_data(*args,**kwargs)
+		context['admissions_base'] = templates['base']['admissions']
+		context['admissions_undergraduate'] = templates['site']['admissions']['undergraduate']
+		context['admissions_postgraduate'] = templates['site']['admissions']['postgraduate']
 		return context
 
 class Alumni(TemplateView):		

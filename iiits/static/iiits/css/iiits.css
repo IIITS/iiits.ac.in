@@ -10,6 +10,29 @@
   .iiits-brand-logo img{
     width: 100px; margin-top: -10px;
   }
+  .iiits-sidenav{
+    margin-top: 15px;
+
+  }
+  .iiits-sidenav div{
+    padding:5px;
+    color:black;
+  }
+  .iiits-sidenav div:hover{
+    background-color: black;
+    color:white;
+    text-decoration: none;
+  }
+  .iiits-card-full{
+    background:#FFF;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;
+    padding:0px;
+    margin:15px;
+    overflow:hidden;
+  }
+  .iiits-padding-15{
+    padding:15px;
+  }
  #brand-text-l1{
     display: block;
     font-size: 40px;

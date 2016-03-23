@@ -1,17 +1,17 @@
 templates={
 	"cms":{
 		"image_slider":{
-			"change_image_slider":"iiits/cms/image_slider/"
+			"change":"iiits/cms/image_slider/"
 		},
 		"admissions":{	
-			"change_ug_admissions":"iiits/cms/ug_admissions",
-			"change_pg_admissions":"iiits/cms/pg_admissions",
-			"change_mtech_admissions":"iiits/cms/",
-			"change_ms_admissions":"iiits/cms/",
-			"change_phd_admissions":"iiits/cms/",
-			"change_fee_structure":"iiits/cms/",
-			"change_policy":"iiits/cms/",
-			"change_financial_assistance":"iiits/cms/",
+			"undergraduate":"iiits/cms/ug_admissions",
+			"postgraduate":"iiits/cms/pg_admissions",
+			"mtech":"iiits/cms/",
+			"ms":"iiits/cms/",
+			"phd":"iiits/cms/",
+			"fee_structure":"iiits/cms/",
+			"policy":"iiits/cms/",
+			"financial_assistance":"iiits/cms/",
 		},
 		"academics":{	
 			"change_time_table":"",
@@ -32,6 +32,9 @@ templates={
 		"news":{
 			"add_news":"iiits/news/add.html"
 		},
+		"notice":{
+			"add_notice":"iiits/notice/add.html"
+		},
 		"about":{
 			"change_board_governers":"",
 			"change_about_sricity":"",
@@ -41,19 +44,28 @@ templates={
 		},
 
 
-	}
+	},
 	"site":{
-	"site_image_slider":"",
-	"site_navbar":"",
-	"site_faculty_page":"",
-	"site_faculty_list":"",
-	"site_faculty_profile":"",
-	"site_newsroom":"",
-	"site_media":"",
-	"site_students_page":"",
-	"site_students_profile":"",
-	"site_staff_list":"",
-	"site_":""
+		"admissions":{
+			"home":"iiits/site/admissions/home.html",
+			"undergraduate":"iiits/site/admissions/undergraduate.html",
+			"postgraduate":"iiits/site/admissions/postgraduate.html",
+		},
+
+		"site_image_slider":"",
+		"site_navbar":"",
+		"site_faculty_page":"",
+		"site_faculty_list":"",
+		"site_faculty_profile":"",
+		"site_newsroom":"",
+		"site_media":"",
+		"site_students_page":"",
+		"site_students_profile":"",
+		"site_staff_list":"",
+		"site_":""
+	},
+	"base":{
+		"admissions":"iiits/base/base_admissions.html"
 	}
 }
 

@@ -1,5 +1,5 @@
 from django.forms import ModelForm, Form, Textarea, TextInput
-from iiits.models import News
+from iiits.models import News, Notice
 class AddNewsForm(ModelForm):
 	class Meta:
 		model = News
@@ -13,3 +13,12 @@ class AddNewsForm(ModelForm):
 						})
 					
 		}
+class AddNoticeForm(ModelForm):
+	class Meta:
+		model = Notice 
+		fields = '__all__'
+		widgets = {
+				'title':TextInput(attrs={'class':'form-control',
+				'placeholder':'Title of the notice'	
+					})
+					}

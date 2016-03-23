@@ -1,4 +1,8 @@
+from django.views.generic.edit import CreateView
 from iiits.config import templates, urls
+from iiits.mixins import AjaxableResponseMixin
+from iiits.models import *
+from iiits.forms import *
 
 # Notice Board
 class AddNotice(AjaxableResponseMixin, CreateView):
