@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
-
+from iiits.config import values, static_locations
 #############################################################################################
 #																							#
 # 							Core Models Begin Here											#
@@ -100,21 +100,52 @@ class AdmissionsFeeStructure(Model):
 	textbooks = TextField()
 	def __str__(self):
 		return self.academic_year
+class AdmissionsFeeModeofPayment(Model):
+	title = CharField(max_length=50)
+	description = TextField()
+	def __str__(self):
+		return self.title
+
+class Notes(Model):
+	title = CharField(max_length=100, db_index=True, 
+					  choices=values["NOTES"], default=values["NOTES_DEFAULT"])
+	notes = TextField()		
+	def __str__(self):
+		return self.title
 
 class AdmissionsFinancialAssistance(Model):
 	title = CharField(max_length=50)
 	content = TextField()
-	order_no = 	PositiveIntegerField()
+	order_no = 	PositiveIntegerField(db_index=True)
+	def __str__(self):
+		return str(self.order_no) + " - " + self.title  
 
-class AdmissionsPolicy(Model):	
-	text = TextField()
-'''	
-class AdmissionsUGAdmissions(Model):
-class AdmissionsPHDAdmissions(Model):
-class AdmissionsMSAdmissions(Model):
-class AdmissionsMTechAdmissions(Model):
-class AdmissionsPGAdmissions(Model):
-class 
-class 
-class
-'''	
+
+
+class AcademicsTimeTable(Model):
+	batchnsem = CharField(max_length=20, choices=values["ACADEMICS_BATCHES"], 
+					  default = values["ACADEMICS_BATCHES_DEFAULT"], db_index=True)
+	branch = CharField(max_length=20, choices=values["ACADEMICS_BRANCHES"],
+					   default=values["ACADEMICS_BRANCHES_DEFAULT"])
+	
+	fileupload = FileField(upload_to=static_locations["AcademicsTimeTable"])
+	session = CharField(max_length=20, choices=values["ACADEMICS_SESSION"],
+					    default=values["ACADEMICS_SESSION_DEFAULT"])
+	year = CharField(max_length=10, choices=values["YEAR"],
+					 default=values["YEAR_DEFAULT"])
+
+
+class AcademicsProgramme(Model):
+	programme = TextField()
+	seats = TextField()
+
+class AcademicsResources(Model):
+	title = CharField(max_length=50, choices=values["ACADEMICS_RESOURCES"],
+					  default=values["ACADEMICS_RESOURCES_DEFAULT"], db_index=True)
+	session = CharField(max_length=20, choices=values["ACADEMICS_SESSION"],
+					    default=values["ACADEMICS_SESSION_DEFAULT"])
+	year = CharField(max_length=10, choices=values["YEAR"],
+					 default=values["YEAR_DEFAULT"])
+	fileupload = FileField(upload_to=static_locations["AcademicsResources"])
+	def __str__(self):
+			return self.title

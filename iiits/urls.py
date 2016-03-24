@@ -1,5 +1,5 @@
 from django.conf import settings
-from django.conf.urls import url,include
+from django.conf.urls import url,include, patterns
 from django.contrib import admin
 from iiits import views, create, delete, update, config
 urlpatterns = [
@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^newsroom/$', 					views.NewsRoom.as_view(), name='newsroom'),
     url(r'^addnews/$', 						create.AddNews.as_view()	,   name='addnews'),
     url(r'^admissions/$',                   views.Admissions.as_view(), name='admissions'),
+    url(r'^academics/$',                    views.Academics.as_view(),  name='academics'),
     #url(r'^students/(~*)([a-z-._A-Z]*)$',	StudentsView.as_view(),	name='students'),
     #url(r'^staff/(~*)([a-z-._A-Z]*)$',		StaffView.as_view(),	name='staff'),
     #url(r'^alumni/(~*)([a-z-._A-Z]*)$',	AlumniView.as_view(),	name='alumni'),

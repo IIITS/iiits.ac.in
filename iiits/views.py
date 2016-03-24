@@ -18,18 +18,38 @@ class About(TemplateView):
 		return context
 
 class Academics(TemplateView):
-	template_name=''
+	template_name=templates['site']['academics']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Academics, self).get_context_data(*args, **kwargs)
+		context['academics_base'] = templates['base']['academics']
+		context['academics_timetable'] = templates['site']['academics']['timetable']
+		context['academics_curriculum'] = templates['site']['academics']['curriculum']
+		context['academics_general_info'] = templates['site']['academics']['general_info']
+		context['academics_programmes'] = templates['site']['academics']['programmes']
+		context['timetable'] = AcademicsTimeTable.objects.order_by('batchnsem')
+		context['curriculum_ug1_sem1']= AcademicsResources.objects.get(title='CURRICULUM_UG1_SEM1')
+		context['curriculum_ug1_sem2']= AcademicsResources.objects.get(title='CURRICULUM_UG1_SEM2')
+		context['note_ug_curriculum'] = Notes.objects.get(title='UG_CURRICULUM')
+		context['note_ug_curriculum_benchmarking'] = Notes.objects.get(title='UG_CURRICULUM_BENCHMARKING')
+		context['programmes']= AcademicsProgramme.objects.all()
+		context['almanac']= AcademicsResources.objects.get('Almanac')
+		context['academic_calendar']= AcademicsCalendar.objects.all()[0]
+		context['holidays'] = AcademicsHolidays.objects.all()[0]
 		return context
 
 class Admissions(TemplateView):
 	template_name =  templates['site']['admissions']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Admissions,self).get_context_data(*args,**kwargs)
+		context['title']=strings['admissions_title']
 		context['admissions_base'] = templates['base']['admissions']
 		context['admissions_undergraduate'] = templates['site']['admissions']['undergraduate']
 		context['admissions_postgraduate'] = templates['site']['admissions']['postgraduate']
+		context['fee_structure'] = AdmissionsFeeStructure.objects.all()[0]
+		context['financial_assistance'] = AdmissionsFinancialAssistance.objects.order_by('order_no')
+		context['policy'] = Notes.objects.get(title='POLICY')
+		context['fee_mode_of_payment'] = AdmissionsFeeModeofPayment.objects.all()
+		context['fee_mode_of_payment_notes'] = Notes.objects.get(title='FEE')
 		return context
 
 class Alumni(TemplateView):		
