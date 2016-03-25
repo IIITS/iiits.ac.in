@@ -55,8 +55,8 @@ templates={
 			"home":"iiits/site/academics/home.html",
 			"curriculum":"iiits/site/academics/curriculum.html",
 			"timetable":"iiits/site/academics/timetable.html",
-			"general_info":"iiits/site/general_info.html",
-			"programmes":"iiits/site/programmes.html"
+			"general_info":"iiits/site/academics/general_info.html",
+			"programmes":"iiits/site/academics/programmes.html"
 		},
 		"research":{
 			"home":"iiits/site/research/home.html",
@@ -80,7 +80,8 @@ templates={
 	},
 	"base":{
 		"admissions":"iiits/base/base_admissions.html",
-		"academics":"iiits/base/base_academics.html"
+		"academics":"iiits/base/base_academics.html",
+		"research":"iiits/base/base_research.html"
 	}
 }
 
@@ -151,9 +152,12 @@ values={
 }
 strings={
 	"site_title":"IIITS - Indian Institute of Information Technology Chittoor, SriCity",
-	"admissions_title":"Admissions @ IIITS"
+	"admissions_title":"Admissions @ IIITS",
+	"academics_title":"Academics @ IIITS",
+	"research_title":"Research @ IIITS"
 }
 static_locations={
 	"AcademicsTimeTable":"iiits/static/iiits/files/academics/timetables/",
-	"AcademicsResources":"iiits/static/iiits/files/academics/resources/"
+	"AcademicsResources":"iiits/static/iiits/files/academics/resources/",
+	"ResearchPortfolio":"iiits/static/iiits/files/research/portfolio/"
 }

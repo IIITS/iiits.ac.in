@@ -26,15 +26,21 @@ class Academics(TemplateView):
 		context['academics_curriculum'] = templates['site']['academics']['curriculum']
 		context['academics_general_info'] = templates['site']['academics']['general_info']
 		context['academics_programmes'] = templates['site']['academics']['programmes']
-		context['timetable'] = AcademicsTimeTable.objects.order_by('batchnsem')
+		context['timetable_ug1'] = AcademicsTimeTable.objects.get(batchnsem__startswith='UG1')
+		context['timetable_ug2'] = AcademicsTimeTable.objects.get(batchnsem__startswith='UG2')
+		context['timetable_ug3_cse'] = AcademicsTimeTable.objects.get(batchnsem__startswith='UG3',
+														    	   branch='CSE')
+		context['timetable_ug3_ece'] = AcademicsTimeTable.objects.get(batchnsem__startswith='UG3',
+														           branch= 'ECE')	
 		context['curriculum_ug1_sem1']= AcademicsResources.objects.get(title='CURRICULUM_UG1_SEM1')
 		context['curriculum_ug1_sem2']= AcademicsResources.objects.get(title='CURRICULUM_UG1_SEM2')
 		context['note_ug_curriculum'] = Notes.objects.get(title='UG_CURRICULUM')
 		context['note_ug_curriculum_benchmarking'] = Notes.objects.get(title='UG_CURRICULUM_BENCHMARKING')
 		context['programmes']= AcademicsProgramme.objects.all()
-		context['almanac']= AcademicsResources.objects.get('Almanac')
-		context['academic_calendar']= AcademicsCalendar.objects.all()[0]
-		context['holidays'] = AcademicsHolidays.objects.all()[0]
+		context['note_programmes']=Notes.objects.get(title='ACADEMIC_PROGRAMMES')
+		context['almanac']= AcademicsResources.objects.get(title='Almanac')
+		context['calendar']= AcademicsResources.objects.get(title='CALENDAR')
+		context['holidays'] = AcademicsResources.objects.get(title='HOLIDAYS')
 		return context
 
 class Admissions(TemplateView):
@@ -166,11 +172,17 @@ class NewsRoom(TemplateView):
 
 
 class Research(TemplateView):
-	template_name=''
+	template_name=templates['site']['research']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Research,self).get_context_data(**kwargs)
 		context = dict()
-
+		context['title']=strings['research_title']
+		context['research_base'] = templates['base']['research']
+		context['research_areas'] = templates['site']['research']['areas']
+		context['research_centres'] = templates['site']['research']['centres']
+		context['research_portfolio'] = templates['site']['research']['portfolio']
+		context['research_publications'] = templates['site']['research']['publications']
+		context['research_students'] = templates['site']['research']['students']
 		return context
 
 class Staff(TemplateView):

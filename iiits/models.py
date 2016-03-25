@@ -3,11 +3,7 @@ from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
-#############################################################################################
-#																							#
-# 							Core Models Begin Here											#
-#																							#
-#############################################################################################
+
 
 class Department(Model):
 	name = CharField(max_length=100)
@@ -53,6 +49,8 @@ class Faculty(Model):
 				donothing=True	
 		return results		
 
+
+
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
 	photo = photo=ImageField(upload_to=settings.STATIC_URL+'iiits/images/faculty/')
@@ -61,13 +59,7 @@ class VisitingFaculty(Model):
 	public_uri_name=CharField(max_length=100, db_index=True, default='NA')
 	def getFullName(self):
 		return self.user.get_full_name()
-class Publications(Model):
-	title= CharField(db_index=True,max_length=200)
-	description=TextField()
-	link=TextField()
-	fileupload = FileField()
-	year=CharField(db_index=True,max_length=4)	
-	starred=BooleanField(db_index=True,default=False)
+
 	
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
@@ -82,13 +74,6 @@ class Notice(Model):
 	fileupload = FileField(upload_to = settings.STATIC_URL+'iiits/files/notice/', null=True, blank=True)
 	date = DateTimeField(auto_now_add=True)
 
-
-
-#################################################################################################
-#																								#
-# 									CMS Models Begin Here										#
-#																								#
-#################################################################################################
 
 class AdmissionsFeeStructure(Model):
 	academic_year = CharField(max_length=200, default='2016-2017')
@@ -133,11 +118,14 @@ class AcademicsTimeTable(Model):
 					    default=values["ACADEMICS_SESSION_DEFAULT"])
 	year = CharField(max_length=10, choices=values["YEAR"],
 					 default=values["YEAR_DEFAULT"])
-
+	def __str__(self):
+			return self.batchnsem + self.branch + self.session + self.year
 
 class AcademicsProgramme(Model):
 	programme = TextField()
 	seats = TextField()
+	def __str__(self):
+		return self.programme
 
 class AcademicsResources(Model):
 	title = CharField(max_length=50, choices=values["ACADEMICS_RESOURCES"],
@@ -149,3 +137,31 @@ class AcademicsResources(Model):
 	fileupload = FileField(upload_to=static_locations["AcademicsResources"])
 	def __str__(self):
 			return self.title
+
+class ResearchCentre(Model):
+	code = CharField(db_index=True, max_length=20)
+	title= CharField(db_index=True, max_length=150)
+	research_areas= TextField()
+
+class ResearchPortfolio(Model):
+	research_areas = TextField()
+	faculty = TextField(null=True, blank=True)
+	title = CharField(max_length=200)
+	description = TextField()
+	image = ImageField(null=True, blank=True, upload_to=static_locations["ResearchPortfolio"])	
+	fileupload = FileField(null=True, blank=True, upload_to=static_locations["ResearchPortfolio"])
+
+class ResearchStudent(Model):
+	user=OneToOneField(User)
+	research_centres = TextField() #saves comma seperated code of ResearchCentre
+	mentors = TextField() # saves comma seperated user.username of faculty or vsfaculty
+
+class Publications(Model):
+	title= CharField(db_index=True,max_length=200)
+	description=TextField()
+	link=TextField()
+	fileupload = FileField()
+	year=CharField(db_index=True,max_length=4)	
+	starred=BooleanField(db_index=True,default=False)
+
+		

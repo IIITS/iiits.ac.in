@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^addnews/$', 						create.AddNews.as_view()	,   name='addnews'),
     url(r'^admissions/$',                   views.Admissions.as_view(), name='admissions'),
     url(r'^academics/$',                    views.Academics.as_view(),  name='academics'),
+    url(r'^research/$',                     views.Research.as_view(),   name='research'),
     #url(r'^students/(~*)([a-z-._A-Z]*)$',	StudentsView.as_view(),	name='students'),
     #url(r'^staff/(~*)([a-z-._A-Z]*)$',		StaffView.as_view(),	name='staff'),
     #url(r'^alumni/(~*)([a-z-._A-Z]*)$',	AlumniView.as_view(),	name='alumni'),
