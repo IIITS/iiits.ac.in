@@ -1,0 +1,18 @@
+{% extends 'iiits/base/base_faculty.html'%}
+{% block main %}
+<div class="container">
+	<h3>List of all Faculties in the Institute</h3>
+
+		{% for fac in instfac %}
+			
+			<span>{{ fac.photo }}</span><a href=""><span>a{{fac.getFullName}}</span></a>
+			
+		{%empty%}
+		<h5>Sorry No faculties found for the query specified!</h5>	
+		{% endfor %}
+	<h3>List of all Visiting Faculties</h3>
+		{% for fac in vsfac %}
+
+		{% endfor %}
+</div>
+{%endblock %}

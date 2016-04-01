@@ -21,8 +21,8 @@ def getAllFacultyByRA(raid):
 	return results		
 
 def getPageButtons(num_pages, curr_page, entries_per_page):
-	lower = curr_page - int(math.floor(entries_per_page / 2 ))
-	upper = curr_page + int(math.floor(entries_per_page / 2 ))
+	lower = curr_page - int(math.floor(int(entries_per_page) / 2 ))
+	upper = curr_page + int(math.floor(int(entries_per_page) / 2 ))
 	
 	if lower <= 0:
 		lower = 1

@@ -1,0 +1,34 @@
+{% extends 'iiits/base/base_faculty.html' %}
+{% block main %}
+	<div class="container margin-top-20">
+		<ul class="navigation-list">
+			<li><a href="/faculty/list/?search=all">All Faculty</a></li>
+			<li><a href="#" id="fac-dept-link">By Department</a></li>
+			<ul id="fac-dept">
+				{% for dept in departments %}			
+					<li><a href="/faculty/list/?search=dept&amp;dept={{dept.code}}">{{dept.name}}</a></li>
+				{%endfor%}	
+			</ul>
+			<li><a href="">By Title</a></li>
+			<ul>
+				{% for title in facultytitles %}
+					<li><a href="/faculty/list/?search=title&amp;title={{title.code}}">{{title.title}}</a></li>
+				{% endfor %}	
+			</ul>
+			<li><a href="#">By Research Areas</a></li>
+			<ul>
+				{% for area in researchareas %}
+					<li><a href="/faculty/list/?search=ra&amp;ra={{area.code}}">{{area.title}}</a></li>
+				{% endfor %}
+			</ul>
+			<li><a href="/faculty/list/?search=instfac">Institute Faculty</a></li>
+			<li><a href="/faculty/list/?search=vsfac">Visiting Faculty</a></li>
+		</ul>
+	</div>
+	<script>
+	$('#fac-dept').hide();
+	$('#fac-dept-link').on('click', function(){
+			$('#fac-dept').toggle();
+	});
+	</script>
+{% endblock %}

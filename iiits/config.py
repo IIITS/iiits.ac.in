@@ -46,11 +46,6 @@ templates={
 
 	},
 	"site":{
-		"admissions":{
-			"home":"iiits/site/admissions/home.html",
-			"undergraduate":"iiits/site/admissions/undergraduate.html",
-			"postgraduate":"iiits/site/admissions/postgraduate.html",
-		},
 		"academics":{
 			"home":"iiits/site/academics/home.html",
 			"curriculum":"iiits/site/academics/curriculum.html",
@@ -58,14 +53,39 @@ templates={
 			"general_info":"iiits/site/academics/general_info.html",
 			"programmes":"iiits/site/academics/programmes.html"
 		},
+		"admissions":{
+			"home":"iiits/site/admissions/home.html",
+			"undergraduate":"iiits/site/admissions/undergraduate.html",
+			"postgraduate":"iiits/site/admissions/postgraduate.html",
+		},
+		"alumni":{
+			"home":"iiits/site/alumni/home.html",
+			"list":"iiits/site/alumni/list.html"
+		},
+		"faculty":{
+			"bio":"iiits/site/faculty/bio.html",
+			"home":"iiits/site/faculty/home.html",
+			"mast":"iiits/site/faculty/mast.html",
+			"page":"iiits/site/faculty/page.html",
+			"profile":"iiits/site/faculty/profile.html",
+			"publications":"iiits/site/faculty/publications.html",
+			"teaching":"iiits/site/faculty/teaching.html",
+		},
+		"news":{
+			"home":"iiits/site/news/home.html"		
+		},
+		"notice":{
+			"home":"iiits/site/notice/home.html"
+		},
 		"research":{
 			"home":"iiits/site/research/home.html",
 			"centres":"iiits/site/research/centres.html",
 			"areas":"iiits/site/research/areas.html",
 			"portfolio":"iiits/site/research/portfolio.html",
 			"publications":"iiits/site/research/publications.html",
-			"students":"iiits/site/research/students.html"
+			"scholars":"iiits/site/research/scholars.html"
 		},
+		
 		"site_image_slider":"",
 		"site_navbar":"",
 		"site_faculty_page":"",
@@ -81,7 +101,10 @@ templates={
 	"base":{
 		"admissions":"iiits/base/base_admissions.html",
 		"academics":"iiits/base/base_academics.html",
-		"research":"iiits/base/base_research.html"
+		"faculty":"iiits/base/base_faculty.html"
+		"research":"iiits/base/base_research.html",
+		"alumni":"iiits/base/base_alumni.html",
+		"news":"iiits/base/base_alumni.html"
 	}
 }
 

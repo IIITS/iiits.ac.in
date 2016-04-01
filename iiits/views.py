@@ -59,10 +59,12 @@ class Admissions(TemplateView):
 		return context
 
 class Alumni(TemplateView):		
-	template_name = ''
+	template_name = templates['site']['alumni']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Alumni,self).get_context_data(**kwargs)
 		context = dict()
+		context['alumni_base']= templates['base']['alumni']
+		context['alumni_list']= templates['site']['alumni']['list']
 		return context
 
 class CampusLife(TemplateView):
@@ -73,14 +75,14 @@ class CampusLife(TemplateView):
 		return context
 
 class Faculty(TemplateView):
-	template_name = 'iiits/faculty/faculty_home.html'
+	template_name = templates['site']['faculty']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Faculty,self).get_context_data(**kwargs)
 		context = dict()
 		return context
 
 class FacultyPage(TemplateView):
-	template_name = 'iiits/faculty/faculty_page.html'
+	template_name = templates['site']['faculty']['page']
 	def get_context_data(self, **kwargs):
 		context = super(FacultyPage,self).get_context_data(**kwargs)
 		context = dict()
@@ -108,7 +110,7 @@ class FacultyPage(TemplateView):
 		return context
 
 class FacultyProfile(TemplateView):
-	template_name='iiits/faculty/faculty_profile.html'
+	template_name= templates['site']['faculty']['profile']
 	def get_context_data(self, **kwargs):
 		context = super(FacultyProfile,self).get_context_data(**kwargs)	
 		context=dict()
@@ -145,10 +147,11 @@ class MediaRoom(TemplateView):
 		return context
 
 class NewsRoom(TemplateView):	
-	template_name = 'iiits/news/list.html'
-	model = News
+	template_name = templates['site']['news']['home']
+	
 	def get_context_data(self, *args, **kwargs):
 		context = super(NewsRoom,self).get_context_data(*args,**kwargs)
+		context['base_news']=templates['base']['news']
 		all_news = News.objects.all().order_by('-date') #latest news first
 		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
@@ -170,6 +173,12 @@ class NewsRoom(TemplateView):
 		return context
 
 
+class Notice(TemplateView):
+	template_name = templates['site']['notice']['home']
+	def get_context_data(self, *args, **kwargs):
+		context = super(Notice,self).get_context_data(*args,**kwargs)
+		context['base_notice']=templates['base']['notice']
+		return context
 
 class Research(TemplateView):
 	template_name=templates['site']['research']['home']
@@ -182,7 +191,7 @@ class Research(TemplateView):
 		context['research_centres'] = templates['site']['research']['centres']
 		context['research_portfolio'] = templates['site']['research']['portfolio']
 		context['research_publications'] = templates['site']['research']['publications']
-		context['research_students'] = templates['site']['research']['students']
+		context['research_scholars'] = templates['site']['research']['scholars']
 		return context
 
 class Staff(TemplateView):
@@ -190,15 +199,13 @@ class Staff(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(Staff,self).get_context_data(**kwargs)
 		context = dict()
-
 		return context
 
-class Students(TemplateView):
+class Student(TemplateView):
 	template_name=''
 	def get_context_data(self, **kwargs):
 		context = super(Students,self).get_context_data(**kwargs)
 		context = dict()
-
 		return context
 
 class StudentProfile(TemplateView): 		
@@ -206,7 +213,6 @@ class StudentProfile(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(StudentProfile,self).get_context_data(**kwargs)
 		context = dict()
-
 		return context
 	
 
