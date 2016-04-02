@@ -32,7 +32,7 @@ class Faculty(Model):
 	website=TextField()
 	other_info=TextField(default='NA')
 	achievements=TextField(default='NA')
-	public_uri_name=CharField(max_length=100, db_index=True,default='NA')
+	public_uri_name=CharField(max_length=100, db_index=True,default='NA', unique=True)
 
 
 	def getFullName(self):
@@ -56,11 +56,27 @@ class VisitingFaculty(Model):
 	photo = photo=ImageField(upload_to=settings.STATIC_URL+'iiits/images/faculty/')
 	institute = TextField()
 	courses= TextField()
-	public_uri_name=CharField(max_length=100, db_index=True, default='NA')
+	public_uri_name=CharField(max_length=100, db_index=True, default='NA', unique=True)
 	def getFullName(self):
 		return self.user.get_full_name()
 
-	
+class Course(Model):
+	'''
+	This Model stores the details of the courses being taught at the university.\n
+	Fields are:\n
+	1) courseid - unique id of the course by which it could be identified. max length is 20.\n
+	2) name - Name of the course\n
+	3) faculties - comma separated list of faculties. Please note that there shouldn't be spaces before or after a comma. If you are editing this using the CMS, then you need not worry about public uri name of faculty. However, if you editing through the web administration, please not that you need to enter the public uri name without the '~' symbol. Eg: uma.garimella, hrishikesh etc.
+	'''
+	courseid=CharField(max_length=20, db_index=True)
+	name=TextField()
+	faculties=TextField()
+	def __str__(self):
+		return str(self.courseid) + " - " + str(self.name)
+	def checkFacultyTeaches(self, fac_uri_name):
+		if fac_uri_name in self.faculties.split(','):
+			return True
+		return False
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
 	content	= TextField(default='NA')
