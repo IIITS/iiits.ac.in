@@ -1,34 +1,32 @@
 {% extends 'iiits/base/base_faculty.html' %}
 {% block main %}
-	<div class="container margin-top-20">
-		<ul class="navigation-list">
-			<li><a href="/faculty/list/?search=all">All Faculty</a></li>
-			<li><a href="#" id="fac-dept-link">By Department</a></li>
-			<ul id="fac-dept">
-				{% for dept in departments %}			
-					<li><a href="/faculty/list/?search=dept&amp;dept={{dept.code}}">{{dept.name}}</a></li>
-				{%endfor%}	
-			</ul>
-			<li><a href="">By Title</a></li>
-			<ul>
-				{% for title in facultytitles %}
-					<li><a href="/faculty/list/?search=title&amp;title={{title.code}}">{{title.title}}</a></li>
-				{% endfor %}	
-			</ul>
-			<li><a href="#">By Research Areas</a></li>
-			<ul>
-				{% for area in researchareas %}
-					<li><a href="/faculty/list/?search=ra&amp;ra={{area.code}}">{{area.title}}</a></li>
-				{% endfor %}
-			</ul>
-			<li><a href="/faculty/list/?search=instfac">Institute Faculty</a></li>
-			<li><a href="/faculty/list/?search=vsfac">Visiting Faculty</a></li>
-		</ul>
+<div class="container">
+	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
+	<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<center>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
+				<span class="iiits-tab-text">
+					<b>Faculty</b>
+				</span>
+			</div>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-1" onclick="tabNavigate(1)">
+				<span class="iiits-tab-text">
+					<b>Visiting Faculty</b>
+				</span>
+			</div>
+		</center>
+	
+		<div class="iiits-padding-25" id="iiits-tab-content-0">
+			{% for fac in inst_faculty_list %}
+				<p><img class="iiits-thumb-70-70" src="{{fac.photo.url}}"><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a>&nbsp;( {{fac.title}} )</p>
+			{% endfor %}
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-1">
+			{% for vs_fac in vs_faculty_list %}
+			{% endfor %}
+		</div>
 	</div>
-	<script>
-	$('#fac-dept').hide();
-	$('#fac-dept-link').on('click', function(){
-			$('#fac-dept').toggle();
-	});
-	</script>
+	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs">
+	</div>
+</div>
 {% endblock %}

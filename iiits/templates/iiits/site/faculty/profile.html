@@ -1,4 +1,4 @@
-{% extends 'iiits/base/base_faculty.html'%}
+{% extends base_faculty %}
 {% load staticfiles %}
 {% block main %}
 {% ifequal search_status 200 %}
@@ -38,14 +38,14 @@
 			</span>
 		</div>
 	</center>
-	<div id="iiits-faculty-tab-content-2">
-		{% include 'iiits/faculty/faculty_bio.html' %}
+	<div class="iiits-padding-25" id="iiits-tab-content-0">
+		{% include faculty_bio %}
 	</div>
-	<div id="iiits-faculty-tab-content-2">
-		{% include 'iiits/faculty/faculty_teaching.html' %}
+	<div class="iiits-padding-25" id="iiits-tab-content-1">
+		{% include faculty_teaching %}
 	</div>
-	<div id="iiits-faculty-tab-content-2">
-		{% include 'iiits/faculty/faculty_publications.html' %}
+	<div class="iiits-padding-25" id="iiits-tab-content-2">
+		{% include faculty_publications %}
 	</div>			
 </div>
 {% endifequal%}
