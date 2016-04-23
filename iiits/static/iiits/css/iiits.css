@@ -75,6 +75,9 @@
 	.iiits-topnav-set-1 ul li{
 		list-style: none; display: inline-block;
 	}
+  .iiits-thumb-70-70{
+    width:70px; height:70px; border-radius: 7px; margin: 0px 15px;
+  }
 	.iiits-topnav-set-1 ul li a{
 		font-family: 'Merriweather Sans Regular', Arial, sans-serif; font-weight: 600;
     	font-style: normal;

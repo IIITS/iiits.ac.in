@@ -1,7 +1,7 @@
 templates={
 	"cms":{
 		"image_slider":{
-			"change":"iiits/cms/image_slider/"
+			"change":"iiits/cms/image_slider/change_image.html"
 		},
 		"admissions":{	
 			"undergraduate":"iiits/cms/ug_admissions",
@@ -101,7 +101,7 @@ templates={
 	"base":{
 		"admissions":"iiits/base/base_admissions.html",
 		"academics":"iiits/base/base_academics.html",
-		"faculty":"iiits/base/base_faculty.html"
+		"faculty":"iiits/base/base_faculty.html",
 		"research":"iiits/base/base_research.html",
 		"alumni":"iiits/base/base_alumni.html",
 		"news":"iiits/base/base_alumni.html"

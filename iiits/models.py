@@ -77,6 +77,7 @@ class Course(Model):
 		if fac_uri_name in self.faculties.split(','):
 			return True
 		return False
+
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
 	content	= TextField(default='NA')
@@ -159,6 +160,11 @@ class ResearchCentre(Model):
 	title= CharField(db_index=True, max_length=150)
 	research_areas= TextField()
 
+class ResearchCentreProfile(Model):
+	centre = ForeignKey(ResearchCentre)
+	description = TextField()
+	people = TextField()	
+
 class ResearchPortfolio(Model):
 	research_areas = TextField()
 	faculty = TextField(null=True, blank=True)
@@ -172,12 +178,19 @@ class ResearchStudent(Model):
 	research_centres = TextField() #saves comma seperated code of ResearchCentre
 	mentors = TextField() # saves comma seperated user.username of faculty or vsfaculty
 
-class Publications(Model):
+class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=TextField()
 	link=TextField()
 	fileupload = FileField()
 	year=CharField(db_index=True,max_length=4)	
 	starred=BooleanField(db_index=True,default=False)
+	authors = TextField()
 
+class ImageSlider(Model):
+	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/imageslider')
+	order_no = PositiveIntegerField(default=0)
+	caption = TextField()
+	def __str__(self):
+		return self.order_no
 		

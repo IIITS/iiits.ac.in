@@ -74,39 +74,15 @@ class CampusLife(TemplateView):
 		context = dict()
 		return context
 
-class Faculty(TemplateView):
-	template_name = templates['site']['faculty']['home']
-	def get_context_data(self, **kwargs):
-		context = super(Faculty,self).get_context_data(**kwargs)
-		context = dict()
-		return context
-
 class FacultyPage(TemplateView):
-	template_name = templates['site']['faculty']['page']
+	template_name = templates['site']['faculty']['home']
 	def get_context_data(self, **kwargs):
 		context = super(FacultyPage,self).get_context_data(**kwargs)
 		context = dict()
-		try:
-			dept=self.request.GET.get('dept')
-		except ObjectDoesNotExist:	
-			dept = 'all'
-		try:	
-			title=self.request.GET.get('title')
-		except ObjectDoesNotExist:
-			title='all'
-		try:		
-			ra=self.request.GET.get('ra')
-		except ObjectDoesNotExist:
-			ra='all'
-		try:		
-			vs=self.request.GET.get('vs')
-		except ObjectDoesNotExist:
-			vs = 'false'	
-		try	:
-			instfac = self.request.GET.get('instfac')
-		except ObjectDoesNotExist:	
-			instfac = 'true'
-
+		context['base_faculty'] = templates['base']['faculty']
+		context['faculty_mast'] = templates['site']['faculty']['mast']
+		context['inst_faculty_list'] = Faculty.objects.order_by('user__first_name')
+		context['vs_faculty_list'] = VisitingFaculty.objects.order_by('user__first_name')
 		return context
 
 class FacultyProfile(TemplateView):
@@ -122,7 +98,14 @@ class FacultyProfile(TemplateView):
 			context['faculty']=faculty
 			context['search_status']=200
 		except ObjectDoesNotExist:
-			context['search_status']=404	
+			context['search_status']=404		
+		context['base_faculty'] = templates['base']['faculty']
+		context['faculty_mast'] = templates['site']['faculty']['mast']
+		context['faculty_bio'] = templates['site']['faculty']['bio']
+		context['faculty_publications'] = templates['site']['faculty']['publications']
+		context['faculty_teaching']	= templates['site']['faculty']['teaching']
+		context['courses']= getAllCoursesFaculty(public_uri_name=public_uri_name)
+		context['publications']=getAllPublicationsFaculty(public_uri_name=public_uri_name)
 		return context
 
 
@@ -192,6 +175,11 @@ class Research(TemplateView):
 		context['research_portfolio'] = templates['site']['research']['portfolio']
 		context['research_publications'] = templates['site']['research']['publications']
 		context['research_scholars'] = templates['site']['research']['scholars']
+		context['centres'] = getAllResearchCentres()
+		context['areas'] = getAllResearchAreas()
+		#context['publications'] = getAllPublications()
+		#context['portfolio'] = getPortfolio()
+		context['scholars'] = getListOfScholars()
 		return context
 
 class Staff(TemplateView):

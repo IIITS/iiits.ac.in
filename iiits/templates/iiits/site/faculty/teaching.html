@@ -1,8 +1,11 @@
-<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3">Courses:</div>
+<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3"></div>
 <div class="col-lg-9 col-sm-9 col-md-9 col-xs-9">
-	{% for course in courses_teaching %}
-		{{course.name}}
-	{% empty%}
-		Sorry, No courses available yet.
-	{% endfor %}
+	<p>{{ faculty.getFullName}} teaches the following courses:</p>
+	<ol>
+		{% for course in courses %}
+			<li>{{course.name}}</li>
+		{% empty%}
+			Sorry, No courses available yet.
+		{% endfor %}
+	</ol>
 </div>

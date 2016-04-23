@@ -3,7 +3,13 @@ from iiits.config import templates
 from iiits.models import *
 class ChangeFeeStructure(UpdateView):
 	model = AdmissionsFeeStructure
-	template_name = templates.get('change_fee_structure')
+	template_name = templates['cms']['admissions']['fee_structure']
+
+'''
+class ChangeImageSlider(UpdateView):
+	model = ImageSlider
+	template_name = templates['cms']['image_slider']['change']
+'''
 '''
 class ChangeUGAdmissions(UpdateView):
 	model = AdmissionsUGAdmissions

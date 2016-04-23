@@ -1,0 +1,10 @@
+<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3"></div>
+<div class="col-lg-9 col-sm-9 col-md-9 col-xs-9">
+	<ol>
+		{% for pub in publications %}
+			<li><a href="{{pub.fileupload.url}}">{{pub.title}}</a></li>
+		{% empty%}
+			Sorry, No publications are available now.
+		{% endfor %}
+	</ol>
+</div>

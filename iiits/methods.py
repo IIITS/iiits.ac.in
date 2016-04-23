@@ -1,6 +1,6 @@
 import re
 import math
-from iiits.models import * 
+from iiits.models import Course, Publication, ResearchPortfolio, ResearchStudent, ResearchCentre, ResearchArea
 def ifNone(obj, beautifier):
 	if obj is None:
 		return beautifier
@@ -36,3 +36,32 @@ def getPageButtons(num_pages, curr_page, entries_per_page):
 			upper = num_pages
 	buttons = [ x for x in range(lower, upper+1)]	
 	return buttons
+
+def getAllCoursesFaculty(public_uri_name):
+	Results = list()
+	courses = Course.objects.all()
+	for c in courses:
+		c_fac = c.faculties.split(',')
+		if public_uri_name in  c_fac:
+			Results.append(c)
+	return Results		
+
+def getAllPublicationsFaculty(public_uri_name):
+	Results = list()
+	publications = Publication.objects.all()
+	for p in publications:
+		p_authors = p.authors.split(',')
+		if public_uri_name in p_authors:
+			Results.append(p)
+	return Results			
+
+def getAllResearchCentres():
+	return ResearchCentre.objects.all()
+def getAllResearchAreas():
+	return ResearchArea.objects.all()
+#def getAllPublications():
+#	return Publication.objects.
+#def getPortfolio():
+
+def getListOfScholars():
+	return ResearchStudent.objects.order_by('user__first_name')
