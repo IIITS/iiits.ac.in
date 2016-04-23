@@ -1,15 +1,62 @@
+  @font-face {
+  font-family: 'Abel';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Abel-regular.eot');
+  src: url('../fonts/Abel-regular.eot?#iefix') format('embedded-opentype'),
+       local('Abel'),
+       local('Abel-regular'),
+       url('../fonts/Abel-regular.woff2') format('woff2'),
+       url('../fonts/Abel-regular.woff') format('woff'),
+       url('../fonts/Abel-regular.ttf') format('truetype'),
+       url('../fonts/Abel-regular.svg#Abel') format('svg');
+}
+@font-face {
+  font-family: 'Open Sans Condensed';
+  font-weight: 300;
+  font-style: normal;
+  src: url('../fonts/Open-Sans-Condensed-300.eot');
+  src: url('../fonts/Open-Sans-Condensed-300.eot?#iefix') format('embedded-opentype'),
+       local('Open Sans Cond Light'),
+       local('Open-Sans-Condensed-300'),
+       url('../fonts/Open-Sans-Condensed-300.woff2') format('woff2'),
+       url('../fonts/Open-Sans-Condensed-300.woff') format('woff'),
+       url('../fonts/Open-Sans-Condensed-300.ttf') format('truetype'),
+       url('../fonts/Open-Sans-Condensed-300.svg#OpenSansCondensed') format('svg');
+}
+@font-face {
+  font-family: 'Orbitron';
+  font-weight: 400;
+  font-style: normal;
+  src: url('../fonts/Orbitron-regular.eot');
+  src: url('../fonts/Orbitron-regular.eot?#iefix') format('embedded-opentype'),
+       local('Orbitron-Light'),
+       local('Orbitron-regular'),
+       url('../fonts/Orbitron-regular.woff2') format('woff2'),
+       url('../fonts/Orbitron-regular.woff') format('woff'),
+       url('../fonts/Orbitron-regular.ttf') format('truetype'),
+       url('../fonts/Orbitron-regular.svg#Orbitron') format('svg');
+}
+
+
   html,
   body {
     height: 90%;
   }
-  .iiits-brand-logo{
-    position: absolute;
-    top: -70px;
-}
+  .navbar{
+    margin-bottom: 0px;
   }
+  .iiits-brand-logo{
+    background: white none repeat scroll 0% 0%;
+border-radius: 100%;
+padding: 10px 3px 3px 10px;
+margin: 5px -10px;
+  }
+
   .iiits-brand-logo img{
     width: 100px; margin-top: -10px;
   }
+  
   .iiits-sidenav{
     margin-top: 15px;
 
@@ -36,20 +83,17 @@
   .iiits-padding-25{
     padding:25px;
   }
- #brand-text-l1{
-    display: block;
-    font-size: 40px;
-    position: absolute;
-    top: -68px;
-    left: 115px;
-    color: #EE3430;
+ .brand-text-l1{
+   font-family: "Open Sans Condensed",sans-serif;
+color: white;
+font-size: 28px;
+font-variant: small-caps;
  }
- #brand-text-l2{
-    display: block;
-    color: #FF77D9;
-    font-size: 17px;
-    margin-top: -16px;
-    margin-left: -140px;
+ .brand-text-l2{
+    font-family: 'Orbitron', sans-serif;
+    font-size: 40px;
+    color:white;
+    font-variant: small-caps;
  }
     .elegant-shadow {
     color: #202020;
@@ -64,11 +108,16 @@
   }
   
 	.iiits-topnav-container{
-		background:rgba(160, 3, 3, 0.98) ; border-bottom:2px solid gainsboro;
+		background:#800000 ; border-top: 1px solid #9A0000;
+border-bottom: 1px solid #670000;
 }
   .iiits-topnav-set-1{
     background:#000; color: white
   }
+   .iiits-topnav-set-1 li + li:before{
+    content: "|";
+    color: white;
+}
   .iiits-topnav-set-1 ul{
     display: inline-block;
   }
@@ -82,29 +131,42 @@
 		font-family: 'Merriweather Sans Regular', Arial, sans-serif; font-weight: 600;
     	font-style: normal;
     	font-variant: small-caps;
-    	padding: 0px 15px;
+    	padding: 10px 15px;
     	text-decoration: none !important;
       color:white;
    	}
   .iiits-topnav-set-1 ul li a:hover{  
     cursor: pointer;
   }
-    .iiits-topnav-set-2 ul{
+  .iiits-topnav-set-2{
+   border-top: 1px solid #9A0000;
+border-bottom: 1px solid #670000;
+  }
+  .iiits-topnav-set-3{
+   border-top: 1px solid #9A0000;
+border-bottom: 1px solid #670000;
+  }
+  .iiits-topnav-set-3 li + li:before{
+    content: "|";
+    font-size: 24px;
+    font-family: "Open Sans Condensed",sans-serif;
+    color: #9C1515;
+}
+    .iiits-topnav-set-3 ul{
     display: inline-block;
     }
-    .iiits-topnav-set-2 ul li{
+    .iiits-topnav-set-3 ul li{
       list-style: none;
       display: inline-block;
     }
-    .iiits-topnav-set-2 ul li a{
-      font-family: 'Merriweather Sans Regular', Arial, sans-serif;
+    .iiits-topnav-set-3 ul li a{
+      font-family: 'Abel', sans-serif;
       font-weight: 400;
       font-style: normal;
-      font-size:20px;
-      padding: 0px 20px;
+      font-size:24px;
+      padding: 0px 15px;
       text-decoration: none;
       color: rgb(255, 249, 249);
-      font-variant: small-caps;
     }
     .iiits-topnav-set-2 ul li a:hover{
       text-decoration: none;
@@ -195,14 +257,15 @@
 .carousel,
 .item,
 .active {
-    height: 100%;
+    height: 90%;
 }
 
 .carousel-inner {
     height: 100%;
 }
-
-
+.carousel-indicators {
+    bottom: 15%;
+}
 .fill {
     width: 100%;
     height: 100%;
@@ -225,14 +288,22 @@
   font-size: 600% !important;
   margin-top: -60% !important;
 }
+.wrapper{
+  min-height: 62vh;
+}
 .icon-next{
   font-size: 600% !important;
   margin-top: -60% !important;
 }
 .iiits-mast{
   color:white;
-  background-color: chocolate;
+  background-color: #800000;
   padding-left:40px;
+}
+.footer{
+  background: rgb(128, 0, 0) none repeat scroll 0% 0%;
+padding: 15px;
+color: white;
 }
 .navigation-list{
   list-style: none;

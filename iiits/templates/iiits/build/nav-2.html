@@ -1,7 +1,7 @@
 {% load staticfiles %}
 <nav class="iiits-topnav-container ">
 	<div class="container-fluid navbar nav  iiits-topnav-set-1">
-		<center class="col-lg-8 col-md-8 col-sm-8 col-xs-8" >
+		<center class="col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4" >
 			<ul>
 				<li>
 				<a href="/faculty/" class="w3-medium iiits-underline-from-center" >Faculty</a>
@@ -25,25 +25,16 @@
 		</center>	
 	</div>
 	<div class="nav navbar container-fluid iiits-topnav-set-2">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
-			<div class="iiits-brand-logo col-lg-1 col-md-1" >
-				<img src="{% static 'iiits/images/iiits-logo.png' %}" class="pull-right">
-			</div>
-			<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-				<div class="col-lg-12 col-md-12">
-					<span class="brand-text-l1">Indian Institute of Information Technology</span>
-				</div>
-				<div class="col-lg-12 col-md-12">
-					<span class="brand-text-l2">Chittoor Sri City</span>  
-				</div>
-			</div>	
-			
+		<div class="col-lg-4 col-md-4 col-sm-2 col-xs-2">
+			<center class="iiits-brand-logo" >
+			<img src="{% static 'iiits/images/iiits-logo.png' %}">
+			</center>
+			<center class="iiits-brand-text">
+				<span id="brand-text-l1">IIIT</span>
+				<span id="brand-text-l2">Sri City</span>	
+			</center>
 		</div>
-		</div>
-	</div>	
-	<div class="nav navbar container-fluid iiits-topnav-set-3">
-		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			<ul>
 				<li>
 				<a href="/admissions/" class="iiits-overline-from-center">Admissions</a>
@@ -52,19 +43,14 @@
 				<a href="/academics/" class="iiits-overline-from-center">Academics</a>
 				</li>
 				<li>
-				<a href="/research/" class="iiits-overline-from-center">Research &amp; Development</a>
+				<a href="/research/" class="iiits-overline-from-center">Research</a>
 				</li>
 			
 				<li>
-				<a href="/campuslife/" class="iiits-overline-from-center">Student Life</a>
+				<a href="/campuslife/" class="iiits-overline-from-center">Campus Life</a>
 				</li>
 				<li>
-				<a href="/campuslife/" class="iiits-overline-from-center">Facilities</a>
-				</li>
-				
-				
-				<li>
-				<a href="/newsroom/" class="iiits-overline-from-center">News &amp; Notices</a>
+				<a href="/newsroom/" class="iiits-overline-from-center">News</a>
 				</li>
 				<li>
 				<a href="/about/" class="iiits-overline-from-center">About</a>
