@@ -1,13 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	{% block head %}
-	<head>
-		{% block title %}
-		 	<title>Faculty</title>
-		{% endblock %}
-		{% include 'iiits/base/base_resources.html' %}
-		
-	</head>
+	<head><title>Faculty @ IIITS</title>{% include 'iiits/base/base_resources.html' %}</head>
 	{% endblock %}
 	<body>
 		{% block topnav %}

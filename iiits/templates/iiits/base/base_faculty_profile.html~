@@ -3,7 +3,7 @@
 	{% block head %}
 	<head>
 		{% block title %}
-		 	<title>Faculty</title>
+		 	<title>Admissions</title>
 		{% endblock %}
 		{% include 'iiits/base/base_resources.html' %}
 		

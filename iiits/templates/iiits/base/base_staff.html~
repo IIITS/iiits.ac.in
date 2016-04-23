@@ -1,26 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 	{% block head %}
-	<head>
-		{% block title %}
-		 	<title>Faculty</title>
-		{% endblock %}
-		{% include 'iiits/base/base_resources.html' %}
-		
-	</head>
+	<head><title>Academics @ IIITS</title>{% include 'iiits/base/base_resources.html' %}</head>
 	{% endblock %}
 	<body>
 		{% block topnav %}
 			{% include 'iiits/build/nav.html' %}
-		{% endblock %}
-		{% block mast %}
-			{% include faculty_mast %}
 		{% endblock %}
 		{% block main %}
 			
 		{% endblock %}
 		{% block footer %}
 			{% include 'iiits/build/footer.html' %}
-		{% endblock %}
+		{% endblock %}	
 	</body>
 </html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% block head %}
+	<head>
+		{% block title %}
+		 	<title>Students</title>
+		{% endblock %}
+		{% include 'iiits/base/base_resources.html' %}
+		
+	</head>
+	{% endblock %}
+	<body>
+		{% block topnav %}
+			{% include 'iiits/build/nav.html' %}
+		{% endblock %}
+		{% block main %}
+			
+		{% endblock %}
+		{% block footer %}
+			{% include 'iiits/build/footer.html' %}
+		{% endblock %}	
+	</body>
+</html>

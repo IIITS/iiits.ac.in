@@ -322,3 +322,5 @@ ul.pagination li a.active {
 }
 
 ul.pagination li a:hover:not(.active) {background-color: #ddd;}
+.ul-no-style-black li {list-style: none; }
+.ul-no-style-black li a {color:black;}

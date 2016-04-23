@@ -12,16 +12,18 @@ from iiits.forms import *
 from iiits.config import *
 
 class About(TemplateView):
+	template_name = templates['site']['about']['home']
 	def get_context_data(self, **kwargs):
 		context = super(About,self).get_context_data(**kwargs)
 		context = dict()
+		context['base'] = templates['base']['about']
 		return context
 
 class Academics(TemplateView):
 	template_name=templates['site']['academics']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Academics, self).get_context_data(*args, **kwargs)
-		context['academics_base'] = templates['base']['academics']
+		context['base'] = templates['base']['academics']
 		context['academics_timetable'] = templates['site']['academics']['timetable']
 		context['academics_curriculum'] = templates['site']['academics']['curriculum']
 		context['academics_general_info'] = templates['site']['academics']['general_info']
@@ -48,7 +50,7 @@ class Admissions(TemplateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(Admissions,self).get_context_data(*args,**kwargs)
 		context['title']=strings['admissions_title']
-		context['admissions_base'] = templates['base']['admissions']
+		context['base'] = templates['base']['admissions']
 		context['admissions_undergraduate'] = templates['site']['admissions']['undergraduate']
 		context['admissions_postgraduate'] = templates['site']['admissions']['postgraduate']
 		context['fee_structure'] = AdmissionsFeeStructure.objects.all()[0]
@@ -68,10 +70,11 @@ class Alumni(TemplateView):
 		return context
 
 class CampusLife(TemplateView):
-	template_name = ''
+	template_name = templates['site']['campus_life']['home']
 	def get_context_data(self, **kwargs):
 		context = super(CampusLife,self).get_context_data(**kwargs)
 		context = dict()
+		context['base'] = templates['base']['campus_life']
 		return context
 
 class FacultyPage(TemplateView):
@@ -79,7 +82,7 @@ class FacultyPage(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(FacultyPage,self).get_context_data(**kwargs)
 		context = dict()
-		context['base_faculty'] = templates['base']['faculty']
+		context['base'] = templates['base']['faculty']
 		context['faculty_mast'] = templates['site']['faculty']['mast']
 		context['inst_faculty_list'] = Faculty.objects.order_by('user__first_name')
 		context['vs_faculty_list'] = VisitingFaculty.objects.order_by('user__first_name')
@@ -99,7 +102,7 @@ class FacultyProfile(TemplateView):
 			context['search_status']=200
 		except ObjectDoesNotExist:
 			context['search_status']=404		
-		context['base_faculty'] = templates['base']['faculty']
+		context['base'] = templates['base']['faculty']
 		context['faculty_mast'] = templates['site']['faculty']['mast']
 		context['faculty_bio'] = templates['site']['faculty']['bio']
 		context['faculty_publications'] = templates['site']['faculty']['publications']
@@ -122,11 +125,11 @@ class Home(TemplateView):
 		return context
 
 class MediaRoom(TemplateView):
-	template_name=''
+	template_name = templates['site']['mediaroom']['home']
 	def get_context_data(self, **kwargs):
 		context = super(MediaRoom,self).get_context_data(**kwargs)
 		context = dict()
-
+		context['base']=templates['base']['mediaroom']
 		return context
 
 class NewsRoom(TemplateView):	
@@ -134,7 +137,7 @@ class NewsRoom(TemplateView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(NewsRoom,self).get_context_data(*args,**kwargs)
-		context['base_news']=templates['base']['news']
+		context['base']=templates['base']['news']
 		all_news = News.objects.all().order_by('-date') #latest news first
 		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
@@ -160,47 +163,68 @@ class Notice(TemplateView):
 	template_name = templates['site']['notice']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Notice,self).get_context_data(*args,**kwargs)
-		context['base_notice']=templates['base']['notice']
+		context['base']=templates['base']['notice']
 		return context
-
+class Parents(TemplateView):
+	template_name = templates['site']['parents']['home']
+	def get_context_data(self, *args, **kwargs):
+		context = super(Parents,self).get_context_data(*args,**kwargs)
+		context['base']=templates['base']['parents']
+		return context
+class Staff(TemplateView):
+	template_name = templates['site']['staff']['home']
+	def get_context_data(self, *args, **kwargs):
+		context = super(Staff,self).get_context_data(*args,**kwargs)
+		context['base']=templates['base']['staff']
+		return context
+class Students(TemplateView):
+	template_name = templates['site']['students']['home']
+	def get_context_data(self, *args, **kwargs):
+		context = super(Students,self).get_context_data(*args,**kwargs)
+		context['base']=templates['base']['students']
+		return context
+class Alumni(TemplateView):
+	template_name = templates['site']['alumni']['home']
+	def get_context_data(self, *args, **kwargs):
+		context = super(Alumni,self).get_context_data(*args,**kwargs)
+		context['base']=templates['base']['alumni']
+		return context		
 class Research(TemplateView):
 	template_name=templates['site']['research']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Research,self).get_context_data(**kwargs)
 		context = dict()
 		context['title']=strings['research_title']
-		context['research_base'] = templates['base']['research']
+		context['base'] = templates['base']['research']
 		context['research_areas'] = templates['site']['research']['areas']
 		context['research_centres'] = templates['site']['research']['centres']
 		context['research_portfolio'] = templates['site']['research']['portfolio']
 		context['research_publications'] = templates['site']['research']['publications']
 		context['research_scholars'] = templates['site']['research']['scholars']
-		context['centres'] = getAllResearchCentres()
-		context['areas'] = getAllResearchAreas()
+		context['centres1'] = getAllResearchCentres()[0]
+		context['centres2'] = getAllResearchCentres()[1]
+		context['centres3'] = getAllResearchCentres()[2]
+		context['areas1'] = getAllResearchAreas()[0]
+		context['areas2'] = getAllResearchAreas()[1]
+		context['areas3'] = getAllResearchAreas()[2]
+			
 		#context['publications'] = getAllPublications()
 		#context['portfolio'] = getPortfolio()
 		context['scholars'] = getListOfScholars()
-		return context
 
-class Staff(TemplateView):
-	template_name=''
-	def get_context_data(self, **kwargs):
-		context = super(Staff,self).get_context_data(**kwargs)
-		context = dict()
 		return context
+class ResearchAreaProfile(TemplateView):
+	template_name = templates['site']['research']['area_profile']
+class ResearchCentreProfile(TemplateView):
+	template_name = templates['site']['research']['centre_profile']
 
-class Student(TemplateView):
-	template_name=''
-	def get_context_data(self, **kwargs):
-		context = super(Students,self).get_context_data(**kwargs)
-		context = dict()
-		return context
 
 class StudentProfile(TemplateView): 		
 	template_name=''
 	def get_context_data(self, **kwargs):
 		context = super(StudentProfile,self).get_context_data(**kwargs)
 		context = dict()
+
 		return context
 	
 

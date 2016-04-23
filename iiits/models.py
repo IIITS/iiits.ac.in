@@ -3,7 +3,7 @@ from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
-
+from django.template.defaultfilters import slugify
 
 class Department(Model):
 	name = CharField(max_length=100)
@@ -159,12 +159,17 @@ class ResearchCentre(Model):
 	code = CharField(db_index=True, max_length=20)
 	title= CharField(db_index=True, max_length=150)
 	research_areas= TextField()
+	def __str__(self):
+		return self.title
+	def get_url(self):
+		return "/research/centres/"+slugify(self.title)+"/"	
 
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
 	description = TextField()
 	people = TextField()	
-
+	def __str__(self):
+		return self.centre
 class ResearchPortfolio(Model):
 	research_areas = TextField()
 	faculty = TextField(null=True, blank=True)

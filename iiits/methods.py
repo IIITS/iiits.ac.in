@@ -1,6 +1,19 @@
 import re
 import math
 from iiits.models import Course, Publication, ResearchPortfolio, ResearchStudent, ResearchCentre, ResearchArea
+def chunksIntoThree(List, sz):
+	L1 = list()
+	L2 = list()
+	L3 = list()
+	for x in range(sz):
+		if x % 3 == 0:
+			L1.append(List[x])
+		elif x % 3 == 1:
+			L2.append(List[x])
+		elif x % 3 == 2:
+			L3.append(List[x])
+	print [L1, L2, L3]		
+	return [L1, L2, L3]   
 def ifNone(obj, beautifier):
 	if obj is None:
 		return beautifier
@@ -56,9 +69,13 @@ def getAllPublicationsFaculty(public_uri_name):
 	return Results			
 
 def getAllResearchCentres():
-	return ResearchCentre.objects.all()
+	centres = ResearchCentre.objects.order_by('title')
+	n = len(centres)
+	return chunksIntoThree(centres,n)
 def getAllResearchAreas():
-	return ResearchArea.objects.all()
+	areas =  ResearchArea.objects.order_by('title')
+	n = len(areas)
+	return chunksIntoThree(areas,n)
 #def getAllPublications():
 #	return Publication.objects.
 #def getPortfolio():

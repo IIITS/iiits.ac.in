@@ -27,7 +27,7 @@ templates={
 			"change_research_centre_profile_description":"",
 		},
 		"campus_life":{
-
+			"home":"iiits/cms/campus_life"
 		},
 		"news":{
 			"add_news":"iiits/news/add.html"
@@ -46,6 +46,14 @@ templates={
 
 	},
 	"site":{
+		"about":{
+			"home":"iiits/site/about/home.html",
+			"bog":"iiits/site/about/bog.html",
+			"about_iiit":"iiits/site/about/about_iiit.html",
+			"about_sricity":"iiits/site/about/about_sricity.html",
+			"location":"iiits/site/about/location.html",
+			"reaching_iiit":"iiits/site/about/reaching_iiit.html",
+		},
 		"academics":{
 			"home":"iiits/site/academics/home.html",
 			"curriculum":"iiits/site/academics/curriculum.html",
@@ -62,6 +70,9 @@ templates={
 			"home":"iiits/site/alumni/home.html",
 			"list":"iiits/site/alumni/list.html"
 		},
+		"campus_life":{
+			"home":"iiits/site/campuslife/home.html"
+		},
 		"faculty":{
 			"bio":"iiits/site/faculty/bio.html",
 			"home":"iiits/site/faculty/home.html",
@@ -71,40 +82,49 @@ templates={
 			"publications":"iiits/site/faculty/publications.html",
 			"teaching":"iiits/site/faculty/teaching.html",
 		},
+		"mediaroom":{
+			"home":"iiits/site/mediaroom/home.html"
+		},
 		"news":{
 			"home":"iiits/site/news/home.html"		
 		},
 		"notice":{
 			"home":"iiits/site/notice/home.html"
 		},
+		"parents":{
+			"home":"iiits/site/parents/home.html"
+		},
 		"research":{
 			"home":"iiits/site/research/home.html",
 			"centres":"iiits/site/research/centres.html",
+			"centre_profile":"iiits/site/research/centre_profile.html",
 			"areas":"iiits/site/research/areas.html",
+			"area_profile":"iiits/site/research/area_profile.html",
 			"portfolio":"iiits/site/research/portfolio.html",
 			"publications":"iiits/site/research/publications.html",
 			"scholars":"iiits/site/research/scholars.html"
 		},
-		
-		"site_image_slider":"",
-		"site_navbar":"",
-		"site_faculty_page":"",
-		"site_faculty_list":"",
-		"site_faculty_profile":"",
-		"site_newsroom":"",
-		"site_media":"",
-		"site_students_page":"",
-		"site_students_profile":"",
-		"site_staff_list":"",
-		"site_":""
+		"staff":{
+			"home":"iiits/site/staff/home.html"
+		},
+		"students":{
+			"home":"iiits/site/students/home.html"
+		},	
 	},
 	"base":{
-		"admissions":"iiits/base/base_admissions.html",
+		"about":"iiits/base/base_about.html",
 		"academics":"iiits/base/base_academics.html",
-		"faculty":"iiits/base/base_faculty.html",
-		"research":"iiits/base/base_research.html",
+		"admissions":"iiits/base/base_admissions.html",
 		"alumni":"iiits/base/base_alumni.html",
-		"news":"iiits/base/base_alumni.html"
+		"faculty":"iiits/base/base_faculty.html",
+		"news":"iiits/base/base_alumni.html",
+		"research":"iiits/base/base_research.html",
+		"parents":"iiits/base/base_parents.html",
+		"students":"iiits/base/base_students.html",
+		"mediaroom":"iiits/base/base_mediaroom.html",
+		"staff":"iiits/base/base_staff.html",
+		"alumni":"iiits/base/base_alumni.html",
+		"campus_life":"iiits/base/base_campuslife.html"
 	}
 }
 
