@@ -25,7 +25,7 @@ class Faculty(Model):
 	user = OneToOneField(User)
 	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	title = ForeignKey(FacultyTitle)
-	research_areas = CommaSeparatedIntegerField(max_length=150)#ResearchArea IDs
+	research_areas = TextField(default='')#ResearchArea codes comma-separated
 	department = ForeignKey(Department)
 	contact_no=TextField()
 	professional_edu=TextField()
@@ -50,16 +50,24 @@ class Faculty(Model):
 		return results		
 
 
-
+class Institute(Model):
+	title = CharField(max_length=150)
+	code = CharField(max_length=20)
+	website = CharField(max_length=150)
+	def __str__(self):
+		return self.title
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
-	photo = photo=ImageField(upload_to=settings.STATIC_URL+'iiits/images/faculty/')
-	institute = TextField()
+	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
+	title = ForeignKey(FacultyTitle)
+	institute = ForeignKey(Institute)
 	courses= TextField()
 	public_uri_name=CharField(max_length=100, db_index=True, default='NA', unique=True)
+
 	def getFullName(self):
 		return self.user.get_full_name()
-
+	def __str__(self):
+		return self.getFullName()
 class Course(Model):
 	'''
 	This Model stores the details of the courses being taught at the university.\n

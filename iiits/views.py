@@ -17,6 +17,11 @@ class About(TemplateView):
 		context = super(About,self).get_context_data(**kwargs)
 		context = dict()
 		context['base'] = templates['base']['about']
+		context['template_bog'] =templates['site']['about']['bog']
+		context['template_about_iiit'] =templates['site']['about']['about_iiit']
+		context['template_about_sricity'] =templates['site']['about']['about_sricity']
+		context['template_location'] =templates['site']['about']['location']
+		context['template_reaching_iiit'] =templates['site']['about']['reaching_iiit']
 		return context
 
 class Academics(TemplateView):
@@ -84,8 +89,13 @@ class FacultyPage(TemplateView):
 		context = dict()
 		context['base'] = templates['base']['faculty']
 		context['faculty_mast'] = templates['site']['faculty']['mast']
-		context['inst_faculty_list'] = Faculty.objects.order_by('user__first_name')
-		context['vs_faculty_list'] = VisitingFaculty.objects.order_by('user__first_name')
+		faculty_list = getAllFaculty()
+		vs_faculty_list = getAllVisitingFaculty()
+		context['inst_faculty_list1'] = faculty_list[0]
+		context['inst_faculty_list2'] = faculty_list[1]
+	
+		context['vs_faculty_list1'] = vs_faculty_list[0]
+		context['vs_faculty_list2'] = vs_faculty_list[1]	
 		return context
 
 class FacultyProfile(TemplateView):

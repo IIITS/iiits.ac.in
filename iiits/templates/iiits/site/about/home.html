@@ -1,1 +1,45 @@
 {% extends base %}
+{% block main %}
+<div class="container">
+	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
+	<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<center>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
+				<span class="iiits-tab-text">
+					<b>Board of Governers</b>
+				</span>
+			</div>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-1" onclick="tabNavigate(1)">
+				<span class="iiits-tab-text">
+					<b>About IIIT</b>
+				</span>
+			</div>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-2" onclick="tabNavigate(2)">
+				<span class="iiits-tab-text">
+					<b>Location</b>
+				</span>
+			</div>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-3" onclick="tabNavigate(3)">
+				<span class="iiits-tab-text">
+					<b>Reaching IIIT</b>
+				</span>
+			</div>
+		</center>
+	
+		<div class="iiits-padding-25" id="iiits-tab-content-0">
+			{% include template_bog %}
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-1">
+			{% include template_about_iiit %}
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-2">
+			{% include template_location %}
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-3">
+			{% include template_reaching_iiit %}
+		</div>
+	</div>
+	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs">
+	</div>
+</div>
+{% endblock %}

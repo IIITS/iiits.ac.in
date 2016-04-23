@@ -1,7 +1,8 @@
 import re
 import math
-from iiits.models import Course, Publication, ResearchPortfolio, ResearchStudent, ResearchCentre, ResearchArea
-def chunksIntoThree(List, sz):
+from iiits.models import *
+def chunksIntoThree(List):
+	sz = len(List)
 	L1 = list()
 	L2 = list()
 	L3 = list()
@@ -12,8 +13,22 @@ def chunksIntoThree(List, sz):
 			L2.append(List[x])
 		elif x % 3 == 2:
 			L3.append(List[x])
-	print [L1, L2, L3]		
-	return [L1, L2, L3]   
+			
+	return [L1, L2, L3] 
+def chunksIntoTwo(List):
+	sz = len(List)
+	L1 = list()
+	L2 = list()
+	
+	for x in range(sz):
+		if x % 2 == 0:
+			L1.append(List[x])
+		elif x % 2 == 1:
+			L2.append(List[x])
+		
+			
+	return [L1, L2] 	  
+
 def ifNone(obj, beautifier):
 	if obj is None:
 		return beautifier
@@ -68,14 +83,17 @@ def getAllPublicationsFaculty(public_uri_name):
 			Results.append(p)
 	return Results			
 
+def getAllFaculty():
+	return chunksIntoTwo(Faculty.objects.order_by('user__first_name'))
+def getAllVisitingFaculty():
+	return chunksIntoTwo(VisitingFaculty.objects.order_by('user__first_name'))
+
 def getAllResearchCentres():
 	centres = ResearchCentre.objects.order_by('title')
-	n = len(centres)
-	return chunksIntoThree(centres,n)
+	return chunksIntoThree(centres)
 def getAllResearchAreas():
 	areas =  ResearchArea.objects.order_by('title')
-	n = len(areas)
-	return chunksIntoThree(areas,n)
+	return chunksIntoThree(areas)
 #def getAllPublications():
 #	return Publication.objects.
 #def getPortfolio():
