@@ -88,7 +88,8 @@ class FacultyPage(TemplateView):
 		context = super(FacultyPage,self).get_context_data(**kwargs)
 		context = dict()
 		context['base'] = templates['base']['faculty']
-		context['faculty_mast'] = templates['site']['faculty']['mast']
+		context['mast'] = templates['build']['mast']
+		context['MAST_TEXT']="Faculty"
 		faculty_list = getAllFaculty()
 		vs_faculty_list = getAllVisitingFaculty()
 		context['inst_faculty_list1'] = faculty_list[0]
@@ -113,7 +114,8 @@ class FacultyProfile(TemplateView):
 		except ObjectDoesNotExist:
 			context['search_status']=404		
 		context['base'] = templates['base']['faculty']
-		context['faculty_mast'] = templates['site']['faculty']['mast']
+		context['mast'] = templates['build']['mast']
+		context['MAST_TEXT']="Faculty"
 		context['faculty_bio'] = templates['site']['faculty']['bio']
 		context['faculty_publications'] = templates['site']['faculty']['publications']
 		context['faculty_teaching']	= templates['site']['faculty']['teaching']
@@ -186,8 +188,10 @@ class Staff(TemplateView):
 	template_name = templates['site']['staff']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Staff,self).get_context_data(*args,**kwargs)
-		staff_list = getAllFaculty()
+		staff_list = getAllStaff()
 		context['base']=templates['base']['staff']
+		context['mast']=templates['build']['mast']
+		context['MAST_TEXT']= "Staff"
 		context['staff_list1'] = staff_list[0]
 		context['staff_list2'] = staff_list[1]
 		return context

@@ -88,7 +88,7 @@ def getAllFaculty():
 def getAllVisitingFaculty():
 	return chunksIntoTwo(VisitingFaculty.objects.order_by('user__first_name'))
 def getAllStaff():
-	return chunksIntoTwo(Faculty.objects.order_by('user__first_name'))
+	return chunksIntoTwo(Staff.objects.order_by('user__username'))
 def getAllResearchCentres():
 	centres = ResearchCentre.objects.order_by('title')
 	return chunksIntoThree(centres)

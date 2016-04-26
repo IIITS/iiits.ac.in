@@ -125,6 +125,9 @@ templates={
 		"staff":"iiits/base/base_staff.html",
 		"alumni":"iiits/base/base_alumni.html",
 		"campus_life":"iiits/base/base_campuslife.html"
+	},
+	"build":{
+		"mast":"iiits/build/mast.html"	
 	}
 }
 

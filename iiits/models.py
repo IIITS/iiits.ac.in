@@ -220,11 +220,12 @@ class ImageSlider(Model):
 
 class StaffDesignation(Model):
 	name = CharField(max_length=100)
-
+	def __str__(self):
+		return self.name
 class Staff(Model):
 	user = ForeignKey(User)
 	designation = ForeignKey(StaffDesignation)
 	photo = ImageField(upload_to='iiits/static/iiits/images/staff')	
 	def __str__(self):
-		return self.name	
+		return self.user.get_full_name()	
 		
