@@ -1,1 +1,29 @@
 {% extends base %}
+{% block main %}
+	<div class="container-fluid">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			{% for x in staff_list1 %}
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<img src="{{x.photo.url}}">
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+				<p><b>{{x.user.get_full_name | capfirst }}</b></p>
+				<p>({{x.designation}})</p>
+				<p></p>
+			</div><br><br>
+			{%endfor%}
+		</div>
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			{% for x in staff_list2 %}
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<img src="{{x.photo.url}}">
+			</div>
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+				<p><b>{{x.user.get_full_name | capfirst }}</b></p>
+				<p>({{x.designation}})</p>
+				<p></p>
+			</div><br><br>
+			{%endfor%}
+		</div>
+	</div>
+{% endblock %}

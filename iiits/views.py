@@ -128,10 +128,11 @@ class Home(TemplateView):
 	def get_context_data(self, **kwargs):
 		
 		context = super(Home,self).get_context_data(**kwargs)
+		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
-
+			'image_slider_no':[x for x in range(len(image_slider))],
+			'image_slider_images':image_slider
 		}
-		
 		return context
 
 class MediaRoom(TemplateView):
@@ -185,7 +186,10 @@ class Staff(TemplateView):
 	template_name = templates['site']['staff']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Staff,self).get_context_data(*args,**kwargs)
+		staff_list = getAllFaculty()
 		context['base']=templates['base']['staff']
+		context['staff_list1'] = staff_list[0]
+		context['staff_list2'] = staff_list[1]
 		return context
 class Students(TemplateView):
 	template_name = templates['site']['students']['home']

@@ -4,7 +4,11 @@ from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
 from django.template.defaultfilters import slugify
-
+class Config(Model):
+	property_name  = CharField(max_length=50)
+	property_value = TextField()
+	def __str__(self):
+		return self.property_name
 class Department(Model):
 	name = CharField(max_length=100)
 	code = CharField(db_index=True,max_length=20)
@@ -89,14 +93,14 @@ class Course(Model):
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
 	content	= TextField(default='NA')
-	fileupload = FileField(upload_to=settings.STATIC_URL+'iiits/files/news/',null=True,blank=True)
-	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/news/',null=True, blank=True)
+	fileupload = FileField(upload_to='iiits/static/iiits/files/news/',null=True,blank=True)
+	image = ImageField(upload_to='iiits/static/iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
 
 class Notice(Model):
 	noticeno = CharField(max_length=20, db_index=True)
 	title = CharField(max_length=200)
-	fileupload = FileField(upload_to = settings.STATIC_URL+'iiits/files/notice/', null=True, blank=True)
+	fileupload = FileField(upload_to = 'iiits/static/iiits/files/notice/', null=True, blank=True)
 	date = DateTimeField(auto_now_add=True)
 
 
@@ -201,9 +205,27 @@ class Publication(Model):
 	authors = TextField()
 
 class ImageSlider(Model):
-	image = ImageField(upload_to=settings.STATIC_URL+'iiits/images/imageslider')
-	order_no = PositiveIntegerField(default=0)
+	image = ImageField(upload_to='iiits/static/iiits/images/imageslider')
+	order_no = CharField(max_length=20,default='0',choices=(('0','0'),
+		('1','1'),
+		('2','2'),
+		('3','3'),
+		('4','4'),
+		('5','5'),
+		('6','6'))
+	)
 	caption = TextField()
 	def __str__(self):
 		return self.order_no
+
+class StaffDesignation(Model):
+	name = CharField(max_length=100)
+
+class Staff(Model):
+	user = ForeignKey(User)
+	designation = ForeignKey(StaffDesignation)
+	photo = ImageField(upload_to='iiits/static/iiits/images/staff')
+	email = EmailField()	
+	def __str__(self):
+		return self.name	
 		

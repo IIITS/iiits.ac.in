@@ -43,6 +43,10 @@
   body {
     height: 90%;
   }
+  a:hover{
+    cursor: pointer;
+    opacity: 0.8;
+  }
   .navbar{
     margin-bottom: 0px;
   }
@@ -152,6 +156,7 @@ border-bottom: 1px solid #670000;
     font-family: "Open Sans Condensed",sans-serif;
     color: #9C1515;
 }
+
     .iiits-topnav-set-3 ul{
     display: inline-block;
     }
@@ -261,10 +266,22 @@ border-bottom: 1px solid #670000;
 }
 
 .carousel-inner {
-    height: 100%;
+    height: 110%;
 }
 .carousel-indicators {
-    bottom: 15%;
+    bottom:5%;
+}
+.carousel-caption{
+  background:#000;
+  opacity: 0.6;
+  right:0%;
+  left:0%;
+}
+.smallthumb{
+  width:30px;
+  margin-top: 10px;
+  margin-left: 2.5px;
+  margin-right: 2.5px;
 }
 .fill {
     width: 100%;
@@ -275,15 +292,7 @@ border-bottom: 1px solid #670000;
     background-size: cover;
     -o-background-size: cover;
 }
-#slider-image-1{
-  background: url('../images/slider-1.jpg');
-}
-#slider-image-2{
-  background: url('../images/slider-2.jpg');
-}
-#slider-image-3{
-  background: url('../images/slider-3.jpg');
-}
+
 .icon-prev{
   font-size: 600% !important;
   margin-top: -60% !important;
