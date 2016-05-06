@@ -51,7 +51,7 @@
     margin-bottom: 0px;
   }
   .iiits-brand-logo{
-    background: white none repeat scroll 0% 0%;
+    
 border-radius: 100%;
 padding: 10px 3px 3px 10px;
 margin: 5px -10px;
@@ -77,7 +77,7 @@ margin: 5px -10px;
   .iiits-card-full{
     background:#FFF;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;
-    padding:0px;
+    padding:15px;
     margin:15px;
     overflow:hidden;
   }
@@ -129,7 +129,7 @@ border-bottom: 1px solid #670000;
 		list-style: none; display: inline-block;
 	}
   .iiits-thumb-80-80{
-    width:80px; height:80px; border-radius: 7px; margin: 0px 15px;
+    width:80px; height:80px; border-radius: 7px; margin: 0px;
   }
 	.iiits-topnav-set-1 ul li a{
 		font-family: 'Merriweather Sans Regular', Arial, sans-serif; font-weight: 600;
@@ -152,7 +152,7 @@ border-bottom: 1px solid #670000;
   }
   .iiits-topnav-set-3 li + li:before{
     content: "|";
-    font-size: 24px;
+    font-size: 22px;
     font-family: "Open Sans Condensed",sans-serif;
     color: #9C1515;
 }
@@ -168,7 +168,7 @@ border-bottom: 1px solid #670000;
       font-family: 'Abel', sans-serif;
       font-weight: 400;
       font-style: normal;
-      font-size:24px;
+      font-size:22px;
       padding: 0px 15px;
       text-decoration: none;
       color: rgb(255, 249, 249);
@@ -298,7 +298,7 @@ border-bottom: 1px solid #670000;
   margin-top: -60% !important;
 }
 .wrapper{
-  min-height: 62vh;
+  min-height: 76vh;
 }
 .icon-next{
   font-size: 600% !important;
@@ -308,6 +308,8 @@ border-bottom: 1px solid #670000;
   color:white;
   background-color: #800000;
   padding-left:40px;
+  border-top: 1px solid #9A0000;
+  border-bottom: 1px solid #670000;
 }
 .footer{
   background: rgb(128, 0, 0) none repeat scroll 0% 0%;

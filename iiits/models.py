@@ -199,7 +199,7 @@ class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=TextField()
 	link=TextField()
-	fileupload = FileField()
+	fileupload = FileField(upload_to='iiits/static/files/publications/')
 	year=CharField(db_index=True,max_length=4)	
 	starred=BooleanField(db_index=True,default=False)
 	authors = TextField()
@@ -228,4 +228,25 @@ class Staff(Model):
 	photo = ImageField(upload_to='iiits/static/iiits/images/staff')	
 	def __str__(self):
 		return self.user.get_full_name()	
-		
+
+class CareerType(Model):
+	type_name = CharField(max_length=255)
+	code = CharField(max_length=10)
+	def __str__(self):
+		return self.type_name
+class Career(Model):
+	title = CharField(max_length = 255)
+	notification = FileField(upload_to='iiits/static/files/careers/')	
+	is_expired = BooleanField(default=False)
+	datetime = DateTimeField(auto_now_add=True)
+	def __str__(self):
+		return self.title
+class CareerNonFacultyPosition(Career, Model):		
+	career_type = CharField(max_length=255, choices=CareerType.objects.all())
+	details = TextField(null=True)
+	def __str__(self):
+		return self.title
+class ConsultancyContract(Career, Model):
+	def __str__(self):
+		return self.title
+

@@ -3,7 +3,7 @@
         <!-- Indicators -->
         <ol class="carousel-indicators">
             {% for x in image_slider_no %}
-            <li data-target="#myCarousel" data-slide-to="{{x}}" </li>
+            <li data-target="#myCarousel" data-slide-to="{{x}}" {% ifequal x 1 %}class="active"{%endifequal%}></li>
             {% endfor %}
         </ol>
 

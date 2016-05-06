@@ -20,27 +20,31 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
 				{% for fac in inst_faculty_list1 %}
 				<div class="row">
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-						<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
-					</div>
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-						<p><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></p>
-						<p>({{fac.title}})</p>
-					</div>
-				</div><br><br>	
+					<div class="iiits-card-full">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
+							<p>({{fac.title}})</p>
+						</div>
+					</div>	
+				</div>
 				{% endfor %}
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
 				{% for fac in inst_faculty_list2 %}
 				<div class="row">	
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-						<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
+					<div class="iiits-card-full">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
+							<p>({{fac.title}})</p>
+						</div>	
 					</div>
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-						<p><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></p>
-						<p>({{fac.title}})</p>
-					</div>	
-				</div><br><br>	
+				</div>		
 				{% endfor %}
 			</div>
 			
@@ -49,34 +53,37 @@
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				{% for vs_fac in vs_faculty_list1 %}
 				<div class="row">	
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-						<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+					<div class="iiits-card-full">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
+							<p>({{vs_fac.title}})</p>
+							<a href="https://{{vs_fac.institute.website }}">
+								<span style="font-size:12px;">{{vs_fac.institute}}</span>
+							</a>
+						</div>	
 					</div>
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-						<p><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></p>
-						<p>({{vs_fac.title}})</p>
-						<a href="https://{{vs_fac.institute.website }}">
-							<span style="font-size:12px;">{{vs_fac.institute}}</span>
-						</a>
-						
-					</div>	
-				</div><br><br>
+				</div>
 				{% endfor %}
 			</div>
 			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 				{% for vs_fac in vs_faculty_list2 %}
 				<div class="row">	
-					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-						<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+					<div class="iiits-card-full">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
+							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
+							<p>({{vs_fac.title}})</p>
+							<a href="https://{{vs_fac.institute.website }}">
+								<span style="font-size:12px;">{{vs_fac.institute}}</span>
+							</a>
+						</div>	
 					</div>
-					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-						<p><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></p>
-						<p>({{vs_fac.title}})</p>
-						<a href="https://{{ vs_fac.institute.website }}">
-							<span style="font-size:12px;">{{vs_fac.institute}}</span>
-						</a>	
-					</div>	
-				</div><br><br>
+				</div>
 				{% endfor %}
 			</div>
 				

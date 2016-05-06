@@ -132,7 +132,7 @@ class Home(TemplateView):
 		context = super(Home,self).get_context_data(**kwargs)
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
-			'image_slider_no':[x for x in range(len(image_slider))],
+			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
 			'image_slider_images':image_slider
 		}
 		return context
@@ -192,8 +192,8 @@ class Staff(TemplateView):
 		context['base']=templates['base']['staff']
 		context['mast']=templates['build']['mast']
 		context['MAST_TEXT']= "Staff"
-		context['staff_list1'] = staff_list[0]
-		context['staff_list2'] = staff_list[1]
+		context['staff_list'] = staff_list
+	
 		return context
 class Students(TemplateView):
 	template_name = templates['site']['students']['home']

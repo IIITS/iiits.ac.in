@@ -3,30 +3,20 @@
 
 	<div class="container">
 		<div class="row">
-			<br><br><br>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-
-				{% for x in staff_list1 %}
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-					<img class="iiits-thumb-80-80" src="{{x.photo.url}}">
-				</div>
-				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-					<p><b>{{x.user.get_full_name | capfirst }}</b></p>
-					<p>({{x.designation}})</p>
-					<p>{{ x.user.email }}</p>
-				</div><br><br>
-				{%endfor%}
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-				{% for x in staff_list2 %}
-				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-					<img class="iiits-thumb-80-80"  src="{{x.photo.url}}">
-				</div>
-				<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-					<p><b>{{x.user.get_full_name | capfirst }}</b></p>
-					<p>({{x.designation}})</p>
-					<p>{{ x.user.email }}</p>
-				</div><br><br>
+			<center><h3>List of all Staff at IIITS</h3></center>
+			<div class="col-lg-3 col-md-3 hidden-xs hidden-sm"></div>
+			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+				{% for x in staff_list %}
+					<div class="iiits-card-full">
+						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+							<img class="iiits-thumb-80-80" src="{{x.photo.url}}">
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+							<p><b>{{x.user.get_full_name | capfirst }}</b></p>
+							<p>({{x.designation}})</p>
+							<p>{{ x.user.email }}</p>
+						</div><br><br>
+					</div>	
 				{%endfor%}
 			</div>
 		</div>
