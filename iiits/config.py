@@ -73,6 +73,9 @@ templates={
 		"campus_life":{
 			"home":"iiits/site/campuslife/home.html"
 		},
+		"career":{
+			"home":"iiits/site/career/home.html"
+		},
 		"faculty":{
 			"bio":"iiits/site/faculty/bio.html",
 			"home":"iiits/site/faculty/home.html",
@@ -112,19 +115,7 @@ templates={
 		},	
 	},
 	"base":{
-		"about":"iiits/base/base_about.html",
-		"academics":"iiits/base/base_academics.html",
-		"admissions":"iiits/base/base_admissions.html",
-		"alumni":"iiits/base/base_alumni.html",
-		"faculty":"iiits/base/base_faculty.html",
-		"news":"iiits/base/base_alumni.html",
-		"research":"iiits/base/base_research.html",
-		"parents":"iiits/base/base_parents.html",
-		"students":"iiits/base/base_students.html",
-		"mediaroom":"iiits/base/base_mediaroom.html",
-		"staff":"iiits/base/base_staff.html",
-		"alumni":"iiits/base/base_alumni.html",
-		"campus_life":"iiits/base/base_campuslife.html"
+		"root":"iiits/base/base.html"
 	},
 	"build":{
 		"mast":"iiits/build/mast.html"	
