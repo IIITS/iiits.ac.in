@@ -3,25 +3,25 @@
 	<div class="container-fluid">
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
-			<a href="#news" onclick="showOnly(news)">
+			<a  onclick="showOnly(news)">
 				<div>
 					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
 					News 
 				</div>
 			</a>
-			<a href="#notices" onclick="showOnly(notices)">
+			<a  onclick="showOnly(notices)">
 				<div>
 					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
 			 		Notices
 				</div>
 			</a>
-			<a href="#tenders" onclick="showOnly(tenders)">
+			<a  onclick="showOnly(tenders)">
 				<div>
 					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
 			 		Tenders
 				</div>
 			</a>
-			<a href="#archives" onclick="showOnly(archives)">
+			<a  onclick="showOnly(archives)">
 				<div>
 					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
 			 		Archives
@@ -29,16 +29,16 @@
 			</a>
 		</div>
 		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
-			<div class="iiits-card-full iiits-padding-25" id="news">
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="news">
 				{% include templates_news %}
 			</div>
-			<div class="iiits-card-full iiits-padding-25" id="notices">
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="notices">
 				{% include templates_notices %}
 			</div>
-			<div class="iiits-card-full iiits-padding-25" id="tenders">
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="tenders">
 				{% include templates_tenders %}
 			</div>
-			<div class="iiits-card-full iiits-padding-25" id="archives">
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="archives">
 				{% include templates_archives %}
 			</div>
 		</div>

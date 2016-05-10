@@ -75,7 +75,10 @@ templates={
 			"home":"iiits/site/campuslife/home.html"
 		},
 		"career":{
-			"home":"iiits/site/career/home.html"
+			"home":"iiits/site/career/home.html",
+			"fac":"iiits/site/career/fac.html",
+			"non_fac":"iiits/site/career/non_fac.html",
+			"consultancy":"iiits/site/career/consultancy.html"
 		},
 		"faculty":{
 			"bio":"iiits/site/faculty/bio.html",

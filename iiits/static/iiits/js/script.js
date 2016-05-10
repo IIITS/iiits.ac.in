@@ -1,4 +1,8 @@
 $(document).ready(function(){
+	$("#news").show();
+	$("#notices").hide();
+	$("#archives").hide();
+	$("#tenders").hide();
 	function getParameterByName(name) {
     	var url = window.location.href;
     	name = name.replace(/[\[\]]/g, "\\$&");
@@ -12,6 +16,22 @@ $(document).ready(function(){
 		$('html, body').animate({
         scrollTop: $("#"+id).offset().top
     }, 2000);
+	}
+	window.showOnly = function(sid){
+		var elems = document.querySelectorAll('[data-type]');
+		
+		for(var i=0; i< elems.length; i++){
+			var elemid = elems[i]['id'].toString();
+
+			if(elemid==sid['id'].toString()){
+				$("#"+elemid).show();
+				
+			}
+			else{
+				$("#"+elemid).hide();
+			}
+		}
+		
 	}
 	var tabs = $('*[id^="iiits-tab-link"]');
 	var tabslen = tabs.length;

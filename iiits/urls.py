@@ -19,7 +19,8 @@ urlpatterns = [
     url(r'^staff/(~*)([a-z-._A-Z]*)$',		views.Staff.as_view(),	name='staff'),
     url(r'^alumni/(~*)([a-z-._A-Z]*)$',	views.Alumni.as_view(),	name='alumni'),
     url(r'^mediaroom/(?P<path>.*)$',			views.MediaRoom.as_view(),	name='media'),
-    url(r'^campuslife/$', views.CampusLife.as_view(), name='campuslife')	
+    url(r'^campuslife/$', views.CampusLife.as_view(), name='campuslife'),
+    url(r'^careers/$', views.Career.as_view(), name='career')	
 ]
 
 if settings.SERVE_MEDIA:

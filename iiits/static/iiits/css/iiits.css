@@ -70,6 +70,12 @@
   .navbar{
     margin-bottom: 0px;
   }
+  .iiits-fixed-top{
+    position: fixed;
+    width: 100%;
+    z-index: 3000;
+    min-height: 7em;
+  }
   .iiits-brand-logo{
     
 border-radius: 100%;
@@ -85,6 +91,7 @@ margin: 5px -10px;
     margin-top: 15px;
     border-right: 1px dotted #800000;
     position: fixed;
+    min-height: 70vh;
   }
   .iiits-sidenav div{
     padding:5px;
@@ -137,7 +144,9 @@ font-variant: small-caps;
 border-bottom: 1px solid #670000;
 }
   .iiits-topnav-set-1{
-    background:#000; color: white
+        background: #000;
+    color: white;
+    width: 100%;
   }
    .iiits-topnav-set-1 li + li:before{
     content: "|";
@@ -164,13 +173,23 @@ border-bottom: 1px solid #670000;
     cursor: pointer;
   }
   .iiits-topnav-set-2{
-   border-top: 1px solid #9A0000;
-border-bottom: 1px solid #670000;
+      border-top: 1px solid #9A0000;
+    border-bottom: 1px solid #670000;
+    color: white;
+    
+    width: 100%;
+
+    background: #800000;
   }
   .iiits-topnav-set-3{
-   border-top: 1px solid #9A0000;
-border-bottom: 1px solid #670000;
+      border-top: 1px solid #9A0000;
+    border-bottom: 1px solid #670000;
+    
+    width: 100%;
+    background: #800000;
+    border-radius: 0px;
   }
+  
   .iiits-topnav-set-3 li + li:before{
     content: "|";
     font-size: 22px;

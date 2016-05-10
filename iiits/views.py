@@ -98,6 +98,11 @@ class Career(TemplateView):
 		context = super(Career,self).get_context_data(**kwargs)
 		context = dict()
 		context['base'] = templates['base']['root']
+		context['mast'] = templates['build']['mast']
+		context['templates_fac'] = templates['site']['career']['fac']
+		context['templates_non_fac'] = templates['site']['career']['non_fac']
+		context['templates_consultancy'] = templates['site']['career']['consultancy']
+		context['MAST_TEXT']="Careers"
 		return context
 
 class FacultyPage(TemplateView):
