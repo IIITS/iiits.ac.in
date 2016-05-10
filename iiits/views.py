@@ -171,6 +171,10 @@ class NewsRoom(TemplateView):
 	def get_context_data(self, *args, **kwargs):
 		context = super(NewsRoom,self).get_context_data(*args,**kwargs)
 		context['base']=templates['base']['root']
+		context['templates_news']=templates['site']['news']['news']
+		context['templates_notices']=templates['site']['news']['notices']
+		context['templates_tenders']=templates['site']['news']['tenders']
+		context['templates_archives']=templates['site']['news']['archives']
 		all_news = News.objects.all().order_by('-date') #latest news first
 		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
@@ -193,15 +197,6 @@ class NewsRoom(TemplateView):
         	
 		return context
 
-
-class Notice(TemplateView):
-	template_name = templates['site']['notice']['home']
-	def get_context_data(self, *args, **kwargs):
-		context = super(Notice,self).get_context_data(*args,**kwargs)
-		context['base']=templates['base']['root']
-		context['mast'] = templates['build']['mast']
-		context['MAST_TEXT']="Notices"
-		return context
 class Parents(TemplateView):
 	template_name = templates['site']['parents']['home']
 	def get_context_data(self, *args, **kwargs):

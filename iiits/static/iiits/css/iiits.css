@@ -83,7 +83,8 @@ margin: 5px -10px;
   
   .iiits-sidenav{
     margin-top: 15px;
-
+    border-right: 1px dotted #800000;
+    position: fixed;
   }
   .iiits-sidenav div{
     padding:5px;

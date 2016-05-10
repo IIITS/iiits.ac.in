@@ -90,10 +90,11 @@ templates={
 			"home":"iiits/site/mediaroom/home.html"
 		},
 		"news":{
-			"home":"iiits/site/news/home.html"		
-		},
-		"notice":{
-			"home":"iiits/site/notice/home.html"
+			"home":"iiits/site/news/home.html",
+			"news":"iiits/site/news/news.html",
+			"tenders":"iiits/site/news/tenders.html",
+			"notices":"iiits/site/news/notices.html",
+			"archives":"iiits/site/news/archives.html"		
 		},
 		"parents":{
 			"home":"iiits/site/parents/home.html"

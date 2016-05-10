@@ -1,1 +1,46 @@
 {% extends base %}
+{% block main %}
+	<div class="container-fluid">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+			<a href="#news" onclick="showOnly(news)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
+					News 
+				</div>
+			</a>
+			<a href="#notices" onclick="showOnly(notices)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+			 		Notices
+				</div>
+			</a>
+			<a href="#tenders" onclick="showOnly(tenders)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+			 		Tenders
+				</div>
+			</a>
+			<a href="#archives" onclick="showOnly(archives)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+			 		Archives
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+			<div class="iiits-card-full iiits-padding-25" id="news">
+				{% include templates_news %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="notices">
+				{% include templates_notices %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="tenders">
+				{% include templates_tenders %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="archives">
+				{% include templates_archives %}
+			</div>
+		</div>
+	</div>
+{% endblock %}
