@@ -48,6 +48,14 @@
     cursor: pointer;
     opacity: 0.8;
   }
+  .form-control-big{
+    height:40px;
+    border-radius: 50px;
+  }
+ .center-aligned{
+  margin-top:20%;
+  margin-left:25%;
+ } 
 .carousel-indicators li {
   background-color: rgba(0, 0, 0, 0);
   border: 1px solid #fff;
@@ -180,7 +188,7 @@ border-bottom: 1px solid #670000;
       font-family: 'Abel', sans-serif;
       font-weight: 400;
       font-style: normal;
-      font-size:20px;
+      font-size:1.65em;
       padding: 0px 15px;
       text-decoration: none;
       color: rgb(255, 249, 249);

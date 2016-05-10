@@ -24,6 +24,7 @@ class About(TemplateView):
 		context['template_about_sricity'] =templates['site']['about']['about_sricity']
 		context['template_location'] =templates['site']['about']['location']
 		context['template_reaching_iiit'] =templates['site']['about']['reaching_iiit']
+		context['template_contact_us'] =templates['site']['about']['contact_us']
 		return context
 
 class Academics(TemplateView):
@@ -174,7 +175,7 @@ class NewsRoom(TemplateView):
 		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
 		context['mast'] = templates['build']['mast']
-		context['MAST_TEXT']="News"	
+		context['MAST_TEXT']="News & Notices"	
 		try:
 			page=int(page)
 		except TypeError:

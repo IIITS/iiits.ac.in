@@ -53,6 +53,7 @@ templates={
 			"about_sricity":"iiits/site/about/about_sricity.html",
 			"location":"iiits/site/about/location.html",
 			"reaching_iiit":"iiits/site/about/reaching_iiit.html",
+			"contact_us":"iiits/site/about/contact_us.html"
 		},
 		"academics":{
 			"home":"iiits/site/academics/home.html",
