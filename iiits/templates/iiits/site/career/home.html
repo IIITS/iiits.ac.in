@@ -1,0 +1,38 @@
+{% extends base %}
+{% block main %}
+<div class="container-fluid">
+	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+		<a href="#faculty-positions" onclick="slideTo(faculty-positions)">
+			<div>
+				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
+				Faculty positions
+			</div>
+		</a>
+		<a href="#non-faculty-positions" onclick="slideTo(non-faculty-positions)">
+			<div>
+				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+				 Non-faculty positions
+			</div>
+		</a>
+		<a href="#consultancy" onclick="slideTo(consultancy)">
+			<div>
+				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+				 Consultancy / Contract
+			</div>
+		</a>
+	</div>
+	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+		<div id="faculty-positions">
+			{% include templates_fac %}
+		</div>
+		<div id="non-faculty-positions">
+			{% include templates_non_fac %}
+		</div>
+		<div id="consultancy">
+			{% include templates_consultancy %}
+		</div>
+	</div>	
+
+</div>
+{% endblock %}

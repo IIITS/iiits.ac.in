@@ -1,0 +1,45 @@
+<h3><b>Time Table</b></h3>
+<table class="table table-borderless">
+	<tr>
+		<td>
+			{% ifequal  timetable_ug1.batchnsem 'UG1SEM1' %}UG-1 Semester 1{% endifequal %}
+			{% ifequal  timetable_ug1.batchnsem 'UG1SEM2' %}UG-1 Semester 2{% endifequal %}
+			&nbsp; {{ timetable_ug1.session }}	
+		</td>
+		<td>
+			<a href="{{ timetable_ug1.fileupload.url }}">view</a> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% ifequal  timetable_ug2.batchnsem 'UG2SEM3' %}UG-2 Semester 3{% endifequal %}
+			{% ifequal  timetable_ug2.batchnsem 'UG2SEM4' %}UG-2 Semester 4{% endifequal %}
+			&nbsp; {{ timetable_ug2.session }}	
+		</td>
+		<td>
+			<a href="{{ timetable_ug2.fileupload.url }}">view</a> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% ifequal  timetable_ug3_cse.batchnsem 'UG3SEM5' %}UG-3 Semester 5{% endifequal %}
+			{% ifequal  timetable_ug3_cse.batchnsem 'UG3SEM6' %}UG-3 Semester 6{% endifequal %}
+			&nbsp; CSE &nbsp;  {{ timetable_ug3_cse.session }}	
+		</td>
+		<td>
+			<a href="{{ timetable_ug3_cse.fileupload.url }}">view</a> 
+		</td>
+	</tr>
+	<tr>
+		<td>
+			{% ifequal  timetable_ug3_ece.batchnsem 'UG3SEM5' %}UG-3 Semester 5{% endifequal %}
+			{% ifequal  timetable_ug3_ece.batchnsem 'UG3SEM6' %}UG-3 Semester 6{% endifequal %}
+			&nbsp; ECE &nbsp; {{ timetable_ug3_ece.session }}	
+		</td>
+		<td>
+			<a href="{{ timetable_ug3_ece.fileupload.url }}">view</a> 
+		</td>
+	</tr>
+</table>	
+
+

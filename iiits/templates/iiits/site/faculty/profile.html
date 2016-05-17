@@ -1,0 +1,55 @@
+{% extends base %}
+{% load staticfiles %}
+{% block main %}
+{% ifequal search_status 200 %}
+<div class="container">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="iiits-faculty-header">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<div class="iiits-profile-img">
+				<img src="{{faculty.photo.url}}" alt="">
+			</div>
+		</div>
+		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+			<div class="iiits-profile-header">
+				<span>{{ faculty.getFullName }}</span>
+			</div>
+			<div class="iiits-profile-subheader">
+				<span>{{ faculty.title }}</span>
+			</div>
+			<div class="pull-right iiits-apply-now">
+				<button>Apply for Research</button>
+			</div>
+		</div>
+	</div>
+	<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="faculty-subnav">
+		<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
+			<span class="iiits-tab-text">
+				BIO
+			</span>
+		</div>
+		<div class="iiits-tab-header-4" id="iiits-tab-link-1" onclick="tabNavigate(1)">
+			<span class="iiits-tab-text">
+				TEACHING
+			</span>
+		</div>
+		<div class="iiits-tab-header-4" id="iiits-tab-link-2" onclick="tabNavigate(2)">
+			<span class="iiits-tab-text">
+				PUBLICATIONS
+			</span>
+		</div>
+	</center>
+	<div class="iiits-padding-25" id="iiits-tab-content-0">
+		{% include faculty_bio %}
+	</div>
+	<div class="iiits-padding-25" id="iiits-tab-content-1">
+		{% include faculty_teaching %}
+	</div>
+	<div class="iiits-padding-25" id="iiits-tab-content-2">
+		{% include faculty_publications %}
+	</div>			
+</div>
+{% endifequal%}
+{%ifequal search_status 404 %}
+<center> Oops, it seems like the faculty does not exist</center>
+{% endifequal%}
+{% endblock %}

@@ -1,0 +1,40 @@
+<center><h4>List of Research Centres</h4></center>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
+	<ul class="ul-no-style-black">
+	{% for centre in centres1 %}
+		<li><a href="{{centre.get_url}}">
+			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+			&nbsp;<span>{{ centre.title }}</span>
+			</a>
+		</li>
+	{% empty %}
+
+	{% endfor %}
+	</ul>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
+	<ul class="ul-no-style-black">
+	{% for centre in centres2 %}
+		<li><a href="{{centre.get_url}}">
+			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+			&nbsp;{{ centre.title }}
+			</a>
+		</li>
+	{% empty %}
+
+	{% endfor %}
+	</ul>
+</div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
+	<ul class="ul-no-style-black">
+	{% for centre in centres3 %}
+		<li><a href="{{centre.get_url}}">
+			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+			&nbsp;{{ centre.title }}
+			</a>
+		</li>
+	{% empty %}
+
+	{% endfor %}
+	</ul>
+</div>	

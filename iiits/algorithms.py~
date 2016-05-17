@@ -1,0 +1,46 @@
+from iiits.lang import *
+from math import floor, ceil
+class PaginationAlgorithm:
+	def __init__(self):
+		self.num_pages = 0
+		self.num_entries_per_page = 0
+		self.num_alpha_per_set = 0
+		self.lang = 'EN'
+	def divide(self, entries):
+		num_alphabets_lang = LANG[self.lang]['num_alphabets']
+		if entries > self.num_entries_per_page:
+			try:
+				self.num_pages = ceil(entries / self.num_entries_per_page)
+			except ZeroDivisionError:
+				self.num_pages = 1
+			
+			try:
+				if num_pages >= num_alphabets_lang:
+					self.num_alpha_per_set = ceil(num_alphabets_lang / self.num_pages)
+				else:
+					self.num_alpha_per_set = ceil(num_alphabets_lang / self.num_pages)
+			except ZeroDivisionError:
+				 	self.num_alpha_per_set = num_alphabets_lang
+		
+		else: 
+			self.num_pages = 1
+		
+		return True
+	
+	def numberOfPages(self):
+		'''
+		To retrieve the number of Pages used for Pagination
+		'''
+		return self.num_pages
+	def numberOfEntriesPerPage(self):
+		'''
+		To retrieve number of Entries that would appear on a single page
+		'''
+		return self.num_entries_per_page
+	def alphaSet(self):
+		alpha_per_set = self.num_alpha_per_set
+		alphabets = LANG[self.lang]['alphabets']
+		alpha_set = {}
+		for i in range(0,num_alpha_per_set):
+			
+			

@@ -1,0 +1,41 @@
+{% extends base %}
+{% block main %}
+	<div class="container-fluid">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+		<div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 iiits-sidenav">
+			<a href="#centres" onclick="slideTo(centres)">
+				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Centres</div>
+			</a>
+			<a href="#areas" onclick="slideTo(areas)">
+				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Areas</div>
+			</a>
+			<!--a href="#publications" onclick="slideTo(publications)">
+				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Publications</div>
+			</a>
+			<a href="#portfolio" onclick="slideTo(portfolio)">
+				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Portfolio</div>
+			</a>
+			<a href="#scholars" onclick="slideTo(scholars)">
+				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Scholars</div>
+			</a-->
+
+		</div>
+		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+			<div class="iiits-card-full iiits-padding-25" id="centres">
+				{% include research_centres %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="areas">
+				{% include research_areas %}
+			</div>
+			<!--div class="iiits-card-full iiits-padding-25" id="publications">
+				{% include research_publications %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="portfolio">
+				{% include research_portfolio %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" id="scholars">
+				{% include research_scholars %}
+			</div-->
+		</div>
+	</div>
+{% endblock %}
