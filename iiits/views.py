@@ -156,7 +156,8 @@ class Home(TemplateView):
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
 			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
-			'image_slider_images':image_slider
+			'image_slider_images':image_slider,
+			'topstories': TopStory.objects.filter(show_on_home_page=True)
 		}
 		return context
 

@@ -1,0 +1,21 @@
+{% load staticfiles %}
+
+<div class="container">
+    <h3><center>Top Stories</center></h3>
+    <div class="row">
+        {% for x in topstories %}
+            <div class="col-lg-4 col-sm-12 col-xs-12 col-md-4">
+                <div class="panel panel-danger">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{x.title | truncatewords:10}}</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p><img style="width:100%; height:auto;"src="{{x.image.url}}"></p>
+                        <p>{{x.body | truncatewords:20 }}</p>
+                        <a href="{{x.getLink}}"><button class="btn btn-danger">More...</button></a>
+                    </div>
+                </div>
+            </div>
+         {% endfor %}   
+    </div>
+</div>
