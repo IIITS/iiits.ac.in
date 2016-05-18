@@ -96,7 +96,8 @@ class News(Model):
 	fileupload = FileField(upload_to='iiits/static/iiits/files/news/',null=True,blank=True)
 	image = ImageField(upload_to='iiits/static/iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
-
+	def __str__(self):
+		return self.title
 class Notice(Model):
 	noticeno = CharField(max_length=20, db_index=True)
 	title = CharField(max_length=200)

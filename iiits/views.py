@@ -195,14 +195,21 @@ class NewsRoom(TemplateView):
 		
 		try:
         		page_news = paginator.page(page)
+        		prev = page - 1
+        		nex = page + 1
     		except PageNotAnInteger:
         		page_news = paginator.page(1)
+        		prev = 1
+        		nex = 2
     		except EmptyPage:
         		page_news = paginator.page(paginator.num_pages)
+        		prev= num_pages - 1
+        		nex = num_pages
         	context['page_news']=page_news
         	context['has_previous']=page_news.has_previous()
         	context['has_next']=page_news.has_next()
-        	
+        	context['prev']=prev
+        	context['next']=nex
 		return context
 
 class Parents(TemplateView):
