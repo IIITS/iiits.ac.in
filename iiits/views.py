@@ -210,6 +210,7 @@ class NewsRoom(TemplateView):
         	context['has_next']=page_news.has_next()
         	context['prev']=prev
         	context['next']=nex
+        	context['title']="News & Notices"
 		return context
 
 class Parents(TemplateView):

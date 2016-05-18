@@ -1,6 +1,6 @@
 <center><h3>News</h3></center>
 {% for x in page_news %}
-  <div class="panel panel-danger">
+  <div id="{{ x.title | slugify}}" class="panel panel-danger">
     <div class="panel-heading">
       <h3 class="panel-title">{{x.title }}</h3>
     </div>

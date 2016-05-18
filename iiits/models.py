@@ -4,6 +4,7 @@ from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
 from django.utils.text import slugify
+import math
 class Config(Model):
 	property_name  = CharField(max_length=50)
 	property_value = TextField()
@@ -98,6 +99,8 @@ class News(Model):
 	date = DateTimeField(auto_now_add = True)
 	def __str__(self):
 		return self.title
+	
+		
 class Notice(Model):
 	noticeno = CharField(max_length=20, db_index=True)
 	title = CharField(max_length=200)
@@ -260,5 +263,13 @@ class TopStory(Model):
 	def __str__(self):
 		return self.title
 	def getLink(self):
-		return slugify(self.news_link.title, allow_unicode=True)
+		AllNews = News.objects.all()
+		position = 0
+		for x in range(1, len(AllNews)+1, 1):
+			if AllNews[x-1] == self.news_link:
+				position = x
+				break
+		NEWS_PAGINATION_MAX_ENTRIES = int(values['NEWS_PAGINATION_MAX_ENTRIES'])	
+		page = math.ceil((position*1.0 )/(NEWS_PAGINATION_MAX_ENTRIES*1.0))
+		return "newsroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
 
