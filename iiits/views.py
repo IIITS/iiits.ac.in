@@ -200,6 +200,8 @@ class NewsRoom(TemplateView):
     		except EmptyPage:
         		page_news = paginator.page(paginator.num_pages)
         	context['page_news']=page_news
+        	context['has_previous']=page_news.has_previous()
+        	context['has_next']=page_news.has_next()
         	
 		return context
 
