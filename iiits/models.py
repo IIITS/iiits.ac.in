@@ -3,7 +3,8 @@ from django.conf import settings
 from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
-from django.template.defaultfilters import slugify
+from django.utils.text import slugify
+import math
 class Config(Model):
 	property_name  = CharField(max_length=50)
 	property_value = TextField()
@@ -96,7 +97,10 @@ class News(Model):
 	fileupload = FileField(upload_to='iiits/static/iiits/files/news/',null=True,blank=True)
 	image = ImageField(upload_to='iiits/static/iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
-
+	def __str__(self):
+		return self.title
+	
+		
 class Notice(Model):
 	noticeno = CharField(max_length=20, db_index=True)
 	title = CharField(max_length=200)
@@ -249,4 +253,23 @@ class CareerNonFacultyPosition(Career, Model):
 class ConsultancyContract(Career, Model):
 	def __str__(self):
 		return self.title
+
+class TopStory(Model):
+	title=CharField(max_length=20)
+	image= ImageField(upload_to='iiits/static/iiits/images/topstories/')
+	body= TextField()
+	news_link=ForeignKey(News)
+	show_on_home_page= BooleanField(default=False)
+	def __str__(self):
+		return self.title
+	def getLink(self):
+		AllNews = News.objects.all()
+		position = 0
+		for x in range(1, len(AllNews)+1, 1):
+			if AllNews[x-1] == self.news_link:
+				position = x
+				break
+		NEWS_PAGINATION_MAX_ENTRIES = int(values['NEWS_PAGINATION_MAX_ENTRIES'])	
+		page = math.ceil((position*1.0 )/(NEWS_PAGINATION_MAX_ENTRIES*1.0))
+		return "newsroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
 

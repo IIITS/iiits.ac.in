@@ -1,1 +1,33 @@
-<center><h4>News</h4></center>
+<center><h3>News</h3></center>
+{% for x in page_news %}
+  <div id="{{ x.title | slugify}}" class="panel panel-danger">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{x.title }}</h3>
+    </div>
+    <div class="panel-body">
+      <center><img style="width:60%; height:auto; padding:15px;"src="{{x.image.url}}"></center>
+      <p class="news-content">{{x.content | linebreaksbr }}</p>
+    </div>
+  </div>
+{% endfor %}
+
+<center>
+<nav>
+  <ul class="pager">
+    {%if has_previous %}
+      <li class="previous">
+        <a href="?page={{prev}}">
+          <span aria-hidden="true">&larr;</span>Newer 
+        </a>
+      </li>
+    {%endif%} 
+    {% if has_next %} 
+      <li class="next">
+        <a href="?page={{next}}">Older 
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </li>
+    {%endif%}
+  </ul>
+</nav>
+</center>

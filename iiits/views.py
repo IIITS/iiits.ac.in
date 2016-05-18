@@ -156,7 +156,8 @@ class Home(TemplateView):
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
 			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
-			'image_slider_images':image_slider
+			'image_slider_images':image_slider,
+			'topstories': TopStory.objects.filter(show_on_home_page=True)
 		}
 		return context
 
@@ -194,12 +195,22 @@ class NewsRoom(TemplateView):
 		
 		try:
         		page_news = paginator.page(page)
+        		prev = page - 1
+        		nex = page + 1
     		except PageNotAnInteger:
         		page_news = paginator.page(1)
+        		prev = 1
+        		nex = 2
     		except EmptyPage:
         		page_news = paginator.page(paginator.num_pages)
+        		prev= num_pages - 1
+        		nex = num_pages
         	context['page_news']=page_news
-        	
+        	context['has_previous']=page_news.has_previous()
+        	context['has_next']=page_news.has_next()
+        	context['prev']=prev
+        	context['next']=nex
+        	context['title']="News & Notices"
 		return context
 
 class Parents(TemplateView):

@@ -70,6 +70,14 @@
   .navbar{
     margin-bottom: 0px;
   }
+  .news-content{
+    padding:15px;
+    font-size:15px;
+  }
+  .iiits-image-wrapped{
+    width:100%;
+    height: auto;
+  }
   .iiits-fixed-top{
     position: fixed;
     width: 100%;
