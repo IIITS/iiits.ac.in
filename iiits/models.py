@@ -8,7 +8,7 @@ from ckeditor.fields import RichTextField
 import math
 class Config(Model):
 	property_name  = CharField(max_length=50)
-	property_value = TextField()
+	property_value = RichTextField()
 	def __str__(self):
 		return self.property_name
 class Department(Model):
@@ -31,13 +31,13 @@ class Faculty(Model):
 	user = OneToOneField(User)
 	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	title = ForeignKey(FacultyTitle)
-	research_areas = TextField(default='')#ResearchArea codes comma-separated
+	research_areas = RichTextField(default='')#ResearchArea codes comma-separated
 	department = ForeignKey(Department)
-	contact_no=TextField()
-	professional_edu=TextField()
-	website=TextField()
-	other_info=TextField(default='NA')
-	achievements=TextField(default='NA')
+	contact_no=RichTextField()
+	professional_edu=RichTextField()
+	website=RichTextField()
+	other_info=RichTextField(default='NA')
+	achievements=RichTextField(default='NA')
 	public_uri_name=CharField(max_length=100, db_index=True,default='NA', unique=True)
 
 
@@ -67,7 +67,7 @@ class VisitingFaculty(Model):
 	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	title = ForeignKey(FacultyTitle)
 	institute = ForeignKey(Institute)
-	courses= TextField()
+	courses= RichTextField()
 	public_uri_name=CharField(max_length=100, db_index=True, default='NA', unique=True)
 
 	def getFullName(self):
@@ -83,8 +83,8 @@ class Course(Model):
 	3) faculties - comma separated list of faculties. Please note that there shouldn't be spaces before or after a comma. If you are editing this using the CMS, then you need not worry about public uri name of faculty. However, if you editing through the web administration, please not that you need to enter the public uri name without the '~' symbol. Eg: uma.garimella, hrishikesh etc.
 	'''
 	courseid=CharField(max_length=20, db_index=True)
-	name=TextField()
-	faculties=TextField()
+	name=RichTextField()
+	faculties=RichTextField()
 	def __str__(self):
 		return str(self.courseid) + " - " + str(self.name)
 	def checkFacultyTeaches(self, fac_uri_name):
@@ -94,7 +94,7 @@ class Course(Model):
 
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
-	content	= TextField(default='NA')
+	content	= RichTextField(default='NA')
 	fileupload = FileField(upload_to='iiits/static/iiits/files/news/',null=True,blank=True)
 	image = ImageField(upload_to='iiits/static/iiits/images/news/',null=True, blank=True)
 	date = DateTimeField(auto_now_add = True)
@@ -111,30 +111,30 @@ class Notice(Model):
 
 class AdmissionsFeeStructure(Model):
 	academic_year = CharField(max_length=200, default='2016-2017')
-	tution_fee = TextField()
-	admission = TextField()
-	caution_deposit = TextField()
-	hostel_water_electric = TextField()
-	mess = TextField()
-	textbooks = TextField()
+	tution_fee = RichTextField()
+	admission = RichTextField()
+	caution_deposit = RichTextField()
+	hostel_water_electric = RichTextField()
+	mess = RichTextField()
+	textbooks = RichTextField()
 	def __str__(self):
 		return self.academic_year
 class AdmissionsFeeModeofPayment(Model):
 	title = CharField(max_length=50)
-	description = TextField()
+	description = RichTextField()
 	def __str__(self):
 		return self.title
 
 class Notes(Model):
 	title = CharField(max_length=100, db_index=True, 
 					  choices=values["NOTES"], default=values["NOTES_DEFAULT"])
-	notes = TextField()		
+	notes = RichTextField()		
 	def __str__(self):
 		return self.title
 
 class AdmissionsFinancialAssistance(Model):
 	title = CharField(max_length=50)
-	content = TextField()
+	content = RichTextField()
 	order_no = 	PositiveIntegerField(db_index=True)
 	def __str__(self):
 		return str(self.order_no) + " - " + self.title  
@@ -156,8 +156,8 @@ class AcademicsTimeTable(Model):
 			return self.batchnsem + self.branch + self.session + self.year
 
 class AcademicsProgramme(Model):
-	programme = TextField()
-	seats = TextField()
+	programme = RichTextField()
+	seats = RichTextField()
 	def __str__(self):
 		return self.programme
 
@@ -175,7 +175,7 @@ class AcademicsResources(Model):
 class ResearchCentre(Model):
 	code = CharField(db_index=True, max_length=20)
 	title= CharField(db_index=True, max_length=150)
-	research_areas= TextField()
+	research_areas= RichTextField()
 	def __str__(self):
 		return self.title
 	def get_url(self):
@@ -183,31 +183,31 @@ class ResearchCentre(Model):
 
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
-	description = TextField()
-	people = TextField()	
+	description = RichTextField()
+	people = RichTextField()	
 	def __str__(self):
 		return self.centre
 class ResearchPortfolio(Model):
-	research_areas = TextField()
-	faculty = TextField(null=True, blank=True)
+	research_areas = RichTextField()
+	faculty = RichTextField(null=True, blank=True)
 	title = CharField(max_length=200)
-	description = TextField()
+	description = RichTextField()
 	image = ImageField(null=True, blank=True, upload_to=static_locations["ResearchPortfolio"])	
 	fileupload = FileField(null=True, blank=True, upload_to=static_locations["ResearchPortfolio"])
 
 class ResearchStudent(Model):
 	user=OneToOneField(User)
-	research_centres = TextField() #saves comma seperated code of ResearchCentre
-	mentors = TextField() # saves comma seperated user.username of faculty or vsfaculty
+	research_centres = RichTextField() #saves comma seperated code of ResearchCentre
+	mentors = RichTextField() # saves comma seperated user.username of faculty or vsfaculty
 
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
-	description=TextField()
-	link=TextField()
+	description=RichTextField()
+	link=RichTextField()
 	fileupload = FileField(upload_to='iiits/static/files/publications/')
 	year=CharField(db_index=True,max_length=4)	
 	starred=BooleanField(db_index=True,default=False)
-	authors = TextField()
+	authors = RichTextField()
 
 class ImageSlider(Model):
 	"""
@@ -223,7 +223,7 @@ class ImageSlider(Model):
 		('5','5'),
 		('6','6'))
 	)
-	caption = TextField()
+	caption = RichTextField()
 	def __str__(self):
 		return self.order_no
 
@@ -253,7 +253,7 @@ class Career(Model):
 		return self.title
 class CareerNonFacultyPosition(Career, Model):		
 	career_type = CharField(max_length=255, choices=CareerType.objects.all())
-	details = TextField(null=True)
+	details = RichTextField(null=True)
 	def __str__(self):
 		return self.title
 class ConsultancyContract(Career, Model):
@@ -265,7 +265,7 @@ class CareerFacultyPosition(Career, Model):
 class TopStory(Model):
 	title=CharField(max_length=20)
 	image= ImageField(upload_to='iiits/static/iiits/images/topstories/')
-	body= TextField()
+	body= RichTextField()
 	news_link=ForeignKey(News)
 	show_on_home_page= BooleanField(default=False)
 	def __str__(self):
