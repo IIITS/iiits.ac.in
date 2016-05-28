@@ -42,6 +42,10 @@
   html,
   body {
     height: 90%;
+    background: white;
+  }
+  .container{
+    min-height: 76vh;
     background: url('../images/background.jpg');
   }
   a:hover{
@@ -96,10 +100,11 @@ margin: 5px -10px;
   }
   
   .iiits-sidenav{
-    margin-top: 15px;
+    margin-top: -10vh;
     border-right: 1px dotted #800000;
     position: fixed;
-    min-height: 70vh;
+    min-height: 100vh;
+    padding-top: 20vh;
   }
   .iiits-sidenav div{
     padding:5px;
