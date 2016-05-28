@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+	 'ckeditor',
     'iiits',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -143,3 +144,11 @@ LOGIN_REDIRECT_URL = '/posts/'
 LOGIN_URL = '/accounts/login/'
 
 LOGOUT_URL = LOGIN_REDIRECT_URL
+CKEDITOR_CONFIGS = {
+'default': {
+'toolbar': 'full',
+'height': 300,
+'width': 1000,
+},
+}
+

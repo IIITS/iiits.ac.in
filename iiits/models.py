@@ -4,6 +4,7 @@ from django.db.models import *
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
 from django.utils.text import slugify
+from ckeditor.fields import RichTextField
 import math
 class Config(Model):
 	property_name  = CharField(max_length=50)
@@ -209,6 +210,10 @@ class Publication(Model):
 	authors = TextField()
 
 class ImageSlider(Model):
+	"""
+	A maximum of 6 images allowed in the image slider.
+	Image with caption and its order no is stored.
+	"""
 	image = ImageField(upload_to='iiits/static/iiits/images/imageslider')
 	order_no = CharField(max_length=20,default='0',choices=(('0','0'),
 		('1','1'),
@@ -240,7 +245,8 @@ class CareerType(Model):
 		return self.type_name
 class Career(Model):
 	title = CharField(max_length = 255)
-	notification = FileField(upload_to='iiits/static/files/careers/')	
+	notification = FileField(upload_to='iiits/static/files/careers/')
+	description = RichTextField()
 	is_expired = BooleanField(default=False)
 	datetime = DateTimeField(auto_now_add=True)
 	def __str__(self):
@@ -253,7 +259,9 @@ class CareerNonFacultyPosition(Career, Model):
 class ConsultancyContract(Career, Model):
 	def __str__(self):
 		return self.title
-
+class CareerFacultyPosition(Career, Model):
+	def __str__(self):
+		return self.title
 class TopStory(Model):
 	title=CharField(max_length=20)
 	image= ImageField(upload_to='iiits/static/iiits/images/topstories/')

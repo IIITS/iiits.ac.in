@@ -103,6 +103,9 @@ class Career(TemplateView):
 		context['templates_non_fac'] = templates['site']['career']['non_fac']
 		context['templates_consultancy'] = templates['site']['career']['consultancy']
 		context['MAST_TEXT']="Careers"
+		context['fac'] = 	    CareerFacultyPosition.objects.filter(is_expired=False).order_by('-datetime')
+		context['non_fac'] = CareerNonFacultyPosition.objects.filter(is_expired=False).order_by('-datetime')
+		context['consultancy'] =  ConsultancyContract.objects.filter(is_expired=False).order_by('-datetime')
 		return context
 
 class FacultyPage(TemplateView):
