@@ -151,7 +151,6 @@ class FacultyProfile(TemplateView):
 		context['faculty_bio'] = templates['site']['faculty']['bio']
 		context['faculty_publications'] = templates['site']['faculty']['publications']
 		context['faculty_teaching']	= templates['site']['faculty']['teaching']
-		context['courses']= getAllCoursesFaculty(public_uri_name=public_uri_name)
 		context['publications']=getAllPublicationsFaculty(public_uri_name=public_uri_name)
 		return context
 

@@ -417,9 +417,12 @@ color: white;
 }
 .iiits-tab-header-4{
   display: inline-block;
-  margin:-2px;
+  margin-top:15px;
+  margin-left:-2px;
+  margin-right: -2px;
   padding:15px 25px;
   border-bottom: 1px solid grey;
+  margin-bottom:15px;
 }
 .iiits-tab-header-4:hover{
   cursor: pointer;

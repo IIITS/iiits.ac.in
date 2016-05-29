@@ -65,14 +65,6 @@ def getPageButtons(num_pages, curr_page, entries_per_page):
 	buttons = [ x for x in range(lower, upper+1)]	
 	return buttons
 
-def getAllCoursesFaculty(public_uri_name):
-	Results = list()
-	courses = Course.objects.all()
-	for c in courses:
-		c_fac = c.faculties.split(',')
-		if public_uri_name in  c_fac:
-			Results.append(c)
-	return Results		
 
 def getAllPublicationsFaculty(public_uri_name):
 	Results = list()

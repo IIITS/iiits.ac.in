@@ -1,4 +1,5 @@
-<table class="table table-borderless">
+{% autoescape off %}
+<table style="border: 2px solid #800000;" class="table table-borderless">
 	<tr>
 		<td>
 			Department
@@ -26,15 +27,10 @@
 			Research Interests
 		</td>
 		<td>
-			<ol>
-			{% for ri in faculty.getAllResearchInterests %}
-				<li>{{ri}}/li>
-			{% empty %}
-			</ol>
-			Not Available
-			{% endfor %}
+			{{faculty.research_areas}}
 		</td>
 	</tr>
+	{% ifequal faculty.show_website True %}
 	<tr>
 		<td>
 			Website
@@ -49,14 +45,18 @@
 			{% endifnotequal %}	
 		</td>
 	</tr>
+	{% endifequal %}
+	{% ifequal faculty.show_contact True %}
 	<tr>
 		<td>
 			Contact 
 		</td>
 		<td>
-			<b>Email:</b>&nbsp;&nbsp;{{ faculty.user.email}}
+			{{ faculty.contact}}
 		</td>
 	</tr>
+	{%endifequal%}
+	{% ifequal faculty.show_achievements True %}
 	<tr>
 		<td>
 			Achievements
@@ -71,6 +71,8 @@
 			{% endifnotequal %}	
 		</td>
 	</tr>
+	{% endifequal %}
+	{% ifequal faculty.show_other_info True%}
 	<tr>
 		<td>
 			Other Information
@@ -85,4 +87,6 @@
 			{% endifnotequal %}
 		</td>
 	</tr>
+	{% endifequal %}
 </table>
+{% endautoescape %}

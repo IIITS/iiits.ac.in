@@ -34,29 +34,24 @@ class Faculty(Model):
 	photo=ProcessedImageField(upload_to='iiits/static/iiits/images/faculty/',
 		processors=[ResizeToFill(80, 80)], format='JPEG', options={'quality': 90})
 	title = ForeignKey(FacultyTitle)
-	research_areas = RichTextField(default='')#ResearchArea codes comma-separated
+	research_areas = RichTextField(default='Not available')
 	department = ForeignKey(Department)
-	contact_no=RichTextField()
+	contact = RichTextField()
 	professional_edu=RichTextField()
 	website=RichTextField()
 	other_info=RichTextField(default='NA')
 	achievements=RichTextField(default='NA')
 	public_uri_name=CharField(max_length=100, db_index=True,default='NA', unique=True)
-
-
+	courses = RichTextField(default='Not available at the moment')
+	show_achievements = BooleanField(default=True)
+	show_website = BooleanField(default=True)
+	show_contact = BooleanField(default=True)
+	show_other_info = BooleanField(default=True)
 	def getFullName(self):
 		return self.user.get_full_name()
 	def __str__(self):
 		return self.getFullName()	
-	def getAllResearchInterests(self):
-		results = list()
-		for x in self.research_areas:
-			try:
-				r = ResearchArea.objects.get(id=int(x))
-				results.appends(r)
-			except ObjectDoesNotExist:
-				donothing=True	
-		return results		
+		
 
 
 class Institute(Model):
@@ -77,23 +72,7 @@ class VisitingFaculty(Model):
 		return self.user.get_full_name()
 	def __str__(self):
 		return self.getFullName()
-class Course(Model):
-	'''
-	This Model stores the details of the courses being taught at the university.\n
-	Fields are:\n
-	1) courseid - unique id of the course by which it could be identified. max length is 20.\n
-	2) name - Name of the course\n
-	3) faculties - comma separated list of faculties. Please note that there shouldn't be spaces before or after a comma. If you are editing this using the CMS, then you need not worry about public uri name of faculty. However, if you editing through the web administration, please not that you need to enter the public uri name without the '~' symbol. Eg: uma.garimella, hrishikesh etc.
-	'''
-	courseid=CharField(max_length=20, db_index=True)
-	name=RichTextField()
-	faculties=RichTextField()
-	def __str__(self):
-		return str(self.courseid) + " - " + str(self.name)
-	def checkFacultyTeaches(self, fac_uri_name):
-		if fac_uri_name in self.faculties.split(','):
-			return True
-		return False
+
 
 class News(Model):
 	title 	= CharField(db_index= True,max_length=200)
