@@ -1,1 +1,37 @@
 {% extends base %}
+{% block main %}
+	<div class="container">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+			<a  onclick="showOnly(facilties)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
+					Facilities
+				</div>
+			</a>
+			<a  onclick="showOnly(events)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+			 		Events
+				</div>
+			</a>
+			<a  onclick="showOnly(student_life)">
+				<div>
+					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
+			 		Student Life
+				</div>
+			</a>
+		</div>
+		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="facilities">
+				{% include templates_facilities %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="events">
+				{% include templates_events %}
+			</div>
+			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="student_life">
+				{% include templates_student_life %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

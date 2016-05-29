@@ -72,7 +72,10 @@ templates={
 			"list":"iiits/site/alumni/list.html"
 		},
 		"campus_life":{
-			"home":"iiits/site/campuslife/home.html"
+			"home":"iiits/site/campuslife/home.html",
+			"facilities":"iiits/site/campuslife/facilities.html",
+			"events":"iiits/site/campuslife/events.html",
+			"student_life":"iiits/site/campuslife/student_life.html"
 		},
 		"career":{
 			"home":"iiits/site/career/home.html",

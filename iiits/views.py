@@ -91,6 +91,12 @@ class CampusLife(TemplateView):
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Campus Life"
+		context['templates_facilities'] = templates['site']['campus_life']['facilities']
+		context['templates_events'] = templates['site']['campus_life']['events']
+		context['templates_student_life'] = templates['site']['campus_life']['student_life']
+		context['facilities'] = Facility.objects.order_by('title')
+		context['events'] = Event.objects.order_by('title')
+		context['student_life_articles'] = StudentLifeArticle.objects.order_by('title')
 		return context
 class Career(TemplateView):
 	template_name = templates['site']['career']['home']

@@ -1,6 +1,11 @@
 from django.contrib import admin
 from iiits.models import *
+from imagekit.admin import AdminThumbnail
 
+class FacultyAdmin(admin.ModelAdmin ):
+    list_display = ('__str__', 'admin_thumbnail')
+    admin_thumbnail = AdminThumbnail(image_field='photo')
+    
 admin.site.register(AcademicsProgramme)
 admin.site.register(AcademicsResources)
 admin.site.register(AcademicsTimeTable)
@@ -14,7 +19,9 @@ admin.site.register(ConsultancyContract)
 admin.site.register(Config)
 admin.site.register(Course)
 admin.site.register(Department)
-admin.site.register(Faculty)
+admin.site.register(Event)
+admin.site.register(Facility)
+admin.site.register(Faculty, FacultyAdmin)
 admin.site.register(FacultyTitle)
 admin.site.register(ImageSlider)
 admin.site.register(Institute)
@@ -30,6 +37,7 @@ admin.site.register(ResearchStudent)
 admin.site.register(TopStory)
 admin.site.register(Staff)
 admin.site.register(StaffDesignation)
+admin.site.register(StudentLifeArticle)
 admin.site.register(VisitingFaculty)
 
 admin.AdminSite.site_header = "IIITS web administration"

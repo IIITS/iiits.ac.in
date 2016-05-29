@@ -6,6 +6,8 @@ from iiits.config import values, static_locations
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 import math
+from imagekit.models import ProcessedImageField
+from imagekit.processors import ResizeToFill
 class Config(Model):
 	property_name  = CharField(max_length=50)
 	property_value = RichTextField()
@@ -29,7 +31,8 @@ class ResearchArea(Model):
 		
 class Faculty(Model):
 	user = OneToOneField(User)
-	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
+	photo=ProcessedImageField(upload_to='iiits/static/iiits/images/faculty/',
+		processors=[ResizeToFill(80, 80)], format='JPEG', options={'quality': 90})
 	title = ForeignKey(FacultyTitle)
 	research_areas = RichTextField(default='')#ResearchArea codes comma-separated
 	department = ForeignKey(Department)
@@ -281,3 +284,35 @@ class TopStory(Model):
 		page = math.ceil((position*1.0 )/(NEWS_PAGINATION_MAX_ENTRIES*1.0))
 		return "newsroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
 
+######################
+# Campus Life Models #
+######################
+
+class Facility(Model):
+	title = CharField(max_length=255)
+	description = RichTextField()
+	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/facilities/', null=True, blank=True)
+
+	def __str__(self):
+		return self.title
+	def image_exists(self):
+		return self.image.__bool__()	
+
+class Event(Model):		
+	title = CharField(max_length=255)
+	date = DateField(editable=True)
+	description = RichTextField()
+	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/events/', null=True, blank=True)
+	def __str__(self):
+		return self.title + "  " +str(self.date)
+	def image_exists(self):
+		return self.image.__bool__()	
+
+class StudentLifeArticle(Model):
+	title = CharField(max_length=255)
+	description = RichTextField()
+	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/student_life/', null=True, blank=True)		
+	def __str__(self):
+		return self.title
+	def image_exists(self):
+		return self.image.__bool__()	

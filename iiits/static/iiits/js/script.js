@@ -1,4 +1,7 @@
 $(document).ready(function(){
+	$('#facilties').show();
+	$('#events').hide();
+	$('#student_life').hide();
 	$("#news").show();
 	$("#notices").hide();
 	$("#archives").hide();

@@ -1,0 +1,11 @@
+<center><h3>Student Life</h3></center>
+{% for x in student_life_articles %}
+	<h4><u>{{ x.title }}</u></h4>
+	{% ifequal x.image_exists True %}
+		<img class="image-crop" src="{{ x.image.url }}"/>
+	{% endifequal %}
+	{% autoescape off %}
+		{{ x.description | linebreaksbr }}
+	{% endautoescape %}
+	
+{% endfor %}
