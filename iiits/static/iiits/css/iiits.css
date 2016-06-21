@@ -18,6 +18,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .box-body{border: 1px solid #800;padding: 20px;border-bottom-right-radius:5px;border-bottom-left-radius: 5px; }
   .brand-text-l1{   font-family: "Open Sans Condensed",sans-serif;color: white;font-size: 28px;font-variant: small-caps;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
+  .btn-panel-home{}
   .carousel,.item,.active {    height: 90%;}
   .carousel-inner {    height: 110%;}
   .carousel-indicators {    bottom:5%;}
@@ -50,6 +51,9 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-logo-dummy{    background: transparent; width:200px; height: 1px; display: inline-block; }
   .iiits-logo-sidenav{    opacity: 0.2;position: fixed;top: 65vh;left: 0px;z-index: 3005;  }
   .iiits-mast{  color:white;  background-color: #800000;  padding-left:40px; border-top: 1px solid #9A0000;  border-bottom: 1px solid #670000;}
+  .iiits-panel{background: white;padding: 5px;border-top: 6px solid orangered;border-top-left-radius: 6px;border-top-right-radius: 6px;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
+  .iiits-panel-body{}
+  .iiits-panel-title{color:black;}
   .iiits-profile-img img{  height: 120px;    width: 100px;    border: 5px solid white;    margin: 15px;    vertical-align: middle;}
   .iiits-profile-header{  color:white;  font-variant: small-caps;  font-size: 32px;  margin-top: 5px;}
   .iiits-profile-subheader{  color:white;  font-size: 16px;}
@@ -98,6 +102,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .smallthumb{  width:30px;  margin-top: 10px;  margin-left: 2.5px;  margin-right: 2.5px;}
   .table-borderless tr td{  font-weight: 600px;  font-size: 15px;}
   .thumb-text{color:white;}
+  .topstories{background-color: #4e84c4; padding:25px;}
   ul.pagination { display: inline-block;    padding: 0;    margin: 0;}
   ul.pagination li {display: inline;}
   ul.pagination li a {color: black;    float: left;    padding: 8px 16px;    text-decoration: none;   transition: background-color .3s;}
