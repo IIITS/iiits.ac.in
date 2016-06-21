@@ -1,8 +1,10 @@
 {% extends base %}
+{% block title %}
+<title>Faculty | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 <div class="container">
-	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
-	<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+	<div class="iiits-card col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<center>
 			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
 				<span class="iiits-tab-text">
@@ -17,48 +19,32 @@
 		</center>
 	
 		<div class="iiits-padding-25" id="iiits-tab-content-0">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-				{% for fac in inst_faculty_list1 %}
-				<div class="row">
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
-							<p>({{fac.title}})</p>
-						</div>
-					</div>	
-				</div>
-				{% endfor %}
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-				{% for fac in inst_faculty_list2 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
-							<p>({{fac.title}})</p>
+				
+				{% for fac in inst_faculty_list %}
+					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+						<div class="iiits-card-full height-fixed-150" style="margin:15px 0px;">
+							<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+								<img class="iiits-thumb" src="{{fac.photo.url}}">
+							</div>
+							<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+								<p><b><a class="thumb-text" href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
+								<p>({{fac.title}})</p>
+							</div>
 						</div>	
 					</div>
-				</div>		
 				{% endfor %}
-			</div>
-			
 		</div>
+			
 		<div class="iiits-padding-25" id="iiits-tab-content-1">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				{% for vs_fac in vs_faculty_list1 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+			
+				{% for vs_fac in vs_faculty_list %}
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">	
+					<div class="iiits-card-full height-fixed-180" style="margin:15px 0px;">
+						<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12"> 
+							<img class="iiits-thumb" src="{{vs_fac.photo.url}}">
 						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
+						<div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+							<p><b><a class="thumb-text" href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
 							<p>({{vs_fac.title}})</p>
 							<a target="_blank" href="https://{{vs_fac.institute.website }}">
 								<span style="font-size:12px;">{{vs_fac.institute}}</span>
@@ -67,25 +53,6 @@
 					</div>
 				</div>
 				{% endfor %}
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				{% for vs_fac in vs_faculty_list2 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
-							<p>({{vs_fac.title}})</p>
-							<a target="_blank" href="https://{{vs_fac.institute.website }}">
-								<span style="font-size:12px;">{{vs_fac.institute}}</span>
-							</a>
-						</div>	
-					</div>
-				</div>
-				{% endfor %}
-			</div>
 				
 		</div>
 	</div>

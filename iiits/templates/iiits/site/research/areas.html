@@ -1,40 +1,16 @@
 <center><h4>List of Research Areas</h4></center>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
-	<ul class="ul-no-style-black"> 
-	{% for area in areas1 %}
-		<li><a href="{{area.get_url}}">
-			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-			&nbsp;{{ area.title }}
-			</a>
-		</li>
-	{% empty %}
-
-	{% endfor %}
-	</ul>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
-	<ul class="ul-no-style-black"> 
-	{% for area in areas2 %}
-		<li><a href="{{area.get_url}}">
-			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-			&nbsp;{{ area.title }}
-			</a>
-		</li>
-	{% empty %}
-
-	{% endfor %}
-	</ul>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4"> 
-	<ul class="ul-no-style-black"> 
-	{% for area in areas3 %}
-		<li><a href="{{area.get_url}}">
-			<span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
-			&nbsp;{{ area.title }}
-			</a>
-		</li>
-	{% empty %}
-
-	{% endfor %}
-	</ul>
-</div>	
+{% for area in areas %}
+	<a href="{{area.get_url}}">
+		<div class="iiits-cube col-lg-3 col-md-3 col-sm-6 col-xs-12" 
+				 style="background:url({{area.background.url}}); background-position:center;">
+			<div class="iiits-cube-text">
+				<center>{{area.title}}</center>
+			</div>
+			<div class="iiits-cube-hover-effect col-lg-12 col-md-12 col-sm-12 col-xs-12">		
+			</div>
+		</div>
+		
+	</a>
+		
+{% empty %}	
+{% endfor %}

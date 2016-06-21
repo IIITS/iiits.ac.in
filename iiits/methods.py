@@ -76,17 +76,17 @@ def getAllPublicationsFaculty(public_uri_name):
 	return Results			
 
 def getAllFaculty():
-	return chunksIntoTwo(Faculty.objects.order_by('user__first_name'))
+	return Faculty.objects.order_by('user__first_name')
 def getAllVisitingFaculty():
-	return chunksIntoTwo(VisitingFaculty.objects.order_by('user__first_name'))
+	return VisitingFaculty.objects.order_by('user__first_name')
 def getAllStaff():
 	return Staff.objects.order_by('user__first_name')
 def getAllResearchCentres():
-	centres = ResearchCentre.objects.order_by('title')
-	return chunksIntoThree(centres)
+	return ResearchCentre.objects.order_by('title')
+	
 def getAllResearchAreas():
-	areas =  ResearchArea.objects.order_by('title')
-	return chunksIntoThree(areas)
+	return ResearchArea.objects.order_by('title')
+	
 #def getAllPublications():
 #	return Publication.objects.
 #def getPortfolio():

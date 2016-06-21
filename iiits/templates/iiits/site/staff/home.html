@@ -1,21 +1,25 @@
 {% extends base %}
+{% block title %}
+<title>Staff | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 
 	<div class="container">
 		<div class="row">
 			<center><h3>List of all Staff at IIITS</h3></center>
-			<div class="col-lg-3 col-md-3 hidden-xs hidden-sm"></div>
-			<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				{% for x in staff_list %}
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-							<img class="iiits-thumb-80-80" src="{{x.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b>{{x.user.get_full_name | capfirst }}</b></p>
-							<p>({{x.designation}})</p>
-							<p>{{ x.user.email }}</p>
-						</div><br><br>
+					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+						<div class="iiits-card-full height-fixed-150">
+							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+								<img class="iiits-thumb" src="{{x.photo.url}}">
+							</div>
+							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+								<p><b>{{x.user.get_full_name | capfirst }}</b></p>
+								<p class="font-10 text-danger">{{x.designation}}</p>
+								<p class="font-10">{{ x.user.email }}</p>
+							</div><br><br>
+						</div>	
 					</div>	
 				{%endfor%}
 			</div>

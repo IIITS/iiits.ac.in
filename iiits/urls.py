@@ -20,7 +20,9 @@ urlpatterns = [
     url(r'^alumni/(~*)([a-z-._A-Z]*)$',	views.Alumni.as_view(),	name='alumni'),
     url(r'^mediaroom/(?P<path>.*)$',			views.MediaRoom.as_view(),	name='media'),
     url(r'^campuslife/$', views.CampusLife.as_view(), name='campuslife'),
-    url(r'^careers/$', views.Career.as_view(), name='career')	
+    url(r'^careers/$', views.Career.as_view(), name='career'),
+    url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
+    #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome')	
 ]
 
 if settings.SERVE_MEDIA:

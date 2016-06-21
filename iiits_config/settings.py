@@ -140,7 +140,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/iiits/files')
 
 MEDIA_URL = '/media/'
 
-LOGIN_REDIRECT_URL = '/posts/'
+LOGIN_REDIRECT_URL = '/cms/'
 
 LOGIN_URL = '/accounts/login/'
 

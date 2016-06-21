@@ -1,5 +1,8 @@
 {% extends base %}
 {% load staticfiles %}
+{% block title %}
+<title>{{ faculty.getFullName }} | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 {% ifequal search_status 200 %}
 <div class="container">

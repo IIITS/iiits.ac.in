@@ -26,6 +26,7 @@ class FacultyTitle(Model):
 class ResearchArea(Model):
 	title = CharField(max_length=150)
 	code = CharField(db_index=True,max_length=50)
+	background=ImageField(default='',upload_to=static_locations["ResearchArea"])
 	def __str__(self):
 		return self.title
 		
@@ -36,7 +37,7 @@ class Faculty(Model):
 	title = ForeignKey(FacultyTitle)
 	research_areas = RichTextField(default='Not available')
 	department = ForeignKey(Department)
-	contact = RichTextField()
+	contact = RichTextField(default='Not provided')
 	professional_edu=RichTextField()
 	website=RichTextField()
 	other_info=RichTextField(default='NA')
@@ -157,6 +158,7 @@ class AcademicsResources(Model):
 class ResearchCentre(Model):
 	code = CharField(db_index=True, max_length=20)
 	title= CharField(db_index=True, max_length=150)
+	background=ImageField(blank=True, null=True, upload_to=static_locations['ResearchCentre'])
 	research_areas= RichTextField()
 	def __str__(self):
 		return self.title
@@ -184,12 +186,46 @@ class ResearchStudent(Model):
 
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
-	description=RichTextField()
-	link=RichTextField()
-	fileupload = FileField(upload_to='iiits/static/files/publications/')
-	year=CharField(db_index=True,max_length=4)	
+	description=RichTextField(default='NA')
+	link=RichTextField(default='NA')
+	fileupload = FileField(upload_to='iiits/static/files/publications/', null=True, blank=True)
+	year=CharField(db_index=True,max_length=4, choices=values['YEAR_PUBLICATIONS'])	
 	starred=BooleanField(db_index=True,default=False)
-	authors = RichTextField()
+	authors = RichTextField(default='NA')
+	
+	def __str__(self):
+		return self.title
+
+	def getAuthors(self):
+		authors = self.authors.split(',')
+		list_authors = list()
+		for author in authors:
+			user = User.objects.get(username=author.strip())
+			list_authors.append(user)
+		return list_authors	
+
+	def setAuthors(self, list_authors):
+		set_author = str()
+		if self.authors == 'NA':
+			for x in list_authors:		
+				set_author+=x+(',')
+			set_author = set_author[:-1]	
+		if self.authors!='NA':	
+			set_author = self.authors
+			for x in list_authors:		
+				set_author+=','+x
+
+	def setDescription(self, description):
+		self.description = description
+		return self.description
+
+	def star(self):
+		self.starred = not self.starred
+		return self.starred
+
+	def attachFile(self, fileupload):
+		self.fileupload = fileupload			 			
+		return self.fileupload
 
 class ImageSlider(Model):
 	"""

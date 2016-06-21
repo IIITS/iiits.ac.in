@@ -3,8 +3,12 @@ from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth import login, logout
+from django.utils.decorators import method_decorator
+from django.views.decorators.debug import sensitive_post_parameters
+from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
 from iiits.models import *
 from iiits.methods import *
 from iiits.algorithms import *
@@ -124,11 +128,8 @@ class FacultyPage(TemplateView):
 		context['MAST_TEXT']="Faculty"
 		faculty_list = getAllFaculty()
 		vs_faculty_list = getAllVisitingFaculty()
-		context['inst_faculty_list1'] = faculty_list[0]
-		context['inst_faculty_list2'] = faculty_list[1]
-	
-		context['vs_faculty_list1'] = vs_faculty_list[0]
-		context['vs_faculty_list2'] = vs_faculty_list[1]	
+		context['inst_faculty_list'] = getAllFaculty()
+		context['vs_faculty_list'] = getAllVisitingFaculty()
 		return context
 
 class FacultyProfile(TemplateView):
@@ -168,6 +169,31 @@ class Home(TemplateView):
 			'topstories': TopStory.objects.filter(show_on_home_page=True)
 		}
 		return context
+
+class LoginView(FormView):
+	form_class = LoginForm
+	template_name = 'login.html'
+	success_url = settings.LOGIN_REDIRECT_URL
+		
+	def form_valid(self,form):
+		redirect_to = settings.LOGIN_REDIRECT_URL
+        	login(self.request, form.get_user())
+        	if self.request.session.test_cookie_worked():
+           		self.request.session.delete_test_cookie()
+        	return HttpResponseRedirect(redirect_to) 
+	
+	def form_invalid(self,form):	
+		return super(Login, self).form_invalid(form)
+	@method_decorator(sensitive_post_parameters())	
+	def dispatch(self, *args, **kwargs):
+		if self.request.user.is_active:
+			return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+		return super(Login,self).dispatch(*args, **kwargs)
+	def get_context_data(self, **kwargs):
+			context = super(Login,self).get_context_data(**kwargs)
+			context['form']=self.form_class
+			return context
+		
 
 class MediaRoom(TemplateView):
 	template_name = templates['site']['mediaroom']['home']
@@ -221,13 +247,15 @@ class NewsRoom(TemplateView):
         	context['title']="News & Notices"
 		return context
 
-class Parents(TemplateView):
+class Parents(FormView):
 	template_name = templates['site']['parents']['home']
+	form_class = LoginForm
 	def get_context_data(self, *args, **kwargs):
 		context = super(Parents,self).get_context_data(*args,**kwargs)
 		context['base']=templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Parents"
+		context['form']=LoginForm
 		return context
 class Staff(TemplateView):
 	template_name = templates['site']['staff']['home']
@@ -261,12 +289,8 @@ class Research(TemplateView):
 		context['research_portfolio'] = templates['site']['research']['portfolio']
 		context['research_publications'] = templates['site']['research']['publications']
 		context['research_scholars'] = templates['site']['research']['scholars']
-		context['centres1'] = getAllResearchCentres()[0]
-		context['centres2'] = getAllResearchCentres()[1]
-		context['centres3'] = getAllResearchCentres()[2]
-		context['areas1'] = getAllResearchAreas()[0]
-		context['areas2'] = getAllResearchAreas()[1]
-		context['areas3'] = getAllResearchAreas()[2]
+		context['centres'] = getAllResearchCentres()
+		context['areas'] = getAllResearchAreas()
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Research"	
 		#context['publications'] = getAllPublications()
