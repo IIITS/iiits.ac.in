@@ -37,8 +37,8 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .icon-next{  font-size: 600% !important;  margin-top: -60% !important;}
   .iiits-apply-now button{    padding: 5px;    border-radius: 2px;   background: transparent;    color: white;    font-size: 18px;}
   .iiits-apply-now button:hover{    background-color: white;    color:maroon;}
-  .iiits-brand-logo{border-radius: 100%;padding: 10px 3px 3px 10px;margin: 5px -10px;}
-  .iiits-brand-logo img{    width: 100px; margin-top: -10px;  }
+  .iiits-brand-logo{border-radius: 100%;padding: 10px 0px 3px 10px;margin: -20px -35px 20px -20px;}
+  .iiits-brand-logo img{    width: 100px;  }
   .iiits-card-full{    background:#FFF;    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;padding:15px;    margin:15px;    overflow:hidden;}
   .iiits-cube{ width:30%; height: 225px; margin: 0px 15px 5px 15px; margin-bottom:15px;border-radius: 12px;}
   .iiits-cube-hover-effect{z-index:30; border-radius:12px; height:225px;position: absolute;opacity:0.5; background-color: black;top:0px; left:0px;}
@@ -64,19 +64,19 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-tab-header-4-active{  border-bottom: 3px solid black;  cursor: pointer;}
   .iiits-tab-text{  display: inline-block;}
   .iiits-topnav-container{		background:#800000 ; border-top: 1px solid #9A0000;border-bottom: 1px solid #670000;}
-  .iiits-topnav-set-1{        background: #000;    color: white;    width: 100%;  }
+  .iiits-topnav-set-1{ min-height:28px; background: #333; color:white;border-bottom: 1px solid #0e0e0e;white-space: nowrap;position: relative;  }
   .iiits-topnav-set-1 li + li:before{    content: "|";    color: white;}
   .iiits-topnav-set-1 ul{    display: inline-block;  }
 	.iiits-topnav-set-1 ul li{		list-style: none; display: inline-block;}
   .iiits-thumb{    width:70px; height:84px; border: 3px solid whitesmoke; margin: 0px;}
-	.iiits-topnav-set-1 ul li a{		font-family: 'Merriweather Sans Regular', Arial, sans-serif; font-weight: 600;    	font-style: normal;    	font-variant: small-caps;    	padding: 10px 15px;    	text-decoration: none !important;      color:white;}
+	.iiits-topnav-set-1 ul li a{	font-size: 12px;	font-family: 'Merriweather Sans Regular', Arial, sans-serif; font-weight: 600;    	font-style: normal;    	font-variant: small-caps;    	padding: 10px 15px;    	text-decoration: none !important;      color:white;}
   .iiits-topnav-set-1 ul li a:hover{    cursor: pointer;}
   .iiits-topnav-set-2{      border-top: 1px solid #9A0000;    border-bottom: 1px solid #670000;    color: white;    width: 100%;    background: #800000;}
   .iiits-topnav-set-3{      border-top: 1px solid #9A0000;    border-bottom: 1px solid #670000;    width: 100%;    background: #800000;    border-radius: 0px;}
   .iiits-topnav-set-3 li + li:before{    content: "|";    font-size: 22px;    font-family: "Open Sans Condensed",sans-serif;    color: #9C1515;}
-  .iiits-topnav-set-3 ul{    display: inline-block;}
+  .iiits-topnav-set-3 ul{    display: inline-block;margin-left: 10%;margin-right: 5%;}
   .iiits-topnav-set-3 ul li{      list-style: none;      display: inline-block;}
-  .iiits-topnav-set-3 ul li a{      font-family: 'Abel', sans-serif;      font-weight: 400;      font-style: normal;      font-size:1.65em;      padding: 0px 15px;      text-decoration: none;      color: rgb(255, 249, 249);}
+  .iiits-topnav-set-3 ul li a{      font-family: 'Abel', sans-serif;      font-weight: 400;      font-style: normal;      font-size:1.30em;      padding: 0px 15px;      text-decoration: none;      color: rgb(255, 249, 249);}
   .iiits-topnav-set-2 ul li a:hover{      text-decoration: none;      cursor: pointer;}
   .iiits-underline-from-center {  		display: inline-block;  		vertical-align: middle;  		-webkit-transform: translateZ(0);  		transform: translateZ(0);  		box-shadow: 0 0 1px rgba(0, 0, 0, 0);  		-webkit-backface-visibility: hidden;  		backface-visibility: hidden;  		-moz-osx-font-smoothing: grayscale;  		position: relative;  		overflow: hidden;  	}	
   .iiits-underline-from-center:before {  		content: "";  		position: absolute;  		z-index: -1;  		left: 50%;  		right: 50%;  		bottom: 0;  		background: #E4E4E4;  		height: 4px;  		-webkit-transition-property: left, right;  		transition-property: left, right;  		-webkit-transition-duration: 0.3s;  		transition-duration: 0.3s;  		-webkit-transition-timing-function: ease-out;  		transition-timing-function: ease-out;}
