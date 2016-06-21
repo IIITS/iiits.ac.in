@@ -84,7 +84,7 @@ templates={
 		"career":{
 			"home":"iiits/site/career/home.html",
 			"fac":"iiits/site/career/fac.html",
-			"non_fac":"iiits/site/career/non_fac.html",
+			"other":"iiits/site/career/non_fac.html",
 			"consultancy":"iiits/site/career/consultancy.html"
 		},
 		"faculty":{

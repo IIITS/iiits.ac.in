@@ -110,7 +110,7 @@ class Career(TemplateView):
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['templates_fac'] = templates['site']['career']['fac']
-		context['templates_non_fac'] = templates['site']['career']['non_fac']
+		context['templates_other'] = templates['site']['career']['other']
 		context['templates_consultancy'] = templates['site']['career']['consultancy']
 		context['MAST_TEXT']="Careers"
 		context['fac'] = 	    CareerFacultyPosition.objects.filter(is_expired=False).order_by('-datetime')

@@ -1,4 +1,6 @@
 {% extends base %}
+{%load staticfiles %}
+
 {% block title %}
 <title>Careers | Indian Institute of Information Technology, Chittoor, Sri City</title>
 {% endblock %}
@@ -6,16 +8,19 @@
 <div class="container-fluid">
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
 	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+		<div class="iiits-logo-sidenav">
+				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
+		</div>
 		<a href="#faculty-positions" onclick="slideTo(faculty-positions)">
 			<div>
 				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
 				Faculty positions
 			</div>
 		</a>
-		<a href="#non-faculty-positions" onclick="slideTo(non-faculty-positions)">
+		<a href="#non-faculty-positions" onclick="slideTo(other-positions)">
 			<div>
 				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Non-faculty positions
+				 Other positions
 			</div>
 		</a>
 		<a href="#consultancy" onclick="slideTo(consultancy)">
@@ -29,8 +34,8 @@
 		<div id="faculty-positions">
 			{% include templates_fac %}
 		</div>
-		<div id="non-faculty-positions">
-			{% include templates_non_fac %}
+		<div id="other-positions">
+			{% include templates_other %}
 		</div>
 		<div id="consultancy">
 			{% include templates_consultancy %}

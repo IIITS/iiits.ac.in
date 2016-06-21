@@ -48,6 +48,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-fixed-top{ position: fixed; width: 100%; z-index: 3000; min-height: 7em; }
   .iiits-image-wrapped{width:100%;  height: auto; }
   .iiits-logo-dummy{    background: transparent; width:200px; height: 1px; display: inline-block; }
+  .iiits-logo-sidenav{    opacity: 0.2;position: fixed;top: 65vh;left: 0px;z-index: 3005;  }
   .iiits-mast{  color:white;  background-color: #800000;  padding-left:40px; border-top: 1px solid #9A0000;  border-bottom: 1px solid #670000;}
   .iiits-profile-img img{  height: 120px;    width: 100px;    border: 5px solid white;    margin: 15px;    vertical-align: middle;}
   .iiits-profile-header{  color:white;  font-variant: small-caps;  font-size: 32px;  margin-top: 5px;}
