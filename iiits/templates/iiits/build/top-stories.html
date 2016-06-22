@@ -8,16 +8,32 @@
         {% for x in topstories %}
             <div class="col-lg-4 col-sm-12 col-xs-12 col-md-4">
                 <div class="iiits-panel">
-                    <h4 class="iiits-panel-title">{{x.title | truncatewords:10}}</h4>
+                    <h4 class="iiits-panel-title">{{x.title | truncatewords:20}}</h4>
                     
                     <div class="iiits-panel-body">
                         <p><img style="width:100%; height:auto;"src="{{x.image.url}}"></p>
                         <p>{{x.body | truncatewords:20 }}</p>
-                        <a href="{{x.getLink}}"><button class="btn btn-panel-home">More...</button></a>
+                        <a href="{{x.getLink}}"><button class="btn btn-panel-home">Read More...</button></a>
                     </div>
                 </div>
             </div>
          {% endfor %}
-        </div>    
+        </div> 
+        <div class="col-lg-3 col-md-3 col-xs-12 col-sm-12">
+            <h3 class="headline">Headlines</h3>
+            {% for x in headlines %}
+                <div class="row">
+                    <div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">
+                        <i class="fa fa-caret-square-o-right topstories-headlines-bullet" aria-hidden="true"></i>
+                    </div>
+                    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                        <span class="topstories-headlines">{{x.title}}</span>
+                    </div>
+                </div>        
+            {% empty %}
+            No headlines available at the moment
+            {% endfor %}
+            <a href="/newsroom/"><h4 class="headline">Visit Newsroom</h4></a>
+        </div>   
     </div>
 </div>

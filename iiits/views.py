@@ -166,8 +166,14 @@ class Home(TemplateView):
 		context = {
 			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
 			'image_slider_images':image_slider,
-			'topstories': TopStory.objects.filter(show_on_home_page=True)
+			'topstories': TopStory.objects.filter(show_on_home_page=True),
+			
 		}
+		try:
+			context['headlines']=News.objects.order_by('-date')[0:5]
+		except IndexError as error:
+			news =  News.objects.order_by('-date')
+			context['headlines']=news[0:news.length]	
 		return context
 
 class LoginView(FormView):
