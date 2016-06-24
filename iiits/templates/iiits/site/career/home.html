@@ -29,37 +29,86 @@
 	</div>
 	
 		<div class="col-lg-2 col-md-2"></div>
-		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="margin-bottom:15vh;">
 			<div style="min-height:250px; background: url({% static 'iiits/images/fac-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
 				<center id="holder-1" ><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Faculty positions</span></center>
-				<button class="btn btn-view">VIEW</button>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#fac-positions-modal">View Jobs</button>
 			</div>
 			<div style="min-height:250px; background: url({% static 'iiits/images/oth-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
 				<center id="holder-2"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Other positions</span></center>
-				<button class="btn btn-view">VIEW</button>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#oth-positions-modal">View Jobs</button>
 			</div>
 			<div style="min-height:250px; background: url({% static 'iiits/images/con-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
 				<center id="holder-3"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:13px;">Consultancy / Contract</span></center>
-				<button class="btn btn-view">VIEW</button>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#contract-modal">View Jobs</button>
 			</div>
 		</div>
 		<div class="col-lg-1 col-md-1"></div>
+		<div id="fac-positions-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Apply for a faculty position</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Notification</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		<div id="oth-positions-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Academic / Administrative / other positions</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Advertisement</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		<div id="contract-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Consultancy / Contracts</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Advertisement</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
 	
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-
-	
 	$.get('/stafflist/', function(data){
 		var d = $.parseJSON(data);
 		var i=0;
 		function loop(k){
-			console.log("inside");
 			$('#staff-name-holder').html("<center class=\"card-text\">"+d[k]['name']+"</center>");$('#staff-position-holder').html("<center style=\"color:#800; font-size:15px;\" class=\"card-text\">"+d[k]['position']+"</center>");$('#staff-image-holder').html("<center><img src=\""+d[k]['image_url']+"\" style=\"height:auto; width:40%; \"/></center>").css('opacity','0.2').animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'});
 			setTimeout(function() {i++; if(i>=d.length){i=0;};loop(i);}, 3000);
-			console.log("over");
 		}
-		console.log("out");
 		loop(i);
 	});
 });
@@ -74,13 +123,21 @@ $(document).ready(function(){
 	#holder-2{background: url('../images/fac-holder.jpg');}
 	#holder-3{background: url('../images/fac-holder.jpg');}
 	.btn-view{
-    left: 33%;
+    left: 24%;
     top: 50%;
     background: rgb(136, 0, 0) none repeat scroll 0% 0%;
     border-radius: 0px;
     border: 1px solid white;
     font-weight: bold;
     position: absolute;}
+    .btn-view:hover{
+    	opacity: 0.8;
+    	border-radius:12px; 
+    	color:white;
+    }
+    .btn-view:visited{
+    	color:white;
+    }
 </style>
 {% endblock %}
 {% block footer %}
