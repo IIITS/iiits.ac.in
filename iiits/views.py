@@ -14,6 +14,7 @@ from iiits.methods import *
 from iiits.algorithms import *
 from iiits.forms import *
 from iiits.config import *
+import json
 
 class About(TemplateView):
 	template_name = templates['site']['about']['home']
@@ -116,6 +117,7 @@ class Career(TemplateView):
 		context['fac'] = 	    CareerFacultyPosition.objects.filter(is_expired=False).order_by('-datetime')
 		context['non_fac'] = CareerNonFacultyPosition.objects.filter(is_expired=False).order_by('-datetime')
 		context['consultancy'] =  ConsultancyContract.objects.filter(is_expired=False).order_by('-datetime')
+		context['data']={'staff':"Hi"}
 		return context
 
 class FacultyPage(TemplateView):
@@ -329,5 +331,15 @@ class StudentProfile(TemplateView):
 		context['base'] = templates['base']['root']
 		return context
 	
+def staff_list(request):
+	staff = getAllStaff()
+	result=list()
+	for x in staff:
+		result.append({
+				"name":x.user.get_full_name(),
+				"position":str(x.designation),
+				"image_url":x.photo.url
+			})
+	return JsonResponse(json.dumps(result),safe=False)	
 
 

@@ -1,4 +1,5 @@
-  @font-face {font-family: 'Abel';font-weight: 400;font-style: normal;src: url('../fonts/Abel-regular.eot');
+  @font-face {font-family: 'Abel';font-weight: 400;font-style: normal;
+  src: url('../fonts/Abel-regular.eot');
   src: url('../fonts/Abel-regular.eot?#iefix') format('embedded-opentype'),
        local('Abel'),
        local('Abel-regular'),
@@ -9,6 +10,26 @@
 }
 @font-face {  font-family: 'Open Sans Condensed';  font-weight: 300;  font-style: normal;  src: url('../fonts/Open-Sans-Condensed-300.eot');  src: url('../fonts/Open-Sans-Condensed-300.eot?#iefix') format('embedded-opentype'),       local('Open Sans Cond Light'),       local('Open-Sans-Condensed-300'),       url('../fonts/Open-Sans-Condensed-300.woff2') format('woff2'),       url('../fonts/Open-Sans-Condensed-300.woff') format('woff'),       url('../fonts/Open-Sans-Condensed-300.ttf') format('truetype'),       url('../fonts/Open-Sans-Condensed-300.svg#OpenSansCondensed') format('svg');}
 @font-face {  font-family: 'Orbitron';  font-weight: 400;  font-style: normal;  src: url('../fonts/Orbitron-regular.eot');  src: url('../fonts/Orbitron-regular.eot?#iefix') format('embedded-opentype'),       local('Orbitron-Light'),       local('Orbitron-regular'),       url('../fonts/Orbitron-regular.woff2') format('woff2'),       url('../fonts/Orbitron-regular.woff') format('woff'),       url('../fonts/Orbitron-regular.ttf') format('truetype'),       url('../fonts/Orbitron-regular.svg#Orbitron') format('svg');}
+  @font-face {font-family: 'LibreBaskerville';font-weight: 400;font-style: normal;
+  src: url('../fonts/LibreBaskerville-regular.eot');
+  src: url('../fonts/LibreBaskerville-regular.eot?#iefix') format('embedded-opentype'),
+       local('LibreBaskerville'),
+       local('LibreBaskerville-regular'),
+       url('../fonts/LibreBaskerville-regular.woff2') format('woff2'),
+       url('../fonts/LibreBaskerville-regular.woff') format('woff'),
+       url('../fonts/LibreBaskerville-regular.ttf') format('truetype'),
+       url('../fonts/LibreBaskerville-regular.svg#LibreBaskerville') format('svg');
+}
+  @font-face {font-family: 'Abel';font-weight: 400;font-style: normal;
+  src: url('../fonts/Abel-regular.eot');
+  src: url('../fonts/Abel-regular.eot?#iefix') format('embedded-opentype'),
+       local('Abel'),
+       local('Abel-regular'),
+       url('../fonts/Abel-regular.woff2') format('woff2'),
+       url('../fonts/Abel-regular.woff') format('woff'),
+       url('../fonts/Abel-regular.ttf') format('truetype'),
+       url('../fonts/Abel-regular.svg#Abel') format('svg');
+}
 html,body {height: 90%; background: white;}
 h1, h2, h3, h4, h5, h6{color: orangered;}
 a{color:#800000;}
@@ -19,6 +40,8 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .brand-text-l1{   font-family: "Open Sans Condensed",sans-serif;color: white;font-size: 28px;font-variant: small-caps;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
   .btn-panel-home{color: orangered;font-size: 15px; font-weight: bold;    background: white;}
+  .card-title{font-weight:bold !important; font-size: 32px;    letter-spacing: -0.61111pt;    font-weight: 400;    margin-bottom: .3em;  font-family: 'Orbitron';color:#800000;}
+  .card-text{font-size: 18px;color: rgb(84, 73, 73);font-family: "LibreBaskerville";letter-spacing: 0.125em;line-height: 1.45em;}
   .carousel,.item,.active {    height: 90%;}
   .carousel-inner {    height: 110%;}
   .carousel-indicators {    bottom:5%;}
@@ -51,7 +74,9 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-apply-now button:hover{    background-color: white;    color:maroon;}
   .iiits-brand-logo{border-radius: 100%;padding: 10px 0px 3px 10px;margin: -20px -35px 20px -20px;}
   .iiits-brand-logo img{    width: 100px;  }
-  .iiits-card-full{    background:#FFF;    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;padding:15px;    margin:15px;    overflow:hidden;}
+  .iiits-card-full{    background:#FFF;    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;padding:15px;    margin:15px ;    overflow:hidden;}
+  .iiits-card-bordered-black{   border-top:3px solid black; }
+  .iiits-card-bordered-brown{ border-top: 3px solid brown;}
   .iiits-cube{ width:30%; height: 225px; margin: 0px 15px 5px 15px; margin-bottom:15px;border-radius: 12px;}
   .iiits-cube-hover-effect{z-index:30; border-radius:12px; height:225px;position: absolute;opacity:0.5; background-color: black;top:0px; left:0px;}
   .iiits-cube-hover-effect:hover{opacity: 0; cursor:pointer;}
@@ -128,4 +153,4 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .ul-no-style-black li a {color:black;}
   .wrapper{  min-height: 76vh;}
   #iiits-faculty-header{    background: url('../images/red.png');    background-repeat: repeat-x;    height: 150px;}
-  
+  #staff-slider-small{}

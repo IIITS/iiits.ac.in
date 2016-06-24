@@ -6,41 +6,75 @@
 {% endblock %}
 {% block main %}
 <div class="container-fluid">
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
-		<div class="iiits-logo-sidenav">
-				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
-		</div>
-		<a href="#faculty-positions" onclick="slideTo(faculty-positions)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
-				Faculty positions
+	
+		<div class="col-lg-1 col-md-1"></div>
+		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+			<div class="iiits-card-bordered-black iiits-card-full col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background:linear-gradient( to bottom,#800000, grey, white);">
+				<span class="card-title" style="color:white; ">Join the IIITS work force</span><br>
+				<span class="card-text"><span style="color:white">We aim to attract the best staff to join the work force. IIIT owns a culture of research, innovation and entrepreneurship, where every staff member complements the family of faculty and students who work together to produce excellence. </span><br><br><br>Explore our <a href="/about/">About</a> section to know if IIIT is the right place for you.</span>
 			</div>
-		</a>
-		<a href="#non-faculty-positions" onclick="slideTo(other-positions)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Other positions
+		
+			<div class="iiits-card-bordered-black iiits-card-full col-lg-3 col-md-3">
+				<center><span class="card-title" style="font-size:20px;">Meet our staff</span></center>
+				<div id="staff-slider-small">
+					<div id="staff-image-holder"></div>
+					<div id="staff-name-holder"></div>
+					<div id="staff-position-holder"></div>
+					<span id="left" class="controls-chevrons fa fa-4x fa-chevron-left"></span>
+					<span id="right" class="controls-chevrons fa fa-4x fa-chevron-right"></span>
+				</div>
 			</div>
-		</a>
-		<a href="#consultancy" onclick="slideTo(consultancy)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Consultancy / Contract
-			</div>
-		</a>
+			<div class="col-lg-1 col-md-1"></div>
+		
 	</div>
-	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-		<div id="faculty-positions">
-			{% include templates_fac %}
+	
+		<div class="col-lg-2 col-md-2"></div>
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+			<div style="min-height:250px; background: url({% static 'iiits/images/fac-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-1" ><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Faculty positions</span></center>
+				<button class="btn btn-view">VIEW</button>
+			</div>
+			<div style="min-height:250px; background: url({% static 'iiits/images/oth-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-2"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Other positions</span></center>
+				<button class="btn btn-view">VIEW</button>
+			</div>
+			<div style="min-height:250px; background: url({% static 'iiits/images/con-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-3"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:13px;">Consultancy / Contract</span></center>
+				<button class="btn btn-view">VIEW</button>
+			</div>
 		</div>
-		<div id="other-positions">
-			{% include templates_other %}
-		</div>
-		<div id="consultancy">
-			{% include templates_consultancy %}
-		</div>
-	</div>	
-
+		<div class="col-lg-1 col-md-1"></div>
+	
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get('/stafflist/', function(data){
+		var d = $.parseJSON(data);
+		document.getElementById('staff-name-holder').innerHTML="<center class=\"card-text\">"+d[0]['name']+"</center>";
+		document.getElementById('staff-position-holder').innerHTML="<center style=\"color:#800; font-size:15px;\" class=\"card-text\">"+d[0]['position']+"</center>";
+		document.getElementById('staff-image-holder').innerHTML="<center><img src=\""+d[0]['image_url']+"\" style=\"height:auto; width:60%; \"/></center>";
+	});
+});
+</script>
+<style>
+	body{background: #333;}
+	.iiits-card-bordered-brown{background-position: center; min-height: 40px; color:white !important;}
+	#left{position:absolute;top:40%;left:0%;}
+	#right{top:40%; left:85%; position: absolute;}
+	.controls-chevrons{color: black;opacity: 0.5;}
+	#holder-1{background: url('../images/fac-holder.jpg');}
+	#holder-2{background: url('../images/fac-holder.jpg');}
+	#holder-3{background: url('../images/fac-holder.jpg');}
+	.btn-view{
+    left: 33%;
+    top: 50%;
+    background: rgb(136, 0, 0) none repeat scroll 0% 0%;
+    border-radius: 0px;
+    border: 1px solid white;
+    font-weight: bold;
+    position: absolute;}
+</style>
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
 {% endblock %}
