@@ -84,5 +84,4 @@ $(document).ready(function(){
 	});
 	var page = getParameterByName('page');
 	$('#pb-'+page).addClass('active');
-	$.ajax()
 });
