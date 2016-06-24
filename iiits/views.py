@@ -224,7 +224,9 @@ class NewsRoom(TemplateView):
 		context['templates_tenders']=templates['site']['news']['tenders']
 		context['templates_archives']=templates['site']['news']['archives']
 		all_news = News.objects.all().order_by('-date') #latest news first
-		paginator = Paginator(all_news, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		all_news_stories = NewsStory.objects.order_by('-date')
+		paginator = Paginator(all_news_stories, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+	
 		page = self.request.GET.get('page')
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="News & Notices"	
@@ -247,7 +249,7 @@ class NewsRoom(TemplateView):
         		page_news = paginator.page(paginator.num_pages)
         		prev= num_pages - 1
         		nex = num_pages
-        	context['page_news']=page_news
+        	context['news_stories']=page_news
         	context['has_previous']=page_news.has_previous()
         	context['has_next']=page_news.has_next()
         	context['prev']=prev

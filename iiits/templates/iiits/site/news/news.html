@@ -1,12 +1,31 @@
-<center><h3>News</h3></center>
-<div class="col-lg-8 col-sm-8 col-md-8 col-xs-8">
-  <h3 class="card-title">At a glance</h3>
-  <ul>
+{% autoescape off %}
+<h3 class="card-title">At a glance</h3>
+<div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 iiits-card-bordered-black iiits-card-full">
+  
+  <ul class="news-story">
   {% for x in news_stories %}
     <li>{{ x.news }}</li>
-    <span "news-date">Dated {{x.date}}</span>
+    
   {% endfor %}
   </ul>
+  <nav>
+    <ul class="pager">
+      {%if has_previous %}
+        <li class="previous">
+          <a href="?page={{prev}}">
+            <span aria-hidden="true">&larr;</span>Newer 
+          </a>
+        </li>
+      {%endif%} 
+      {% if has_next %} 
+        <li class="next">
+          <a href="?page={{next}}">Older 
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      {%endif%}
+    </ul>
+  </nav>
 </div>
 {% for x in page_news %}
   <div id="{{ x.title | slugify}}" class="iiits-card-bordered-black iiits-card-full col-lg-4 col-sm-4 col-md-4 col-xs-4">
@@ -21,25 +40,10 @@
 {% endfor %}
 
 <center>
-<nav>
-  <ul class="pager">
-    {%if has_previous %}
-      <li class="previous">
-        <a href="?page={{prev}}">
-          <span aria-hidden="true">&larr;</span>Newer 
-        </a>
-      </li>
-    {%endif%} 
-    {% if has_next %} 
-      <li class="next">
-        <a href="?page={{next}}">Older 
-          <span aria-hidden="true">&rarr;</span>
-        </a>
-      </li>
-    {%endif%}
-  </ul>
-</nav>
+
 </center>
 <style>
   body{background: #8D1A43;}
+
 </style>
+{% endautoescape %}

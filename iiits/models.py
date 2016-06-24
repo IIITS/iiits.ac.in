@@ -83,7 +83,12 @@ class News(Model):
 	date = DateTimeField(auto_now_add = True)
 	def __str__(self):
 		return self.title
-	
+
+class NewsStory(Model):
+	news = TextField(default='')
+	date = DateTimeField( editable=True)
+	def __str__(self):
+		return self.news
 		
 class Notice(Model):
 	noticeno = CharField(max_length=20, db_index=True)
