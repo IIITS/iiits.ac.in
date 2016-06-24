@@ -6,25 +6,34 @@
 {% endblock %}
 {% block main %}
 	<div class="container-fluid">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-		<div class="col-lg-2 col-sm-2 col-md-2 col-xs-2 iiits-sidenav">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+		<div class="col-lg-3 col-sm-3 col-md-3 col-xs-12 iiits-sidenav">
 			<div class="iiits-logo-sidenav">
 				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
 			</div>
-			<a href="#programmes" onclick="slideTo(programmes)">
-				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Programmes</div>
-			</a>
-			<a href="#curriculum" onclick="slideTo(curriculum)">
-				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Curriculum</div>
-			</a>
-			<a href="#timetable" onclick="slideTo(timetable)">
-				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Time Table</div>
-			</a>
-			<a href="#general_info" onclick="slideTo(general_info)">
-				<div><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;General Info</div>
-			</a>
+			<ul>
+				<li><a href="#programmes" onclick="slideTo(programmes)">
+						PROGRAMMES
+					</a>
+				</li>
+				<li>
+					<a href="#curriculum" onclick="slideTo(curriculum)">
+						CURRICULUM
+					</a>
+				</li>
+				<li>
+					<a href="#timetable" onclick="slideTo(timetable)">
+						TIME TABLE
+					</a>
+				</li>
+				<li>
+					<a href="#general_info" onclick="slideTo(general_info)">
+						GENERAL INFO
+					</a>
+				</li>
+			</ul>
 		</div>
-		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+		<div class="col-lg-8 col-sm-8 col-md-8 col-xs-9">
 			<div class="iiits-card-full iiits-padding-25" id="programmes">
 				{% include academics_programmes %}
 			</div>

@@ -3,37 +3,35 @@
 
 {% block main %}
 	<div class="container-fluid">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 iiits-sidenav">
 			<div class="iiits-logo-sidenav">
 				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
 			</div>
-			<a  onclick="showOnly(news)">
-				<div>
-					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
-					News 
-				</div>
-			</a>
-			<a  onclick="showOnly(notices)">
-				<div>
-					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-			 		Notices
-				</div>
-			</a>
-			<a  onclick="showOnly(tenders)">
-				<div>
-					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-			 		Tenders
-				</div>
-			</a>
-			<a  onclick="showOnly(archives)">
-				<div>
-					<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-			 		Archives
-				</div>
-			</a>
+			<ul>
+				<li>
+					<a  onclick="showOnly(news)">
+						NEWS
+					</a>
+				</li>
+				<li>
+					<a  onclick="showOnly(notices)">
+			 			NOTICES
+					</a>
+				</li>
+				<li>
+					<a  onclick="showOnly(tenders)">
+			 			TENDERS
+					</a>
+				</li>
+				<li>
+					<a  onclick="showOnly(archives)">
+						ARCHIVES
+					</a>
+				</li>
+			</ul>	
 		</div>
-		<div class="col-lg-10 col-sm-10 col-md-10 col-xs-10">
+		<div class="col-lg-9 col-sm-9 col-md-9 col-xs-10">
 			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="news">
 				{% include templates_news %}
 			</div>

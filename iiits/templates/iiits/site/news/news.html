@@ -1,11 +1,20 @@
 <center><h3>News</h3></center>
+<div class="col-lg-8 col-sm-8 col-md-8 col-xs-8">
+  <h3 class="card-title">At a glance</h3>
+  <ul>
+  {% for x in news_stories %}
+    <li>{{ x.news }}</li>
+    <span "news-date">Dated {{x.date}}</span>
+  {% endfor %}
+  </ul>
+</div>
 {% for x in page_news %}
-  <div id="{{ x.title | slugify}}" class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
+  <div id="{{ x.title | slugify}}" class="iiits-card-bordered-black iiits-card-full col-lg-4 col-sm-4 col-md-4 col-xs-4">
       <center><h4 class="news-title">{{x.title }}</h4></center>
-      <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <img class="image-crop" style="width:100%; height:auto; padding:15px;"src="{{x.image.url}}">
       </div>
-      <div class="col-lg-9 col-xs-12 col-sm-12 col-md-9">
+      <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
         <p class="news-content">{{x.content | linebreaksbr }}</p>
       </div>
   </div>
@@ -31,3 +40,6 @@
   </ul>
 </nav>
 </center>
+<style>
+  body{background: #8D1A43;}
+</style>
