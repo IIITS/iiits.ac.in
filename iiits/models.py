@@ -188,7 +188,9 @@ class ResearchStudent(Model):
 	user=OneToOneField(User)
 	research_centres = TextField() #saves comma seperated code of ResearchCentre
 	mentors = TextField() # saves comma seperated user.username of faculty or vsfaculty
-
+	photo = ImageField(upload_to=static_locations["ResearchPortfolio"], blank=True, null=True)
+	def __str__(self):
+		return self.user.get_full_name()
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=RichTextField(default='NA')

@@ -1,10 +1,20 @@
+{% load staticfiles %}
 {% autoescape off %}
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
   {% for x in scholars %}
     <div class="iiits-card-full">
-      <p><b>{{ x.user.get_full_name }}</b>
-      <p>centre: {{x.research_centres}}</p>
-      <p>mentors: {{x.mentors}}</p>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+        {% if image_exist %}
+          <img src={{x.photo.url}}/>
+        {% else %}
+          <img src="{% static 'iiits/images/user_male.jpg' %}"/>
+        {% endif %}
+      </div>
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+        <p><b>{{ x.user.get_full_name }}</b></p>
+        <p>centre: {{x.research_centres}}</p>
+        <p>mentors: {{x.mentors}}</p>
+      </div>
     </div>  
   {% endfor %}
 </div>
