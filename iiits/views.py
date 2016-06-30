@@ -301,6 +301,30 @@ class Research(TemplateView):
 		context['research_scholars'] = templates['site']['research']['scholars']
 		context['centres'] = getAllResearchCentres()
 		context['areas'] = getAllResearchAreas()
+		publications = getPublications()
+		page = self.request.GET.get('page')
+		try:
+			page=int(page)
+		except TypeError:
+			page=1	
+		paginator = Paginator(publications, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		try:
+        		pub = paginator.page(page)
+        		pub_prev = page - 1
+        		pub_nex = page + 1
+    		except PageNotAnInteger:
+        		pub = paginator.page(1)
+        		pub_prev = 1
+        		pub_nex = 2
+    		except EmptyPage:
+        		pub = paginator.page(paginator.num_pages)
+        		pub_prev= num_pages - 1
+        		pub_nex = num_pages
+ 	        context['pub']=pub		
+ 	        context['pub_has_previous']=pub.has_previous()
+ 	        context['pub_has_next']=pub.has_next()
+ 	        context['pub_prev']=pub_prev
+ 	        context['pub_next']=pub_nex		
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Research"	
 		#context['publications'] = getAllPublications()

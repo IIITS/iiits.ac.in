@@ -1,0 +1,46 @@
+{% autoescape off %}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+  {% for x in pub %}
+    <div class="iiits-card-full">
+      <h5>{{ x.title }}</h5><hr>
+      {% if x.display_description %}
+        <p><b>Description</b> {{x.description}}</p>
+      {% endif %}
+      {% if x.display_authors %}
+        <p><b>Authors</b> {{x.authors}}</p>
+      {% endif %}
+      {% if x.display_keywords %}
+        <p><b>Keywords</b> {{x.keywords}}</p>
+      {% endif %}
+      {% if x.display_link %}  
+        <p><b>Link</b> {{x.link}}</p>
+      {% endif %}  
+    </div>  
+  {% endfor %}
+
+  <nav>
+    <ul class="pager">
+      {%if pub_has_previous %}
+        <li class="previous">
+          <a href="?page={{pub_prev}}">
+            <span aria-hidden="true">&larr;</span>Newer 
+          </a>
+        </li>
+      {%endif%} 
+      {% if pub_has_next %} 
+        <li class="next">
+          <a href="?page={{pub_next}}">Older 
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      {%endif%}
+    </ul>
+  </nav> 
+</div>
+<div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+  <div class="right-nav">
+    <p><b>Search by keywords</b></p>
+    <span><input type="text" id="pub-search" placeholder="search">&nbsp;<a type="submit" onclick="pubSearch()"><i class="fa fa-2x fa-search" aria-hidden="true"></i></a></span>
+  </div>
+</div>     
+{% endautoescape %}

@@ -23,7 +23,8 @@ urlpatterns = [
     url(r'^careers/$', views.Career.as_view(), name='career'),
     url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
     url(r'^stafflist/$', views.staff_list, name='stafflist'),
-    #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome')	
+    #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome'),
+    url(r'^cms/publications/add/$', create.AddPublication.as_view(), name='add_publication')	
 ]
 
 if settings.SERVE_MEDIA:

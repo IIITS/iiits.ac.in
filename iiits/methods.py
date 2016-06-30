@@ -86,10 +86,42 @@ def getAllResearchCentres():
 	
 def getAllResearchAreas():
 	return ResearchArea.objects.order_by('title')
-	
-#def getAllPublications():
-#	return Publication.objects.
-#def getPortfolio():
+def beautifyPublications(pub):
+	results = list()
+	for p in pub:
+		P= dict()
+		P['display_authors']=True
+		P['display_link']=True
+		P['display_keywords']=True
+		P['display_description']=True
+		P['title']=p.title
+		P['description']=p.description
+		P['authors']=p.authors
+		P['link']=p.link
+		P['starred']=p.starred
+		P['keywords']=p.keywords
+		P['fileupload']=p.fileupload
+		P['year']=p.year
+		if p.authors == '<p>NA</p>':
+			P['display_authors']=False
+		if p.link == '<p>NA</p>':
+			P['display_link']=False
+		if p.keywords == '<p>NA</p>':
+			P['display_keywords']=False
+		if p.description == '<p>NA</p>':
+			P['display_description']=False	
+		results.append(P)
+	print results		
+	return results
+def getPublications():
+	pub = Publication.objects.order_by('year','add_date')
+	return beautifyPublications(pub)
+
+def getPublicationsByYear(year):
+	return Publication.objects.filter(year=year)
+
+def getPublicationsByAuthor(author):
+	pass
 
 def getListOfScholars():
 	return ResearchStudent.objects.order_by('user__first_name')

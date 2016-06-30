@@ -186,8 +186,8 @@ class ResearchPortfolio(Model):
 
 class ResearchStudent(Model):
 	user=OneToOneField(User)
-	research_centres = RichTextField() #saves comma seperated code of ResearchCentre
-	mentors = RichTextField() # saves comma seperated user.username of faculty or vsfaculty
+	research_centres = TextField() #saves comma seperated code of ResearchCentre
+	mentors = TextField() # saves comma seperated user.username of faculty or vsfaculty
 
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
@@ -197,7 +197,8 @@ class Publication(Model):
 	year=CharField(db_index=True,max_length=4, choices=values['YEAR_PUBLICATIONS'])	
 	starred=BooleanField(db_index=True,default=False)
 	authors = RichTextField(default='NA')
-	
+	add_date = DateTimeField(auto_now_add=True, db_index=True)
+	keywords=TextField(default='NA')
 	def __str__(self):
 		return self.title
 

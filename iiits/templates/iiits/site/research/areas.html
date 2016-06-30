@@ -1,3 +1,5 @@
+{% autoescape off %}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 <center><h4>List of Research Areas</h4></center>
 {% for area in areas %}
 	<a href="{{area.get_url}}">
@@ -14,3 +16,9 @@
 		
 {% empty %}	
 {% endfor %}
+</div>
+<div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+  <div class="right-nav">
+  </div>
+</div>	
+{% endautoescape %}

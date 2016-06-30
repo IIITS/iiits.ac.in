@@ -6,6 +6,11 @@ $(document).ready(function(){
 	$("#notices").hide();
 	$("#archives").hide();
 	$("#tenders").hide();
+	$('#centres').show();
+	$('#areas').hide();
+	$('#publications').hide();
+	$("#portfolio").hide();
+	$("#scholars").hide();
 	function getParameterByName(name) {
     	var url = window.location.href;
     	name = name.replace(/[\[\]]/g, "\\$&");
