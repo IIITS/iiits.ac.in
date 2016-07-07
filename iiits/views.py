@@ -227,6 +227,9 @@ class NewsRoom(TemplateView):
 		all_notices = Notice.objects.order_by('-valid_until')
 		news_paginator = Paginator(all_news_stories, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		notices_paginator = Paginator(all_notices, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		
+		tender_const = Tender.objects.filter(tender_type=TenderType.objects.get('construction'))
+		tender_other = Tender.objects.filter(tender_type=TenderType.objects.get('other'))
 		page = self.request.GET.get('page')
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="News & Notices"	

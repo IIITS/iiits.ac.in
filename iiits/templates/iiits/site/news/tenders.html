@@ -16,9 +16,52 @@
 		</center>
 	
 		<div class="iiits-padding-25" id="iiits-tab-content-0">
-			
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    			{% for x in tender_construction_notices %}
+  	  				<div class="panel panel-default">
+  		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  				<h4 class="panel-title">
+        						<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        						</a>
+      		  				</h4>
+          				</div>
+	    				<div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      					<div class="panel-body">
+	      						{% if x.show_description %}
+	    							{{x.description}}
+    							{% endif %}
+    							{% if x.show_fileupload %}
+									<a href="{{x.fileupload}}">View attached file here</a>
+								{% endif %}	
+      						</div>
+    					</div>
+  					</div>
+    			{% endfor %}
+  			</div>
 		</div>
 		<div class="iiits-padding-25" id="iiits-tab-content-0">
-			
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    			{% for x in tender_other_notices %}
+  	  				<div class="panel panel-default">
+  		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  				<h4 class="panel-title">
+        						<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        						</a>
+      		  				</h4>
+          				</div>
+	    				<div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      					<div class="panel-body">
+	      						{% if x.show_description %}
+	    							{{x.description}}
+    							{% endif %}
+    							{% if x.show_fileupload %}
+									<a href="{{x.fileupload}}">View attached file here</a>
+								{% endif %}	
+      						</div>
+    					</div>
+  					</div>
+    			{% endfor %}
+  			</div>
+		</div>
 		</div>
 </div>		

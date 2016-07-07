@@ -112,10 +112,10 @@ class Notice(Model):
 class TenderType(Model):
 	name=CharField(max_length=255)
 	def __str__(self):
-		return name			
+		return self.name			
 class Tender(Notice,Model):		
 	tender_type = ForeignKey(TenderType)
-	
+
 class AdmissionsFeeStructure(Model):
 	academic_year = CharField(max_length=200, default='2016-2017')
 	tution_fee = RichTextField()
