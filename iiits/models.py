@@ -108,8 +108,14 @@ class Notice(Model):
 	def change_valid_until(self, datetimefield):
 		self.valid_until = datetimefield
 	def change_title(self, title):
-		self.title = title	
-
+		self.title = title
+class TenderType(Model):
+	name=CharField(max_length=255)
+	def __str__(self):
+		return name			
+class Tender(Notice,Model):		
+	tender_type = ForeignKey(TenderType)
+	
 class AdmissionsFeeStructure(Model):
 	academic_year = CharField(max_length=200, default='2016-2017')
 	tution_fee = RichTextField()
