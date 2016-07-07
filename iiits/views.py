@@ -99,9 +99,8 @@ class CampusLife(TemplateView):
 		context['templates_facilities'] = templates['site']['campus_life']['facilities']
 		context['templates_events'] = templates['site']['campus_life']['events']
 		context['templates_student_life'] = templates['site']['campus_life']['student_life']
-		context['facilities'] = Facility.objects.order_by('title')
-		context['events'] = Event.objects.order_by('title')
-		context['student_life_articles'] = StudentLifeArticle.objects.order_by('title')
+		context['campus_life_entities'] = CampusLifeEntity.objects.order_by('rank','name')
+		context['cl_sub']=beautifyCLSE(CampusLifeSubEntity.objects.order_by('belongs_to__code'))
 		return context
 class Career(TemplateView):
 	template_name = templates['site']['career']['home']
@@ -368,4 +367,9 @@ def staff_list(request):
 			})
 	return JsonResponse(json.dumps(result),safe=False)	
 
-
+def get_cl_codes(request):
+	results = list()
+	cle = CampusLifeEntity.objects.order_by('rank','name')
+	for c in cle:
+		results.append(str(c.code))
+	return JsonResponse(json.dumps(results), safe=False)	

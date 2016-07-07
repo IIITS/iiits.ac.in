@@ -125,3 +125,26 @@ def getPublicationsByAuthor(author):
 
 def getListOfScholars():
 	return ResearchStudent.objects.order_by('user__first_name')
+
+def beautifyCLSE(clse):
+	results = list()
+	tempdict = dict()
+	for x in clse:
+		cd = x.belongs_to.code
+		if cd not in tempdict.keys():
+			tempdict[cd] = dict()
+			tempdict[cd]['code']=cd
+			tempdict[cd]['items']=list()
+		tempdict[cd]['items'].append({
+			"title":x.title,
+			"description":x.description,
+			"picture":x.picture.url,
+			"show_picture":x.show_picture,
+			"links":x.links,
+			"show_links":x.show_links
+			})
+	for x in tempdict.keys():
+		results.append(tempdict[x])
+
+	print results
+	return results		

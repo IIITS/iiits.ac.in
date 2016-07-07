@@ -48,6 +48,9 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .carousel-caption{  background:#000;  opacity: 0.6;  right:0%;  left:0%;}
   .carousel-indicators li{background-color: rgba(0, 0, 0, 0);border: 1px solid #fff;  border-radius: 0px;cursor: pointer;display: inline-block;height: 10px;  margin: 1px;text-indent: -999px;  width: 10px;}
   .center-aligned{margin-top:20%;margin-left:25%;}  
+  .cl-description{font-size: 12px; color:#6C6262;padding-top: 5px;padding-bottom: 5px; }
+  .cl-image{width: 100%; word-wrap: normal;}
+  .cl-title{font-size: 22px; color:black;}
   .container{min-height: 76vh;/*background: url('../images/background.jpg');*/}
   .container-fluid{padding:0px;}
   .elegant-shadow {    color: #202020;    background-color: #2d2d2d;    letter-spacing: .1em;    text-shadow:       -1px -1px 1px #111,       2px 2px 1px #363636;  }

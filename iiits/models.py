@@ -311,31 +311,23 @@ class TopStory(Model):
 # Campus Life Models #
 ######################
 
-class Facility(Model):
-	title = CharField(max_length=255)
-	description = RichTextField()
-	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/facilities/', null=True, blank=True)
-
+class CampusLifeEntity(Model):
+	'''
+	description: Describes a campus life main model. These are displayed in the navigation bar.
+	'''
+	name = CharField(max_length=255)
+	code = CharField(max_length=20, db_index=True)
+	rank = PositiveIntegerField(default=100)
 	def __str__(self):
-		return self.title
-	def image_exists(self):
-		return self.image.__bool__()	
+		return str(self.name)
 
-class Event(Model):		
+class CampusLifeSubEntity(Model):
+	belongs_to = ForeignKey(CampusLifeEntity)
 	title = CharField(max_length=255)
-	date = DateField(editable=True)
-	description = RichTextField()
-	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/events/', null=True, blank=True)
+	description=RichTextField()
+	picture=ImageField(upload_to='iiits/images/campuslife/contents')
+	show_picture = BooleanField(default=False)
+	links = RichTextField()
+	show_links=BooleanField(default=False)
 	def __str__(self):
-		return self.title + "  " +str(self.date)
-	def image_exists(self):
-		return self.image.__bool__()	
-
-class StudentLifeArticle(Model):
-	title = CharField(max_length=255)
-	description = RichTextField()
-	image = ImageField(upload_to='iiits/static/iiits/images/campus_life/student_life/', null=True, blank=True)		
-	def __str__(self):
-		return self.title
-	def image_exists(self):
-		return self.image.__bool__()	
+		return self.title+ " : "+ str(self.belongs_to)

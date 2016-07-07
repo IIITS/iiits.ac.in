@@ -5,6 +5,7 @@
 <title>Campus Life| Indian Institute of Information Technology, Chittoor, Sri City</title>
 {% endblock %}
 {% block main %}
+	{% autoescape off %}
 	<div class="container-fluid">
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
 		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 iiits-sidenav">
@@ -12,57 +13,54 @@
 				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
 			</div>
 			<ul>
+				{% for entity in campus_life_entities %}
 				<li>	
-					<a  onclick="showOnly(student_life)">
-				 		ATHLETICS &amp; SPORTS
+					<a  onclick="showOnly({{entity.code}})">
+				 		{{entity.name | upper }}
 				 	</a>
 				</li>
-				<li>	
-					<a  onclick="showOnly(student_life)">
-				 		ARTS &amp; CULTURALS
-				 	</a>
-				</li>
-				<li>
-					<a  onclick="showOnly(facilties)"> 
-						ACADEMIC FACILITIES
-					</a>
-				</li>
-				<li>
-					<a  onclick="showOnly(facilties)"> 
-						LIFESTYLE
-					</a>
-				</li>
-				<li>
-					<a  onclick="showOnly(facilties)"> 
-						ENTERTAINMENTS
-					</a>
-				</li>
-				<li>
-					<a  onclick="showOnly(facilties)"> 
-						LIFE AROUND IIIT
-					</a>
-				</li>
-				<li>	
-					<a  onclick="showOnly(events)">
-				 		EVENTS
-					</a>
-				</li>
+				{% endfor %}
 			</ul>
 		</div>		 
 		<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
-			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="facilities">
-				{% include templates_facilities %}
-			</div>
-			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="events">
-				{% include templates_events %}
-			</div>
-			<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="student_life">
-				{% include templates_student_life %}
-			</div>
+			{% for x in cl_sub %}
+				<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="{{x.code}}">
+					{% for y in x.items %}
+						<p class="cl-title">{{y.title}}</p>
+						<div class="cl-description">{{y.description}}</div>
+						{% if y.show_picture %}
+							<img src="{{y.picture}}" class="cl-image"/>
+						{% endif %}	
+						{% if y.show_links %}
+							Links:
+							{{y.links}}
+						{% endif %}	
+					{% endfor %}							
+				</div>
+			{% endfor %}	
+			
 		</div>
 		<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2">
   			<div class="right-nav">
   			</div>
 		</div>	
 	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.get("get_cl_codes/",function(data){
+			var json = $.parseJSON(data);
+			for(var i=0; i<json.length;i++){
+				if(i==0){
+					$("#"+json[i]).show();
+				}
+				else{
+					$("#"+json[i]).hide();
+				}
+			}
+		})
+	});
+	</script>
+	{%endautoescape%}
+
 {% endblock %}
+

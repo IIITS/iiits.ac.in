@@ -22,6 +22,8 @@ urlpatterns = [
     url(r'^campuslife/$', views.CampusLife.as_view(), name='campuslife'),
     url(r'^careers/$', views.Career.as_view(), name='career'),
     url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
+    #AJAX CALLS
+    url(r'^campuslife/get_cl_codes/$',views.get_cl_codes, name='get_campus_life_entitty_codes'),
     url(r'^stafflist/$', views.staff_list, name='stafflist'),
     #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome'),
     url(r'^cms/publications/add/$', create.AddPublication.as_view(), name='add_publication')	
