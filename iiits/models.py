@@ -8,6 +8,7 @@ from ckeditor.fields import RichTextField
 import math
 from imagekit.models import ProcessedImageField
 from imagekit.processors import ResizeToFill
+from django.utils.timezone import now, timedelta
 class Config(Model):
 	property_name  = CharField(max_length=50)
 	property_value = RichTextField()
@@ -91,11 +92,23 @@ class NewsStory(Model):
 		return self.news
 		
 class Notice(Model):
-	noticeno = CharField(max_length=20, db_index=True)
 	title = CharField(max_length=200)
+	description = TextField(default='NA')
 	fileupload = FileField(upload_to = 'iiits/static/iiits/files/notice/', null=True, blank=True)
 	date = DateTimeField(auto_now_add=True)
-
+	valid_until = DateTimeField(default=now() + timedelta(days=7), editable=True)
+	show_description = BooleanField(default=False)
+	show_fileupload = BooleanField(default=False)
+	def __str__(self):
+		return self.title 
+	def show_fileupload(self):
+		self.fileupload = True
+	def show_description(self):
+		self.description = True		
+	def change_valid_until(self, datetimefield):
+		self.valid_until = datetimefield
+	def change_title(self, title):
+		self.title = title	
 
 class AdmissionsFeeStructure(Model):
 	academic_year = CharField(max_length=200, default='2016-2017')
