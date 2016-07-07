@@ -1,10 +1,26 @@
 {% autoescape off %}
-<h3 class="card-title">News At a glance</h3>
+<h3 class="card-title">Notices </h3>
 <div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 iiits-card-bordered-black iiits-card-full">
-  
-  <ul class="news-story">
-  {% for x in news_stories %}
-    <li>{{ x.news }}</li>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for x in notices %}
+  	  <div class="panel panel-default">
+  		  <div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  <h4 class="panel-title">
+        		<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        		</a>
+      		  </h4>
+          </div>
+	    <div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      <div class="panel-body">
+	      	{% if x.show_description %}
+	    		{{x.description}}
+    		{% endif %}
+    		{% if x.show_fileupload %}
+				<a href="{{x.fileupload}}">View attached file here</a>
+			{% endif %}	
+      	  </div>
+    </div>
+  </div>
     
   {% endfor %}
   </ul>

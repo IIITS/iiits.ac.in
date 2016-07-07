@@ -224,8 +224,9 @@ class NewsRoom(TemplateView):
 		context['templates_archives']=templates['site']['news']['archives']
 		all_news = News.objects.all().order_by('-date') #latest news first
 		all_news_stories = NewsStory.objects.order_by('-date')
-		paginator = Paginator(all_news_stories, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
-	
+		all_notices = Notice.objects.order_by('-valid_until')
+		news_paginator = Paginator(all_news_stories, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		notices_paginator = Paginator(all_notices, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="News & Notices"	
@@ -234,23 +235,27 @@ class NewsRoom(TemplateView):
 		except TypeError:
 			page=1	
 		 
-		context['pagebuttons'] = getPageButtons(paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
-		
+		context['news_pagebuttons'] = getPageButtons(news_paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		context['notices_pagebuttons'] = getPageButtons(notices_paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))		
 		try:
-        		page_news = paginator.page(page)
+        		page_news = news_paginator.page(page)
+        		page_notice = notices_paginator.page(page)
         		prev = page - 1
         		nex = page + 1
     		except PageNotAnInteger:
-        		page_news = paginator.page(1)
+        		page_news = news_paginator.page(1)
+        		page_notice= notices_paginator.page(page)
         		prev = 1
         		nex = 2
     		except EmptyPage:
-        		page_news = paginator.page(paginator.num_pages)
+        		page_news = news_paginator.page(news_paginator.num_pages)
+        		page_notices = notices_paginator.page(notices_paginator.num_pages)
         		prev= num_pages - 1
         		nex = num_pages
         	context['news_stories']=page_news
         	context['has_previous']=page_news.has_previous()
         	context['has_next']=page_news.has_next()
+        	context['notices'] = page_notice
         	context['prev']=prev
         	context['next']=nex
         	context['title']="News & Notices"

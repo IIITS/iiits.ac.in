@@ -41,6 +41,14 @@ $(document).ready(function(){
 		}
 		
 	}
+	window.collapse =function(cid){
+		var elems = document.querySelectorAll('[data-toggle]');
+		for(var i=0; i< elems.length; i++){
+			var elemid = elems[i]['id'].toString();
+			$('#'+elemid).removeClass('in');
+		}
+		$('#'+cid).addClass('in');
+	}
 	var tabs = $('*[id^="iiits-tab-link"]');
 	var tabslen = tabs.length;
 	
