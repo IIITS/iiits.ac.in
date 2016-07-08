@@ -14,7 +14,7 @@
 			</div>
 			<ul>
 				{% for entity in campus_life_entities %}
-				<li>	
+				<li id="sn-{{entity.code}}">	
 					<a  onclick="showOnly({{entity.code}})">
 				 		{{entity.name | upper }}
 				 	</a>

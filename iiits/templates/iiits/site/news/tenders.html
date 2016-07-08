@@ -17,7 +17,7 @@
 	
 		<div class="iiits-padding-25" id="iiits-tab-content-0">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    			{% for x in tender_construction_notices %}
+    			{% for x in tender_construction %}
   	  				<div class="panel panel-default">
   		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
     		  				<h4 class="panel-title">
@@ -39,9 +39,9 @@
     			{% endfor %}
   			</div>
 		</div>
-		<div class="iiits-padding-25" id="iiits-tab-content-0">
+		<div class="iiits-padding-25" id="iiits-tab-content-1">
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    			{% for x in tender_other_notices %}
+    			{% for x in tender_other %}
   	  				<div class="panel panel-default">
   		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
     		  				<h4 class="panel-title">

@@ -1,12 +1,12 @@
 $(document).ready(function(){
-	$('#facilties').show();
-	$('#events').hide();
-	$('#student_life').hide();
+	
 	$("#news").show();
+	$("#sn-news").addClass('iiits-sidenav-hover');
 	$("#notices").hide();
 	$("#archives").hide();
 	$("#tenders").hide();
 	$('#centres').show();
+	$("#sn-centres").addClass('iiits-sidenav-hover');
 	$('#areas').hide();
 	$('#publications').hide();
 	$("#portfolio").hide();
@@ -24,6 +24,8 @@ $(document).ready(function(){
 		$('html, body').animate({
         scrollTop: $("#"+id).offset().top
     }, 2000);
+		$('.iiits-sidenav-hover').removeClass('iiits-sidenav-hover');
+		$("#sn-"+id).addClass('iiits-sidenav-hover');
 	}
 	window.showOnly = function(sid){
 		var elems = document.querySelectorAll('[data-type]');
@@ -33,10 +35,11 @@ $(document).ready(function(){
 
 			if(elemid==sid['id'].toString()){
 				$("#"+elemid).show();
-				
+				$("#sn-"+elemid).addClass('iiits-sidenav-hover');
 			}
 			else{
 				$("#"+elemid).hide();
+				$("#sn-"+elemid).removeClass('iiits-sidenav-hover');
 			}
 		}
 		

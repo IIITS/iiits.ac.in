@@ -225,40 +225,46 @@ class NewsRoom(TemplateView):
 		all_news = News.objects.all().order_by('-date') #latest news first
 		all_news_stories = NewsStory.objects.order_by('-date')
 		all_notices = Notice.objects.order_by('-valid_until')
+		tender_const = Tender.objects.filter(tender_type=TenderType.objects.get(name='construction'))
+		tender_other = Tender.objects.filter(tender_type=TenderType.objects.get(name='other'))
 		news_paginator = Paginator(all_news_stories, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		notices_paginator = Paginator(all_notices, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
-		
-		tender_const = Tender.objects.filter(tender_type=TenderType.objects.get('construction'))
-		tender_other = Tender.objects.filter(tender_type=TenderType.objects.get('other'))
+		tender_const_paginator = Paginator(tender_const, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
+		tender_other_paginator = Paginator(tender_other, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
 		page = self.request.GET.get('page')
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="News & Notices"	
 		try:
 			page=int(page)
 		except TypeError:
-			page=1	
-		 
-		context['news_pagebuttons'] = getPageButtons(news_paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))
-		context['notices_pagebuttons'] = getPageButtons(notices_paginator.num_pages, page, values.get('NEWS_PAGINATION_MAX_ENTRIES'))		
+			page=1
 		try:
         		page_news = news_paginator.page(page)
         		page_notice = notices_paginator.page(page)
+        		tend_other  = tender_other_paginator.page(page)
+        		tend_const = tender_const_paginator.page(page)
         		prev = page - 1
         		nex = page + 1
     		except PageNotAnInteger:
         		page_news = news_paginator.page(1)
-        		page_notice= notices_paginator.page(page)
+        		page_notice= notices_paginator.page(1)
+        		tend_other  = tender_other_paginator(1)
+        		tend_const = tender_const_paginator(1)
         		prev = 1
         		nex = 2
     		except EmptyPage:
         		page_news = news_paginator.page(news_paginator.num_pages)
         		page_notices = notices_paginator.page(notices_paginator.num_pages)
+        		tend_other  = tender_other_paginator.page(tender_other_paginator.num_pages)
+        		tend_const = tender_const_paginator.page(tender_const_paginator.num_pages)
         		prev= num_pages - 1
         		nex = num_pages
         	context['news_stories']=page_news
         	context['has_previous']=page_news.has_previous()
         	context['has_next']=page_news.has_next()
         	context['notices'] = page_notice
+        	context['tender_construction']=tend_const
+        	context['tender_other']= tend_other
         	context['prev']=prev
         	context['next']=nex
         	context['title']="News & Notices"

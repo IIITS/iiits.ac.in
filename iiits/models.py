@@ -64,7 +64,7 @@ class Institute(Model):
 		return self.title
 class VisitingFaculty(Model):
 	user = OneToOneField(User)
-	photo = photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
+	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	title = ForeignKey(FacultyTitle)
 	institute = ForeignKey(Institute)
 	courses= RichTextField()
@@ -97,8 +97,8 @@ class Notice(Model):
 	fileupload = FileField(upload_to = 'iiits/static/iiits/files/notice/', null=True, blank=True)
 	date = DateTimeField(auto_now_add=True)
 	valid_until = DateTimeField(default=now() + timedelta(days=7), editable=True)
-	show_description = BooleanField(default=False)
-	show_fileupload = BooleanField(default=False)
+	show_description = BooleanField(editable=True,default=False)
+	show_fileupload = BooleanField(editable=True,default=False)
 	def __str__(self):
 		return self.title 
 	def show_fileupload(self):

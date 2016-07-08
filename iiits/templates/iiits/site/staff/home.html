@@ -6,25 +6,21 @@
 
 	<div class="container">
 		<div class="row">
-			<center><h3>List of all Staff at IIITS</h3></center>
-			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<center><h3>Staff at IIITS</h3></center>
+			<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				{% for x in staff_list %}
-					<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-						<div class="iiits-card-full height-fixed-150">
-							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-								<img class="iiits-thumb" src="{{x.photo.url}}">
-							</div>
-							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<p><b>{{x.user.get_full_name | capfirst }}</b></p>
-								<p class="font-10 text-danger">{{x.designation}}</p>
-								<p class="font-10">{{ x.user.email }}</p>
-							</div><br><br>
-						</div>	
-					</div>	
+					<div class="profiler">
+						<div class="circle" style="background:url('{{x.photo.url}}');background-position: 50%; background-repeat: no-repeat; background-size:120px; background-origin:content-box;">
+						</div>
+						<div class="circle-text">
+							<center class="circle-name"><b>{{x.user.get_full_name | capfirst |upper }}</b></center>
+							<center class="circle-designation">{{x.designation |upper}}</center>
+						</div>			
+					</div>							
 				{%endfor%}
-			</div>
+			</center>
 		</div>
-	</div>	
+	</div>		
 {% endblock %}
 {% block footer %}
 	{% include 'iiits/build/home-footer.html' %}
