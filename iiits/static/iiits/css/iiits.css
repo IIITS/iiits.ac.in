@@ -138,7 +138,7 @@ line-height: 30px;
 }
   .iiits-sidenav a:hover{color:white; text-decoration: none; cursor: pointer;}
   .iiits-sidenav ul li{list-style: none; border-bottom: 1px solid #dfdfdf; padding-left: 30px; }
-  .iiits-sidenav ul li:hover{background: #8D1A43;} .iiits-sidenav-hover{background: #8D1A43;}
+  .iiits-sidenav ul li:hover{background: #8D1A43;} .iiits-sidenav-hover{background: #8D1A43;}.iiits-sidenav-hover a{color:white !important;}
   .iiits-tab-header-4{  display: inline-block;  margin-top:15px;  margin-left:-2px;  margin-right: -2px;  padding:15px 25px;  border-bottom: 1px solid grey;margin-bottom:15px;}
   .iiits-tab-header-4:hover{  cursor: pointer; opacity:0.8;}
   .iiits-tab-header-4-active{  border-bottom: 3px solid black;  cursor: pointer;}
