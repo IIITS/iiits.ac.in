@@ -96,10 +96,8 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-card-full{    background:#FFF;    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19)!important;padding:15px;    margin:15px ;    overflow:hidden;}
   .iiits-card-bordered-black{   border-top:3px solid black; }
   .iiits-card-bordered-brown{ border-top: 3px solid brown;}
-  .iiits-cube{ width: 28%;height: 160px;margin: 0px 15px 5px 15px;margin-bottom: 15px;border-radius: 7px;}
-  .iiits-cube-hover-effect{z-index:30; border-radius:12px; height:160px;position: absolute;opacity:0.5; background-color: black;top:0px; left:0px; border-top:35px solid #8D1A43;}
-  .iiits-cube-hover-effect:hover{opacity: 0; cursor:pointer;}
-  .iiits-cube-text{color: white;font-size: 15px;font-weight: bold;position: absolute; z-index:40; top: 40px;}
+  .iiits-cube{display: inline-table; width: 140px;height: 140px;margin: 0px 15px 5px 15px;margin-bottom: 15px;border-radius: 100%;}
+  .iiits-cube-text{min-height:45px; margin-top:-45px; position:relative; padding: 5px; width:150px; height: auto; border-radius:3px; background: #3a50b1; color:white; font-size: 12px;font-weight: bold; }
   .iiits-cube-overlay{}
   .iiits-fixed-top{ position: fixed; width: 100%; z-index: 3000; min-height: 7em; }
   .iiits-image-wrapped{width:100%;  height: auto; }
@@ -167,6 +165,7 @@ line-height: 30px;
   .image-crop{    width:60%;    height:auto;    padding:15px;} 
   .margin-top-20{  margin-top: 20px;}
   .nav-icons{letter-spacing: 3px;}
+  .nav-icons i:hover{cursor: pointer;}
   .navbar{ margin-bottom: 0px;}
   .navigation-list{  list-style: none;}
   .navigation-list li a{  font-size: 22px;  color:cadetblue;}
@@ -200,4 +199,4 @@ line-height: 30px;
   .ul-no-style-black li a {color:black;}
   .wrapper{  min-height: 76vh;}
   #iiits-faculty-header{    background: url('../images/red.png');    background-repeat: repeat-x;    height: 150px;}
-  #staff-slider-small{}
+ #open-options-div{position: absolute; top:5px;left:97%;}

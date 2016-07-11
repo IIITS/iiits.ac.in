@@ -1,20 +1,22 @@
 {% autoescape off %}
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 <center><h4>List of Research Areas</h4></center>
+<center class="col-lg-12 col-sm-12 col-md-12 col-xs-12"> 
 {% for area in areas %}
 	<a href="{{area.get_url}}">
-		<div class="iiits-cube col-lg-3 col-md-3 col-sm-6 col-xs-12" 
+		<div class="profiler">
+			<div class="iiits-cube" 
 				 style="background:url({{area.background.url}}); background-position:center;">
+			</div> 	
 			<div class="iiits-cube-text">
 				<center>{{area.title}}</center>
-			</div>
-			<div class="iiits-cube-hover-effect col-lg-12 col-md-12 col-sm-12 col-xs-12">		
 			</div>
 		</div>
 	</a>
 		
 {% empty %}	
 {% endfor %}
+</center>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
   <div class="right-nav">

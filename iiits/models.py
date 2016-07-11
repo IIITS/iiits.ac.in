@@ -210,6 +210,8 @@ class ResearchStudent(Model):
 	photo = ImageField(upload_to=static_locations["ResearchPortfolio"], blank=True, null=True)
 	def __str__(self):
 		return self.user.get_full_name()
+	def image_exist(self):
+		return self.photo.__bool__()
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
 	description=RichTextField(default='NA')

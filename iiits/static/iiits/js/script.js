@@ -100,4 +100,24 @@ $(document).ready(function(){
 	});
 	var page = getParameterByName('page');
 	$('#pb-'+page).addClass('active');
+	
+	jQuery.fn.rotate = function(degrees) {
+ 	   $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
+                 '-moz-transform' : 'rotate('+ degrees +'deg)',
+                 '-ms-transform' : 'rotate('+ degrees +'deg)',
+                 'transform' : 'rotate('+ degrees +'deg)'});
+    	return $(this);
+	};
+	$('#open-options').on('click', function(){
+		console.log('hello');
+		if(hasClass($(this), 'fa-bars')){
+			$('#open-options-div').rotate(60).removeClass('fa-bars').addClass('fa-remove');
+		}
+		else if(hasClass($(this), 'fa-remove')){
+			$(this).removeClass('fa-remove').addClass('fa-bars');
+		}	
+	});
+	function hasClass(element, cls) {
+    	return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+	}
 });

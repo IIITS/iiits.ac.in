@@ -4,7 +4,7 @@
   <center class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     {% for x in scholars %}
       <div class="profiler">
-      {% if image_exist %}
+      {% if x.image_exist %}
       <div class="circle" style="background:url('{{x.photo.url}}');background-position: 50%; background-repeat: no-repeat; background-size:120px; background-origin:content-box;">
         </div>
       {% else %}
