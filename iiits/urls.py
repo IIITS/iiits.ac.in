@@ -4,6 +4,7 @@ from django.contrib import admin
 from iiits import views, create, delete, update, config
 urlpatterns = [
     url(r'^$', views.Home.as_view(), name='home'),
+    url(r'^login/$', views.login, name='login'),
     url(r'^faculty/$', views.FacultyPage.as_view(), name='facultypage'),
     url(r'^faculty/(~*)([a-z-._A-Z]*)$', views.FacultyProfile.as_view(),	name='facultyprofile'),
     url(r'^newsroom/$', views.NewsRoom.as_view(), name='newsroom'),

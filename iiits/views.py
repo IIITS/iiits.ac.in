@@ -387,3 +387,17 @@ def get_cl_codes(request):
 	for c in cle:
 		results.append(str(c.code))
 	return JsonResponse(json.dumps(results), safe=False)	
+def login(request):
+	print request.POST['username']
+	print request.POST['password']
+	user = authenticate(username=username, password=password)
+	redirect_to = settings.LOGIN_REDIRECT_URL
+	if user is not None:
+		if user.is_active:
+			login(request, user)
+		else:
+			donoting=True
+	else:		
+		donothing=True
+    	return HttpResponseRedirect('/') 
+    

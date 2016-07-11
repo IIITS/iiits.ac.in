@@ -49,7 +49,10 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .box-body{border: 1px solid #800;padding: 20px;border-bottom-right-radius:5px;border-bottom-left-radius: 5px; }
   .brand-text-l1{   font-family: "Open Sans Condensed",sans-serif;color: white;font-size: 28px;font-variant: small-caps;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
+  .btn-333{background: #333; color:white; font-family: 'Orbitron';}
+  .btn-333:hover{color: white; opacity: 0.8;}
   .btn-panel-home{color: orangered;font-size: 15px; font-weight: bold;    background: white;}
+  
   .card-title{font-weight:bold !important; font-size: 32px;    letter-spacing: -0.61111pt;    font-weight: 400;    margin-bottom: .3em;  font-family: 'Orbitron';color:#800000;}
   .card-text{font-size: 18px;color: rgb(84, 73, 73);font-family: "LibreBaskerville";letter-spacing: 0.125em;line-height: 1.45em;}
   .carousel,.item,.active {    height: 90%;}
@@ -163,6 +166,7 @@ line-height: 30px;
   .iiits-overline-from-center:before {  content: "";  position: absolute;  z-index: -1;  left: 50%;  right: 50%;  top: 0;  background: rgb(255, 249, 249);  height: 4px;  -webkit-transition-property: left, right;  transition-property: left, right;  -webkit-transition-duration: 0.3s;  transition-duration: 0.3s;  -webkit-transition-timing-function: ease-out;  transition-timing-function: ease-out;}
   .iiits-overline-from-center:hover:before, .iiits-overline-from-center:focus:before, .iiits-overline-from-center:active:before {left: 0;  right: 0;  cursor:pointer;}
   .image-crop{    width:60%;    height:auto;    padding:15px;} 
+  .login-input-text{color:#333; font-family: 'Orbitron';}
   .margin-top-20{  margin-top: 20px;}
   .nav-icons{letter-spacing: 3px;}
   .nav-icons i:hover{cursor: pointer;}
@@ -199,4 +203,6 @@ line-height: 30px;
   .ul-no-style-black li a {color:black;}
   .wrapper{  min-height: 76vh;}
   #iiits-faculty-header{    background: url('../images/red.png');    background-repeat: repeat-x;    height: 150px;}
- #open-options-div{position: absolute; top:5px;left:97%;}
+ #open-options-div{position: absolute; top:5px;left:97%; z-index: 3010;}
+ #login-form-container{background:white; color: #333;min-width: 20vw; max-width: 20vw; left:79vw;min-height: 100vh; top:0; max-height: 100vh; position: fixed; z-index: 3005;padding: 65px 15px;}
+ #login-header{color:#333; font-family: 'Orbitron'; font-size: 20px; font-weight: bold;}

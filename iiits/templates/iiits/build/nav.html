@@ -33,7 +33,22 @@
 			<i class="fa fa-2x fa-github-square " aria-hidden="true"></i>
 		
 		</center>
-		<div class="nav-icons"><div id="open-options-div" class="pull-right"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span></div></div>	
+		<div class="nav-icons">
+			<div id="open-options-div" class="pull-right">
+				<i id="open-options" class="fa fa-2x fa-bars"></i>
+			</div>
+		</div>
+		<div id="login-form-container">
+			<span id="login-header">SIGN IN</span><br>
+			<form id="login-form" method="post" action="/login/">
+				{%csrf_token%}
+				<span class="login-input-text">EMAIL:</span><br>
+				<input class="form-control" type="text" id="login-username"/><br>
+				<span class="login-input-text" >PASSWORD:</span><br>
+				<input class="form-control" type="password" id"login-password"/><br>
+				<button class="btn btn-333 form-control" type="submit">Sign In</button>
+			</form>
+		</div>	
 	</div>
 		
 	<div class="nav navbar container-fluid iiits-topnav-set-3">

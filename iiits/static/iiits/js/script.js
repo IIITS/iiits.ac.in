@@ -100,24 +100,32 @@ $(document).ready(function(){
 	});
 	var page = getParameterByName('page');
 	$('#pb-'+page).addClass('active');
-	
-	jQuery.fn.rotate = function(degrees) {
- 	   $(this).css({'-webkit-transform' : 'rotate('+ degrees +'deg)',
-                 '-moz-transform' : 'rotate('+ degrees +'deg)',
-                 '-ms-transform' : 'rotate('+ degrees +'deg)',
-                 'transform' : 'rotate('+ degrees +'deg)'});
-    	return $(this);
-	};
+	$('#login-form-container').hide();
 	$('#open-options').on('click', function(){
 		console.log('hello');
-		if(hasClass($(this), 'fa-bars')){
-			$('#open-options-div').rotate(60).removeClass('fa-bars').addClass('fa-remove');
+		if(hasClass(document.getElementById('open-options'), 'fa-bars')){
+			$('#open-options').removeClass('fa-bars').addClass('fa-arrow-right').css('color','#333');
+			$('#login-form-container').show();
 		}
-		else if(hasClass($(this), 'fa-remove')){
-			$(this).removeClass('fa-remove').addClass('fa-bars');
+		else if(hasClass(document.getElementById('open-options'), 'fa-arrow-right')){
+			$('#open-options').removeClass('fa-arrow-right').addClass('fa-bars').css('color','white');
+			$('#login-form-container').hide();
 		}	
 	});
 	function hasClass(element, cls) {
     	return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
 	}
+	$('#login-form').validate({
+   		rules: {
+     	    username: "required",
+     	    password:"required"
+        },
+        messages: {
+        	username:"Please enter your email",
+        	password:"Please enter the password",
+        },
+        submitHandler: function(form){
+        	$.post('/login/',form.serialize())
+        }
+ });
 });
