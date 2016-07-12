@@ -38,17 +38,24 @@
 				<i id="open-options" class="fa fa-2x fa-bars"></i>
 			</div>
 		</div>
+		{% if user_active %}
+		<div id="login-form-container">
+			{{ user.get_full_name}}
+		</div>
+		{%else%}
 		<div id="login-form-container">
 			<span id="login-header">SIGN IN</span><br>
 			<form id="login-form" method="post" action="/login/">
 				{%csrf_token%}
 				<span class="login-input-text">EMAIL:</span><br>
-				<input class="form-control" type="text" id="login-username"/><br>
+				<input class="form-control" type="text" name="username" id="login-username"/><br>
 				<span class="login-input-text" >PASSWORD:</span><br>
-				<input class="form-control" type="password" id"login-password"/><br>
+				<input class="form-control" type="password" name="password" id"login-password"/><br>
 				<button class="btn btn-333 form-control" type="submit">Sign In</button>
 			</form>
-		</div>	
+			<div id="login-error-message"></div>
+		</div>
+		{%endif%}
 	</div>
 		
 	<div class="nav navbar container-fluid iiits-topnav-set-3">

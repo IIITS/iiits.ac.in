@@ -125,7 +125,17 @@ $(document).ready(function(){
         	password:"Please enter the password",
         },
         submitHandler: function(form){
-        	$.post('/login/',form.serialize())
+        	$.ajax({url:'/login/',method:'POST',data:form.serialize(),
+        		    success:function(jdata){
+        		    	var data = $.parseJSON(jdata);
+        		    	if(data["code"]==300){
+        		    		document.getElementById('login-error-message').innerHTML=data["message"];
+        		    	}
+        		    	else{
+        		    		window.location.reload();
+        		    	}
+        		    }
+        	})
         }
  });
 });

@@ -3,7 +3,7 @@ from django.views.generic.base import TemplateView, RedirectView
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic.list import ListView
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth import login, logout
+from django.contrib.auth import login, logout, authenticate
 from django.utils.decorators import method_decorator
 from django.views.decorators.debug import sensitive_post_parameters
 from django.views.decorators.csrf import csrf_exempt
@@ -20,7 +20,11 @@ class About(TemplateView):
 	template_name = templates['site']['about']['home']
 	def get_context_data(self, **kwargs):
 		context = super(About,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="About"
@@ -36,6 +40,11 @@ class Academics(TemplateView):
 	template_name=templates['site']['academics']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Academics, self).get_context_data(*args, **kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Academics"
@@ -64,6 +73,11 @@ class Admissions(TemplateView):
 	template_name =  templates['site']['admissions']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Admissions,self).get_context_data(*args,**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		
 		context['title']=strings['admissions_title']
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
@@ -81,7 +95,12 @@ class Alumni(TemplateView):
 	template_name = templates['site']['alumni']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Alumni,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		
+		
 		context['base'] = templates['base']['root']
 		context['alumni_list']= templates['site']['alumni']['list']
 		context['mast'] = templates['build']['mast']
@@ -92,7 +111,10 @@ class CampusLife(TemplateView):
 	template_name = templates['site']['campus_life']['home']
 	def get_context_data(self, **kwargs):
 		context = super(CampusLife,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Campus Life"
@@ -106,7 +128,11 @@ class Career(TemplateView):
 	template_name = templates['site']['career']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Career,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['templates_fac'] = templates['site']['career']['fac']
@@ -123,7 +149,10 @@ class FacultyPage(TemplateView):
 	template_name = templates['site']['faculty']['home']
 	def get_context_data(self, **kwargs):
 		context = super(FacultyPage,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Faculty"
@@ -137,7 +166,10 @@ class FacultyProfile(TemplateView):
 	template_name= templates['site']['faculty']['profile']
 	def get_context_data(self, **kwargs):
 		context = super(FacultyProfile,self).get_context_data(**kwargs)	
-		context=dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		path=self.request.path
 		public_uri_name = getPublicURI(path)
 		try:
@@ -161,8 +193,12 @@ class Home(TemplateView):
 	template_name = 'iiits/index.html'
 	
 	def get_context_data(self, **kwargs):
-		
 		context = super(Home,self).get_context_data(**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		print "USER_ACTIVE",context['user_active']	
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
 			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
@@ -197,6 +233,10 @@ class LoginView(FormView):
 			return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
 		return super(Login,self).dispatch(*args, **kwargs)
 	def get_context_data(self, **kwargs):
+			context['user_active']=False
+			if self.request.user.is_active:
+				context['user_active']=True
+				context['user']=self.request.user
 			context = super(Login,self).get_context_data(**kwargs)
 			context['form']=self.form_class
 			return context
@@ -206,7 +246,11 @@ class MediaRoom(TemplateView):
 	template_name = templates['site']['mediaroom']['home']
 	def get_context_data(self, **kwargs):
 		context = super(MediaRoom,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
+		
 		context['base']=templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Media"
@@ -217,6 +261,10 @@ class NewsRoom(TemplateView):
 	
 	def get_context_data(self, *args, **kwargs):
 		context = super(NewsRoom,self).get_context_data(*args,**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base']=templates['base']['root']
 		context['templates_news']=templates['site']['news']['news']
 		context['templates_notices']=templates['site']['news']['notices']
@@ -275,6 +323,10 @@ class Parents(FormView):
 	form_class = LoginForm
 	def get_context_data(self, *args, **kwargs):
 		context = super(Parents,self).get_context_data(*args,**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base']=templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Parents"
@@ -284,6 +336,10 @@ class Staff(TemplateView):
 	template_name = templates['site']['staff']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Staff,self).get_context_data(*args,**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		staff_list = getAllStaff()
 		context['base']=templates['base']['root']
 		context['mast']=templates['build']['mast']
@@ -295,6 +351,10 @@ class Students(TemplateView):
 	template_name = templates['site']['students']['home']
 	def get_context_data(self, *args, **kwargs):
 		context = super(Students,self).get_context_data(*args,**kwargs)
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base']=templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		context['MAST_TEXT']="Students"
@@ -304,7 +364,10 @@ class Research(TemplateView):
 	template_name=templates['site']['research']['home']
 	def get_context_data(self, **kwargs):
 		context = super(Research,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['title']=strings['research_title']
 		context['base'] = templates['base']['root']
 		context['research_areas'] = templates['site']['research']['areas']
@@ -349,7 +412,10 @@ class ResearchAreaProfile(TemplateView):
 	template_name = templates['site']['research']['area_profile']
 	def get_context_data(self, **kwargs):
 		context = super(ResearchAreaProfile,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base'] = templates['base']['root']
 		context['mast'] = templates['build']['mast']
 		
@@ -358,7 +424,10 @@ class ResearchCentreProfile(TemplateView):
 	template_name = templates['site']['research']['centre_profile']
 	def get_context_data(self, **kwargs):
 		context = super(ResearchCentreProfile,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base'] = templates['base']['root']
 		return context
 
@@ -366,7 +435,10 @@ class StudentProfile(TemplateView):
 	template_name=''
 	def get_context_data(self, **kwargs):
 		context = super(StudentProfile,self).get_context_data(**kwargs)
-		context = dict()
+		context['user_active']=False
+		if self.request.user.is_active:
+			context['user_active']=True
+			context['user']=self.request.user
 		context['base'] = templates['base']['root']
 		return context
 	
@@ -387,17 +459,17 @@ def get_cl_codes(request):
 	for c in cle:
 		results.append(str(c.code))
 	return JsonResponse(json.dumps(results), safe=False)	
-def login(request):
-	print request.POST['username']
-	print request.POST['password']
+def login_view(request):
+	username= request.POST['username']
+	password= request.POST['password']
 	user = authenticate(username=username, password=password)
 	redirect_to = settings.LOGIN_REDIRECT_URL
 	if user is not None:
 		if user.is_active:
-			login(request, user)
+			login(request,user)
 		else:
-			donoting=True
+			return JsonResponse({"code":300,"message":"Email or Password incorrect!"})
 	else:		
-		donothing=True
-    	return HttpResponseRedirect('/') 
+		return JsonResponse({"code":300,"message":"Email or Password incorrect!"})
+    	return HttpResponseRedirect('/')
     
