@@ -37,7 +37,6 @@ def ifNone(obj, beautifier):
 
 def getPublicURI(path):
 	results = re.search(r'(?<=~)[A-Za-z_.]*',path)
-	print path
 	return results.group(0)
 
 def getAllFacultyByRA(raid):
@@ -110,8 +109,7 @@ def beautifyPublications(pub):
 			P['display_keywords']=False
 		if p.description == '<p>NA</p>':
 			P['display_description']=False	
-		results.append(P)
-	print results		
+		results.append(P)	
 	return results
 def getPublications():
 	pub = Publication.objects.order_by('year','add_date')
@@ -146,5 +144,4 @@ def beautifyCLSE(clse):
 	for x in tempdict.keys():
 		results.append(tempdict[x])
 
-	print results
 	return results		
