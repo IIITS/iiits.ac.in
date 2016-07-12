@@ -198,7 +198,6 @@ class Home(TemplateView):
 		if self.request.user.is_active:
 			context['user_active']=True
 			context['user']=self.request.user
-		print "USER_ACTIVE",context['user_active']	
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
 			'image_slider_no':[x for x in range(1,len(image_slider)+1,1)],
