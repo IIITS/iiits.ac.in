@@ -34,14 +34,15 @@
 			<div id="open-options-div" class="pull-right">
 				<i id="open-options" class="fa fa-2x fa-bars"></i>
 			</div>
-		</div>	
-		{% if user_active %}
+		</div>
+
+		{% if user.is_active %}
 		<div id="login-form-container">
 			{{ user.get_full_name }}
 		</div>
 		{%else%}
 		<div id="login-form-container">
-			<span id="login-header">SIGN IN</span><br>
+			<span id="login-header">SIGN IN </span><br>
 			<form id="login-form" method="post" action="/login/">
 				{%csrf_token%}
 				<span class="login-input-text">EMAIL:</span><br>

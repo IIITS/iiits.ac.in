@@ -41,7 +41,7 @@
        url('../fonts/Abel-regular.svg#Abel') format('svg');
 }
 html,body {height: 90%; background:white;}
-h1, h2, h3, h4, h5, h6{color: orangered;}
+h1, h2, h3, h4, h5, h6{color: #dd4b39;}
 a{color:#3aa4b1;}
 a:hover{cursor: pointer; opacity: 0.8;}
   .box{margin-top: 5vh;}
@@ -51,7 +51,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
   .btn-333{background: #333; color:white; font-family: 'Orbitron';}
   .btn-333:hover{color: white; opacity: 0.8;}
-  .btn-panel-home{color: orangered;font-size: 15px; font-weight: bold;    background: white;}
+  .btn-panel-home{color: #dd4b39;font-size: 15px; font-weight: bold;    background: white;}
   
   .card-title{font-weight:bold !important; font-size: 32px;    letter-spacing: -0.61111pt;    font-weight: 400;    margin-bottom: .3em;  font-family: 'Orbitron';color:#800000;}
   .card-text{font-size: 18px;color: rgb(84, 73, 73);font-family: "LibreBaskerville";letter-spacing: 0.125em;line-height: 1.45em;}
@@ -108,7 +108,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .iiits-logo-footer{clear: both; display: inline-block; opacity: 0.2; left: 80px; margin-top: -20px; position: absolute; z-index: 4000;}
   .iiits-logo-sidenav{    opacity: 0.2;position: fixed;top: 65vh;left: 20px;z-index: 3005;  }
   .iiits-mast{  color:white;  background-color: #800000;  padding-left:40px; border-top: 1px solid #9A0000;  border-bottom: 1px solid #670000;}
-  .iiits-panel{background: white;padding: 5px;border-top: 6px solid orangered;border-top-left-radius: 6px;border-top-right-radius: 6px;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
+  .iiits-panel{background: white;padding: 5px;border-top: 6px solid #dd4b39;border-top-left-radius: 6px;border-top-right-radius: 6px;border-bottom-left-radius: 3px;border-bottom-right-radius: 3px;}
   .iiits-panel-body{}
   .iiits-panel-title{color:black;}
   .iiits-profile-img img{  height: 120px;    width: 100px;    border: 5px solid white;    margin: 15px;    vertical-align: middle;}
@@ -167,6 +167,7 @@ line-height: 30px;
   .iiits-overline-from-center:hover:before, .iiits-overline-from-center:focus:before, .iiits-overline-from-center:active:before {left: 0;  right: 0;  cursor:pointer;}
   .image-crop{    width:60%;    height:auto;    padding:15px;} 
   .login-input-text{color:#333; font-family: 'Orbitron';}
+
   .margin-top-20{  margin-top: 20px;}
   .nav-icons{letter-spacing: 3px;}
   .nav-icons i:hover{cursor: pointer;}
@@ -179,6 +180,15 @@ line-height: 30px;
   .news-title{color: #333;}
   .profiler{display: inline-table; margin:10px 15px; width:140px;}
   .publications-display li{ list-style-image:url('../images/bullet.png'); font-size: 16px; font-family: 'LibreBaskerville','sans-serif';}
+  .reach-capsule{}
+  .reach-content{border-left: 2px solid #e3dddd; padding:2px 15px;}
+  .reach-header{font-size: 15px; color:#dd4b39; padding: 5px;
+background: rgb(227, 221, 221) none repeat scroll 0% 0%;
+margin-top: -2px;
+margin-bottom: 5px; height:auto;}
+  .reach-icon{display: inline-table;
+padding: 15px 15px;width: 12%;}
+  .reach-icon-hint{padding:3px; font-family: 'Orbitron'}
   .right-nav{top: 15vh;width:inherit;z-index: 999;height: 92%;background: #f3f3f3;padding: 20px 10px; -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2); -moz-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);position: fixed;}
   .right-nav a{color: #2b2b2b;line-height: 30px;font-family: 'Orbitron';letter-spacing: 2pt;font-size: 12px;}
   .right-nav a:hover{color:white; text-decoration: none; cursor: pointer;}

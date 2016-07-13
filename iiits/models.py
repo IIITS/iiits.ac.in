@@ -14,6 +14,11 @@ class Config(Model):
 	property_value = RichTextField()
 	def __str__(self):
 		return self.property_name
+class StaticImages(Model):
+	identifier = CharField(unique=True, max_length=255)
+	image = ImageField(upload_to='iiits/images/misc/')
+	def __str__(self):
+		return self.identifier		
 class Department(Model):
 	name = CharField(max_length=100)
 	code = CharField(db_index=True,max_length=20)

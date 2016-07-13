@@ -38,7 +38,7 @@
 				<i id="open-options" class="fa fa-2x fa-bars"></i>
 			</div>
 		</div>
-		{% if user_active %}
+		{% if user.is_active %}
 		<div id="login-form-container">
 			{{ user.get_full_name}}
 		</div>

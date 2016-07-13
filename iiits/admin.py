@@ -39,6 +39,7 @@ admin.site.register(TenderType)
 admin.site.register(TopStory)
 admin.site.register(Staff)
 admin.site.register(StaffDesignation)
+admin.site.register(StaticImages)
 admin.site.register(VisitingFaculty)
 
 admin.AdminSite.site_header = "IIITS web administration"
