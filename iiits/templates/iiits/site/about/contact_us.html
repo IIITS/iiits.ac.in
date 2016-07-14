@@ -1,6 +1,6 @@
 {% autoescape off %}
 	<div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
-	<div class="col-lg-6 col-sm-8 col-xs-10 col-md-6 iiits-card-full">
+	<div class="col-lg-6 col-sm-8 col-xs-10 col-md-6 oc-t6b4c9x0a2w">
 	{% for x in contact_us %}
 		<span class="eu-5m3o8j12mn3j">{{x.title}}</span>
 		<span class="wq-m2n1b7v5c8zk">{{x.address}}</span>
@@ -9,7 +9,8 @@
 	</div>
 	<div class="col-lg-3 col-md-3 col-sm-2 col-xs-1"></div>
 
-<div class="write-to-us">
+<div class="write-to-us col-lg-12 col-md-12 col-xs-12 col-sm-12">
+	<center><span class="jl-l23ml1k231v">WRITE TO US</span></center>
 	<form method="post">
 	{% csrf_token %}
 	{{ form.as_p }}
@@ -18,7 +19,9 @@
 {% endautoescape %}
 <style type="text/css">
 	.te-n6m21mk113kl{font-family: 'Orbitron';}
-	.mg-j1n4a9u8q4tp{}
 	.eu-5m3o8j12mn3j{font-variant: small-caps;font-size: 20px;font-weight: bold;color: rgb(200,63,34);}
 	.wq-m2n1b7v5c8zk{color:grey;}
+	.write-to-us{min-height: 30vh;padding: 5vh 10vw;background: rgb(200,45,32);border-bottom: 15px inset rgb(206, 24, 24);border-top: 5px outset rgb(206,24,24);}
+	.oc-t6b4c9x0a2w{background: #FFF;box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.2), 0px 6px 20px 0px rgba(0, 0, 0, 0.19) !important;padding: 15px;margin: 15px;overflow: hidden;}
+	.jl-l23ml1k231v{font-family: 'Orbitron'; font-size: 32px; color: white;}
 </style>
