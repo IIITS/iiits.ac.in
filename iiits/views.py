@@ -34,6 +34,10 @@ class About(TemplateView):
 		context['template_location'] =templates['site']['about']['location']
 		context['template_reaching_iiit'] =templates['site']['about']['reaching_iiit']
 		context['template_contact_us'] =templates['site']['about']['contact_us']
+		try:
+			context['si_location_iiit_map'] = StaticImages.objects.get(identifier='location_iiit_map')
+		except ObjectDoesNotExist:
+			donothing=True
 		return context
 
 class Academics(TemplateView):
