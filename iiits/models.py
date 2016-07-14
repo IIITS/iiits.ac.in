@@ -357,3 +357,9 @@ class CampusLifeSubEntity(Model):
 	show_links=BooleanField(default=False)
 	def __str__(self):
 		return self.title+ " : "+ str(self.belongs_to)
+		
+class ContactAddress(Model):
+	title = CharField(max_length=255)
+	address = RichTextField()
+	def __str__(self):
+		return self.title

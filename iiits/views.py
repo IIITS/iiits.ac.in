@@ -38,6 +38,11 @@ class About(TemplateView):
 			context['si_location_iiit_map'] = StaticImages.objects.get(identifier='location_iiit_map')
 		except ObjectDoesNotExist:
 			donothing=True
+		context['contact_us']= ContactAddress.objects.all()
+		try:
+			context['admissions_help_desk']=Config.objects.get(property_name='admissions_help_desk')	
+		except ObjectDoesNotExist:
+			context['admissions_help_desk']= "Not Available at the moment."
 		return context
 
 class Academics(TemplateView):
