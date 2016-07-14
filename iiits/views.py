@@ -480,4 +480,9 @@ def login_view(request):
 	else:		
 		return JsonResponse({"code":300,"message":"Email or Password incorrect!"})
     	return HttpResponseRedirect('/')
-    
+def write_to_us(request):
+   	name = request.POST['name']
+   	email = request.POST['email']
+   	phone = request.POST['phone']
+   	query = request.POST['query']
+   	return HttpResponse({"message":"success"})

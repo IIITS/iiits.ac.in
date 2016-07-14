@@ -363,3 +363,10 @@ class ContactAddress(Model):
 	address = RichTextField()
 	def __str__(self):
 		return self.title
+class WriteToUsQuery(Model):
+	name = CharField(max_length=255)
+	email = CharField(max_length=255)
+	phone = CharField(max_length=20)
+	query = TextField()
+	time = DateTimeField(auto_now_add=True)		
+	
