@@ -145,3 +145,9 @@ def beautifyCLSE(clse):
 		results.append(tempdict[x])
 
 	return results		
+def get_by_slug( slug):
+		ts = TopStory.objects.all()
+		for x in ts:
+			if x.slug() == slug	:
+				return x 
+		return None	

@@ -326,7 +326,8 @@ class TopStory(Model):
 	def profile(self):
 		return "/mediaroom/topstories/"+slugify(self.title)
 	def slug(self):
-		return slugify(self.title)		
+		return slugify(self.title)	
+			
 
 ######################
 # Campus Life Models #

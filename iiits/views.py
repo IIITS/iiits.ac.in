@@ -270,8 +270,11 @@ class MediaRoom(TemplateView):
 		return context
 class TopStoryProfile(TemplateView):
 	template_name = templates['site']['mediaroom']['topstory-profile']		
-	def get_context_data(self, **kwargs):
+	def get_context_data(self, *args, **kwargs):
 		context = super(TopStoryProfile,self).get_context_data(**kwargs)
+		context['base']=templates['base']['root']
+		query = self.request.GET['q']
+		context['story'] = get_by_slug(slug=query)
 		return context
 class NewsRoom(TemplateView):	
 	template_name = templates['site']['news']['home']
