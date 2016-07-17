@@ -1,8 +1,6 @@
 from django.contrib import admin
 from iiits.models import *
 
-
-
 admin.site.register(AcademicsProgramme)
 admin.site.register(AcademicsResources)
 admin.site.register(AcademicsTimeTable)
