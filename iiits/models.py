@@ -315,25 +315,18 @@ class CareerFacultyPosition(Career, Model):
 	def __str__(self):
 		return self.title
 class TopStory(Model):
-	title=CharField(max_length=20)
+	title=CharField(max_length=255)
 	image= ImageField(upload_to='iiits/static/iiits/images/topstories/')
 	body= RichTextField()
 	show_on_home_page= BooleanField(default=False)
 	date= DateTimeField(auto_now_add=True, editable=True)
 	def __str__(self):
 		return self.title
-	def getLink(self):
-		AllNews = News.objects.all()
-		position = 0
-		for x in range(1, len(AllNews)+1, 1):
-			if AllNews[x-1] == self.news_link:
-				position = x
-				break
-		NEWS_PAGINATION_MAX_ENTRIES = int(values['NEWS_PAGINATION_MAX_ENTRIES'])	
-		page = math.ceil((position*1.0 )/(NEWS_PAGINATION_MAX_ENTRIES*1.0))
-		return "mediaroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
+
 	def profile(self):
-		return "mediaroom/topstories/"+slugify(self.news_link.title)	
+		return "mediaroom/topstories/"+slugify(self.title)
+	def slug(self):
+		return slugify(self.title)		
 
 ######################
 # Campus Life Models #
