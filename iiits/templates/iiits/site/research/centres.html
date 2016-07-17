@@ -10,7 +10,7 @@
 			<div class="col-lg-11 col-sm-11 col-xs-11 col-md-11">
 				<ul class="mb-mk542nl1q">
 				{% for centre in alpha.centres %}
-					<li><a href="{{centre.get_url}}">{{ centre.title}}</a></li>
+					<li><a href="{{centre.get_url}}?q={{centre.title |slugify}}&amp;code={{centre.code}}">{{ centre.title}}</a></li>
 				{% endfor %}
 				</ul>
 			</div>

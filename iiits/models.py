@@ -189,7 +189,7 @@ class ResearchCentre(Model):
 	def __str__(self):
 		return self.title
 	def get_url(self):
-		return "/research/centres/"+slugify(self.title)+"/"	
+		return "/research/centres/"+slugify(self.title)	
 
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)

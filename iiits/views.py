@@ -450,6 +450,9 @@ class ResearchCentreProfile(TemplateView):
 			context['user_active']=True
 			context['user']=self.request.user
 		context['base'] = templates['base']['root']
+		q = self.request.GET.get('code')
+		rc = ResearchCentre.objects.get(code=q)
+		context['title']= rc.title
 		return context
 
 class StudentProfile(TemplateView): 		
