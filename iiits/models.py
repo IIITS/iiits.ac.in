@@ -196,10 +196,10 @@ class ResearchCentre(Model):
 
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
-	background = ImageField(upload_to=static_locations['ResearchPortfolio'])
-	description = RichTextField()
-	faculty = RichTextField()
-	people = RichTextField()	
+	background = ImageField(upload_to=static_locations['ResearchPortfolio'], null=True, blank=True)
+	description = RichTextField(default="Sorry, description unavailable at the moment.")
+	faculty = RichTextField(default='')
+	people = RichTextField(default='')	
 	def __str__(self):
 		return self.centre
 class ResearchPortfolio(Model):
