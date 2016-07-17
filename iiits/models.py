@@ -324,7 +324,7 @@ class TopStory(Model):
 		return self.title
 
 	def profile(self):
-		return "mediaroom/topstories/"+slugify(self.title)
+		return "/mediaroom/topstories/"+slugify(self.title)
 	def slug(self):
 		return slugify(self.title)		
 
