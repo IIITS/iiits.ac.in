@@ -1,6 +1,6 @@
 from django.contrib import admin
 from iiits.models import *
-from imagekit.admin import AdminThumbnail
+
 
 class FacultyAdmin(admin.ModelAdmin ):
     list_display = ('__str__', 'admin_thumbnail')
@@ -21,7 +21,7 @@ admin.site.register(ConsultancyContract)
 admin.site.register(ContactAddress)
 admin.site.register(Config)
 admin.site.register(Department)
-admin.site.register(Faculty, FacultyAdmin)
+admin.site.register(Faculty)
 admin.site.register(FacultyTitle)
 admin.site.register(ImageSlider)
 admin.site.register(Institute)
