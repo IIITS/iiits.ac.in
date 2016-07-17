@@ -1,4 +1,51 @@
 {% extends base %}
+{%load staticfiles %}
+{% block title %}
+<title>Media | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
+{% block main %}
+<div class="container-fluid">
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 iiits-sidenav">
+		<div class="iiits-logo-sidenav">
+				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
+		</div>
+		<ul>
+			<li id="sn-topstories">
+				<a  href="#topstories" onclick="slideTo(topstories)">
+					TOP STORIES
+				</a>
+			</li>	
+			<li id="sn-newsletter">
+				<a  href="#newsletter" onclick="slideTo(postgrad)">
+					NEWSLETTER
+				</a>
+			</li>
+			<li id="sn-gallery">
+				<a  href="#gallery" onclick="slideTo(gallery)">
+					GALLERY
+				</a>
+			</li>
+		</ul>		
+	</div>
+	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
+		<div id="topstories">
+			{% include media_topstories %}
+		</div>
+		<div id="newsletter">
+			{% include media_newsletter %}
+		</div>
+		<div id="gallery">
+			{% include media_gallery %}
+		</div>
+	</div>	
+	<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2">
+  		<div class="right-nav">
+  		</div>
+	</div>	
+
+</div>
+{% endblock %}
 {% block footer %}
 	{% include 'iiits/build/home-footer.html' %}
 {% endblock %}

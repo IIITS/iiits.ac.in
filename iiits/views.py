@@ -261,6 +261,9 @@ class MediaRoom(TemplateView):
 		
 		context['base']=templates['base']['root']
 		context['mast'] = templates['build']['mast']
+		context['media_topstories'] = templates['site']['mediaroom']['topstories']
+		context['media_newsletter'] = templates['site']['mediaroom']['newsletter']
+		context['media_gallery'] = templates['site']['mediaroom']['gallery']
 		context['MAST_TEXT']="Media"
 		return context
 

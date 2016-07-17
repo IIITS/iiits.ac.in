@@ -97,7 +97,10 @@ templates={
 			"teaching":"iiits/site/faculty/teaching.html",
 		},
 		"mediaroom":{
-			"home":"iiits/site/mediaroom/home.html"
+			"home":"iiits/site/mediaroom/home.html",
+			"topstories":"iiits/site/mediaroom/topstories.html",
+			"newsletter":"iiits/site/mediaroom/newsletter.html",
+			"gallery":"iiits/site/mediaroom/gallery.html",
 		},
 		"news":{
 			"home":"iiits/site/news/home.html",
