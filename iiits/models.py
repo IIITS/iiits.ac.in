@@ -185,7 +185,6 @@ class AcademicsResources(Model):
 class ResearchCentre(Model):
 	code = CharField(db_index=True, max_length=20)
 	title= CharField(db_index=True, max_length=150)
-	background=ImageField(blank=True, null=True, upload_to=static_locations['ResearchCentre'])
 	research_areas= RichTextField()
 	def __str__(self):
 		return self.title
@@ -195,6 +194,7 @@ class ResearchCentre(Model):
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
 	description = RichTextField()
+	faculty = RichTextField()
 	people = RichTextField()	
 	def __str__(self):
 		return self.centre

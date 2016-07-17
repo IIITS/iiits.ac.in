@@ -84,7 +84,20 @@ def getAllResearchCentres():
 	return ResearchCentre.objects.order_by('title')
 	
 def getAllResearchAreas():
-	return ResearchArea.objects.order_by('title')
+	results = dict()
+	ra = ResearchArea.objects.order_by('title')
+	for x in xrange(ra.count()):
+		alpha = ra[x].title[0]
+		if alpha.upper() not in results.keys():
+			results[alpha.upper()]=list()
+		results[alpha.upper()].append(ra[x])
+	final = list()
+	for x in results.keys():
+		final.append({
+			'alpha':x,
+			'centres':results[x]
+			})
+	return final	
 def beautifyPublications(pub):
 	results = list()
 	for _p in xrange(0, pub.count()):
@@ -118,9 +131,6 @@ def getPublications():
 
 def getPublicationsByYear(year):
 	return Publication.objects.filter(year=year)
-
-def getPublicationsByAuthor(author):
-	pass
 
 def getListOfScholars():
 	return ResearchStudent.objects.order_by('user__first_name')
