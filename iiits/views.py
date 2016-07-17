@@ -265,6 +265,8 @@ class MediaRoom(TemplateView):
 		context['media_newsletter'] = templates['site']['mediaroom']['newsletter']
 		context['media_gallery'] = templates['site']['mediaroom']['gallery']
 		context['MAST_TEXT']="Media"
+		topstories = TopStory.objects.order_by('-date')
+		context['topstories'] = topstories
 		return context
 class TopStoryProfile(TemplateView):
 	template_name = templates['site']['mediaroom']['topstory-profile']		

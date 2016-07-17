@@ -28,7 +28,7 @@
 			</li>
 		</ul>		
 	</div>
-	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-10">
+	<div class="col-lg-9 col-md-9 col-sm-9 col-xs-10 top-margin">
 		<div id="topstories">
 			{% include media_topstories %}
 		</div>
@@ -40,6 +40,9 @@
 		</div>
 	</div>	
 </div>
+<style>
+	.top-margin{margin-top:40px;}
+</style>
 {% endblock %}
 {% block footer %}
 	{% include 'iiits/build/home-footer.html' %}

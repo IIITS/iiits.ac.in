@@ -1,0 +1,44 @@
+{% load staticfiles %}
+{% for z in topstories %}
+<div class="col-lg-4 col-sm-12 col-md-4 col-xs-12">
+	<div class="topstory-image" style="background:url('{{z.image.url}}')"></div>
+	<div class="topstory-date">{{z.date.date }}</div>	
+	<div class="topstory-title"><span>{{z.title}}</span></div>
+	<div class="topstory-body">{% autoescape off %}{{z.body | truncatewords:40}}{% endautoescape %}</div>
+	<a href="{{z.profile}}"><button class="topstory-readmore" id="{{z.slug}}">Read More</button></a>
+</div>
+{% endfor %}
+<style>
+	.topstory-image{
+		width:100%;
+		min-height: 175px;
+	}
+	.topstory-title span{
+		font-size: 26px;
+font-weight: bold;
+font-family: 'LibreBaskerville','sans-serif';
+	}
+	.topstory-date{
+		font-variant: small-caps;
+color: #95917f;
+font-size: 15px;
+font-weight: bolder;
+margin: 5px 0;
+	}
+	.topstory-body{
+		font-size: 13px;
+		padding: 5px 0px ;
+	}
+	.topstory-readmore{
+		background: black;
+		color:white;
+		padding: 5px 15px;
+		border-radius:25px;
+		border: 1px solid black;
+	}
+	.topstory-readmore:hover{
+		background-color: white;
+		color: black;
+		cursor:pointer;
+	}
+</style>
