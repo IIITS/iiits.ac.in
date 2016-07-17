@@ -87,7 +87,8 @@ def getAllResearchAreas():
 	return ResearchArea.objects.order_by('title')
 def beautifyPublications(pub):
 	results = list()
-	for p in pub:
+	for _p in xrange(0, pub.count()):
+		p = pub[_p]
 		P= dict()
 		P['display_authors']=True
 		P['display_link']=True
@@ -127,7 +128,8 @@ def getListOfScholars():
 def beautifyCLSE(clse):
 	results = list()
 	tempdict = dict()
-	for x in clse:
+	for _x in xrange(0,clse.count()):
+		x = clse[_x]
 		cd = x.belongs_to.code
 		if cd not in tempdict.keys():
 			tempdict[cd] = dict()
@@ -147,7 +149,8 @@ def beautifyCLSE(clse):
 	return results		
 def get_by_slug( slug):
 		ts = TopStory.objects.all()
-		for x in ts:
+		for _x in xrange(0, ts.count()):
+			x = ts[_x]
 			if x.slug() == slug	:
 				return x 
 		return None	
