@@ -1,31 +1,41 @@
 {% autoescape off %}
 <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 	<center><h4>List of Research Centres</h4></center>
-	<center class="col-lg-12 col-sm-12 col-md-12 col-xs-12"> 
+	<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12"> 
 	{% for alpha in centres %}
 		<div class="col-lg-12 col-sm-12 col-xs-12 col-md-12">
-		<div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">
-			<span class="ik-m2k1n21bw">{{ alpha.alpha }}</span>
-		</div>
-		<div class="col-lg-11 col-sm-11 col-xs-11 col-md-11">
-			<ul class="mb-mk542nl1q">
-			{% for centre in alpha.centres %}
-				<li><a href="{{centre.get_url}}">{{ centre.title}}</li>
-			{% endfor %}
-		</div>	
-	{% empty %}
+			<div class="col-lg-1 col-md-1 col-xs-1 col-sm-1">
+				<span class="ik-m2k1n21bw">{{ alpha.alpha }}</span>
+			</div>
+			<div class="col-lg-11 col-sm-11 col-xs-11 col-md-11">
+				<ul class="mb-mk542nl1q">
+				{% for centre in alpha.centres %}
+					<li><a href="{{centre.get_url}}">{{ centre.title}}</a></li>
+				{% endfor %}
+				</ul>
+			</div>
+		</div>		
+		{% empty %}
 
 	{% endfor %}
-	</center>
+	</div>
 </div>
 <div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
   <div class="right-nav">
   </div>
 </div>	
 <style type="text/css">
-	.ik-m2k1n21bw{}
-	.mb-mk542nl1q{}
-	.mb-mk542nl1q li{}
+	.ik-m2k1n21bw{font-family: 'Open Sans Condensed', sans-serif;
+font-weight: bold;
+font-size: 32px;
+color: rgb(198, 15, 54);}
+	.mb-mk542nl1q{font-family: 'Roboto Condensed' ,sans-serif;
+font-size: 16px;
+border-left: 5px solid rgb(198, 15, 54);
+list-style: none;
+padding: 0px 15px;
+margin-top: 10px;}
+	.mb-mk542nl1q li a{color:black;} .mb-mk542nl1q li a:hover{cursor:pointer;}
 </style>
 {% endautoescape %}
 	

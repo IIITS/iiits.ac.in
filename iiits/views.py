@@ -397,7 +397,7 @@ class Research(TemplateView):
 		context['research_scholars'] = templates['site']['research']['scholars']
 		context['centres'] = getAllResearchCentres()
 		print context['centres']
-		context['areas'] = getAllResearchAreas()
+		context['r_areas'] = getAllResearchAreas()
 		publications = getPublications()
 		page = self.request.GET.get('page')
 		try:

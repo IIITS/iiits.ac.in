@@ -81,8 +81,20 @@ def getAllVisitingFaculty():
 def getAllStaff():
 	return Staff.objects.order_by('user__first_name')
 def getAllResearchCentres():
-	return ResearchCentre.objects.order_by('title')
-	
+	results = dict()
+	ra = ResearchCentre.objects.order_by('title')
+	for x in xrange(ra.count()):
+		alpha = ra[x].title[0]
+		if alpha.upper() not in results.keys():
+			results[alpha.upper()]=list()
+		results[alpha.upper()].append(ra[x])
+	final = list()
+	for x in results.keys():
+		final.append({
+			'alpha':x,
+			'centres':results[x]
+			})
+	return final
 def getAllResearchAreas():
 	results = dict()
 	ra = ResearchArea.objects.order_by('title')
@@ -95,7 +107,7 @@ def getAllResearchAreas():
 	for x in results.keys():
 		final.append({
 			'alpha':x,
-			'centres':results[x]
+			'areas':results[x]
 			})
 	return final	
 def beautifyPublications(pub):
