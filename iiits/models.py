@@ -6,8 +6,7 @@ from iiits.config import values, static_locations
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
 import math
-from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFill
+
 from django.utils.timezone import now, timedelta
 class Config(Model):
 	property_name  = CharField(max_length=50)
@@ -38,8 +37,7 @@ class ResearchArea(Model):
 		
 class Faculty(Model):
 	user = OneToOneField(User)
-	photo=ProcessedImageField(upload_to='iiits/static/iiits/images/faculty/',
-		processors=[ResizeToFill(80, 80)], format='JPEG', options={'quality': 90})
+	photo=ImageField(upload_to='iiits/static/iiits/images/faculty/')
 	title = ForeignKey(FacultyTitle)
 	research_areas = RichTextField(default='Not available')
 	department = ForeignKey(Department)

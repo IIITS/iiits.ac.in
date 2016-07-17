@@ -2,10 +2,7 @@ from django.contrib import admin
 from iiits.models import *
 
 
-class FacultyAdmin(admin.ModelAdmin ):
-    list_display = ('__str__', 'admin_thumbnail')
-    admin_thumbnail = AdminThumbnail(image_field='photo')
-    
+
 admin.site.register(AcademicsProgramme)
 admin.site.register(AcademicsResources)
 admin.site.register(AcademicsTimeTable)
