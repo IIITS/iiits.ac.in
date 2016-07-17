@@ -266,7 +266,11 @@ class MediaRoom(TemplateView):
 		context['media_gallery'] = templates['site']['mediaroom']['gallery']
 		context['MAST_TEXT']="Media"
 		return context
-
+class TopStoryProfile(TemplateView):
+	template_name = templates['site']['mediaroom']['topstory-profile']		
+	def get_context_data(self, **kwargs):
+		context = super(TopStoryProfile,self).get_context_data(**kwargs)
+		return context
 class NewsRoom(TemplateView):	
 	template_name = templates['site']['news']['home']
 	

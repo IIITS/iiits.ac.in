@@ -101,6 +101,7 @@ templates={
 			"topstories":"iiits/site/mediaroom/topstories.html",
 			"newsletter":"iiits/site/mediaroom/newsletter.html",
 			"gallery":"iiits/site/mediaroom/gallery.html",
+			"topstory-profile":"iiits/site/mediaroom/topstory-profile.html"
 		},
 		"news":{
 			"home":"iiits/site/news/home.html",
