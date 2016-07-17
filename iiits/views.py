@@ -453,6 +453,8 @@ class ResearchCentreProfile(TemplateView):
 		q = self.request.GET.get('code')
 		rc = ResearchCentre.objects.get(code=q)
 		context['title']= rc.title
+		context['rcp'] = rc.get_profile()
+
 		return context
 
 class StudentProfile(TemplateView): 		

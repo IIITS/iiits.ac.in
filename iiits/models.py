@@ -190,9 +190,13 @@ class ResearchCentre(Model):
 		return self.title
 	def get_url(self):
 		return "/research/centres/"+slugify(self.title)	
+	def get_profile(self):
+		return ResearchCentreProfile.objects.get(centre=self)
+		
 
 class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
+	background = ImageField(upload_to=static_locations['ResearchPortfolio'])
 	description = RichTextField()
 	faculty = RichTextField()
 	people = RichTextField()	
