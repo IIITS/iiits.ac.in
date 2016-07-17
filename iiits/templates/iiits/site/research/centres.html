@@ -5,8 +5,8 @@
 	{% for centre in centres %}
 		<a href="{{centre.get_url}}">
 			<div class="profiler">
-				<div class="iiits-cube"
-					 style="background:url({{centre.background.url}}); background-position:center;">
+				<div class="iiits-cube">
+					 <img src="{{centre.background.url}}"  width="100%">
 				</div>	
 				<div class="iiits-cube-text">
 					<center>{{centre.title}}</center>

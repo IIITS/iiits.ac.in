@@ -5,8 +5,8 @@
 {% for area in areas %}
 	<a href="{{area.get_url}}">
 		<div class="profiler">
-			<div class="iiits-cube" 
-				 style="background:url({{area.background.url}}); background-position:center;">
+			<div class="iiits-cube"> 
+				<img src="{{area.background.url}}" width="100%">
 			</div> 	
 			<div class="iiits-cube-text">
 				<center>{{area.title}}</center>
