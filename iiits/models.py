@@ -318,8 +318,8 @@ class TopStory(Model):
 	title=CharField(max_length=20)
 	image= ImageField(upload_to='iiits/static/iiits/images/topstories/')
 	body= RichTextField()
-	news_link=ForeignKey(News)
 	show_on_home_page= BooleanField(default=False)
+	date= DateTimeField(auto_now_add=True, editable=True)
 	def __str__(self):
 		return self.title
 	def getLink(self):
@@ -331,7 +331,9 @@ class TopStory(Model):
 				break
 		NEWS_PAGINATION_MAX_ENTRIES = int(values['NEWS_PAGINATION_MAX_ENTRIES'])	
 		page = math.ceil((position*1.0 )/(NEWS_PAGINATION_MAX_ENTRIES*1.0))
-		return "newsroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
+		return "mediaroom/?page="+ str(int(page)) + "#"+slugify(self.news_link.title)
+	def profile(self):
+		return "mediaroom/topstories/"+slugify(self.news_link.title)	
 
 ######################
 # Campus Life Models #
