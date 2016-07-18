@@ -215,9 +215,9 @@ class Home(TemplateView):
 			
 		}
 		try:
-			context['headlines']=News.objects.order_by('-date')[0:5]
+			context['headlines']=NewsStory.objects.order_by('-date')[0:5]
 		except IndexError as error:
-			news =  News.objects.order_by('-date')
+			news =  NewsStory.objects.order_by('-date')
 			context['headlines']=news[0:news.length]	
 		return context
 
