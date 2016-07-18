@@ -54,8 +54,7 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'iiits_config.wsgi.application'
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 DATABASES = {
     'default': {

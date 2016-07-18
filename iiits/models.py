@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 from django.conf import settings
 from django.db.models import *
+from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from iiits.config import values, static_locations
 from django.utils.text import slugify
@@ -198,10 +199,34 @@ class ResearchCentreProfile(Model):
 	centre = ForeignKey(ResearchCentre)
 	background = ImageField(upload_to=static_locations['ResearchPortfolio'], null=True, blank=True)
 	description = RichTextField(default="Sorry, description unavailable at the moment.")
-	faculty = TextField(default='')
-	people = TextField(default='')	
+	faculty = TextField(default='#')
+	people = TextField(default='#')	
 	def __str__(self):
-		return self.centre
+		return str(self.centre)
+
+	def get_faculty_list(self):
+		fac = self.faculty.split('#')
+		results = []
+		for x in fac:
+			try:
+				results.append(Faculty.objects.get(user__username=x))
+			except ObjectDoesNotExist:
+				pass
+		return results
+			
+	def get_people_list(self):
+		peo = self.people.split('#')
+		results = []
+		for x in peo:
+			try:
+				results.append(ResearchStudent.objects.get(user__username=x))
+			except ObjectDoesNotExist:
+				try:
+					results.append(Student.objects.get(user__username=x))
+				except:
+					pass
+		return results	
+
 class ResearchPortfolio(Model):
 	research_areas = RichTextField()
 	faculty = RichTextField(null=True, blank=True)

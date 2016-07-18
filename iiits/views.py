@@ -396,7 +396,6 @@ class Research(TemplateView):
 		context['research_publications'] = templates['site']['research']['publications']
 		context['research_scholars'] = templates['site']['research']['scholars']
 		context['centres'] = getAllResearchCentres()
-		print context['centres']
 		context['r_areas'] = getAllResearchAreas()
 		publications = getPublications()
 		page = self.request.GET.get('page')
@@ -453,7 +452,10 @@ class ResearchCentreProfile(TemplateView):
 		q = self.request.GET.get('code')
 		rc = ResearchCentre.objects.get(code=q)
 		context['title']= rc.title
-		context['rcp'] = rc.get_profile()
+		rcp  = rc.get_profile()
+		context['rcp'] = rcp
+		context['faculty_list'] = rcp.get_faculty_list()
+		context['people_list'] = rcp.get_people_list()
 
 		return context
 

@@ -83,13 +83,15 @@ def getAllStaff():
 def getAllResearchCentres():
 	results = dict()
 	ra = ResearchCentre.objects.order_by('title')
+	
 	for x in xrange(ra.count()):
 		alpha = ra[x].title[0]
 		if alpha.upper() not in results.keys():
 			results[alpha.upper()]=list()
 		results[alpha.upper()].append(ra[x])
 	final = list()
-	for x in results.keys():
+	for x in sorted(results.keys()):
+		print x
 		final.append({
 			'alpha':x,
 			'centres':results[x]
@@ -104,7 +106,7 @@ def getAllResearchAreas():
 			results[alpha.upper()]=list()
 		results[alpha.upper()].append(ra[x])
 	final = list()
-	for x in results.keys():
+	for x in sorted(results.keys()):
 		final.append({
 			'alpha':x,
 			'areas':results[x]
