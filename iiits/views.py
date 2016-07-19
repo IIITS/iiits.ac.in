@@ -209,9 +209,8 @@ class Home(TemplateView):
 			context['user']=self.request.user
 		image_slider = ImageSlider.objects.order_by('order_no')
 		context = {
-			'image_slider_no':[x for x in range(1,image_slider.count() +1, 1)],
-			'image_slider_images':image_slider,
 			'topstories': TopStory.objects.filter(show_on_home_page=True),
+			'image_slider_no':[ x for x in range(1, ImageSlider.objects.all().count() + 1)],
 			
 		}
 		try:
@@ -506,3 +505,19 @@ def write_to_us(request):
    	phone = request.POST['phone']
    	query = request.POST['query']
    	return HttpResponse({"message":"success"})
+
+def image_slider_number(request):	return JsonResponse({"sliders":ImageSlider.objects.all().count()})
+
+def image_slider(request):
+	q = request.GET['q'];
+	try:
+		obj = ImageSlider.objects.get(order_no=str(q))
+		return JsonResponse({
+			"status":"200",
+			"id":int(obj.order_no),
+			"src":obj.image.url,
+			"caption":obj.caption,
+			"q":int(q),
+			})
+	except ObjectDoesNotExist:
+		return JsonResponse({"status":"500"})

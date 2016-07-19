@@ -44,21 +44,21 @@ html,body {height: 90%; background:white;}
 h1, h2, h3, h4, h5, h6{color: #dd4b39;}
 a{color:#3aa4b1;}
 a:hover{cursor: pointer; opacity: 0.8;}
-  .box{margin-top: 5vh;}
-  .box-header{background-color: #800;color: white;height: 40px;padding: 5px;font-size: 20px;border-top-right-radius: 5px;border-top-left-radius: 5px;}
-  .box-body{border: 1px solid #800;padding: 20px;border-bottom-right-radius:5px;border-bottom-left-radius: 5px; }
+  .box{background: #e09181; color:white; font-family: 'Orbitron'; border-top: 5px solid #9E4040;border-top-left-radius: 5px;border-top-right-radius: 5px;padding: 10px 20px;}
+  .box-header{height: 40px;padding: 5px;font-size: 20px;}
+  .box-body{padding:5px 0; }
   .brand-text-l1{   font-family: "Open Sans Condensed",sans-serif;color: white;font-size: 28px;font-variant: small-caps;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
   .btn-333{background: #333; color:white; font-family: 'Orbitron';}
   .btn-333:hover{color: white; opacity: 0.8;}
   .btn-panel-home{color: #dd4b39;font-size: 15px; font-weight: bold;    background: white;}
-  
+  .caption{color:white; padding: 0 15px;}
   .card-title{font-weight:bold !important; font-size: 32px;    letter-spacing: -0.61111pt;    font-weight: 400;    margin-bottom: .3em;  font-family: 'Orbitron';color:#800000;}
   .card-text{font-size: 18px;color: rgb(84, 73, 73);font-family: "LibreBaskerville";letter-spacing: 0.125em;line-height: 1.45em;}
   .carousel,.item,.active {    height: 90%;}
   .carousel-inner {    height: 110%;}
   .carousel-indicators {    bottom:5%;}
-  .carousel-caption{  background:#000;  opacity: 0.6;  right:0%;  left:0%;}
+  .carousel-caption{  background: #335568; font-family: 'Open Sans Condensed'}
   .carousel-indicators li{background-color: rgba(0, 0, 0, 0);border: 1px solid #fff;  border-radius: 0px;cursor: pointer;display: inline-block;height: 10px;  margin: 1px;text-indent: -999px;  width: 10px;}
   .center-aligned{margin-top:20%;margin-left:25%;}  
   .circle{border-radius:50%; height:120px; width:120px; margin:15px 0px; }

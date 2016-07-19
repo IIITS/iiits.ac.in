@@ -27,6 +27,8 @@ urlpatterns = [
     #AJAX CALLS
     url(r'^campuslife/get_cl_codes/$',views.get_cl_codes, name='get_campus_life_entitty_codes'),
     url(r'^stafflist/$', views.staff_list, name='stafflist'),
+    url(r'^get/image-slider/images/$', views. image_slider, name='image-slider'),
+    url(r'^get/image-slider/sliders/$', views.image_slider_number, name='image-slider-number'),
     #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome'),
     url(r'^cms/publications/add/$', create.AddPublication.as_view(), name='add_publication')	
 ]
