@@ -42,6 +42,7 @@
 }
 html,body {height: 90%; background:white;}
 h1, h2, h3, h4, h5, h6{color: #dd4b39;}
+input{color:black !important;}
 a{color:#3aa4b1;}
 a:hover{cursor: pointer; opacity: 0.8;}
   .box{background: #e09181; color:white; font-family: 'Orbitron'; border-top: 5px solid #9E4040;border-top-left-radius: 5px;border-top-right-radius: 5px;padding: 10px 20px;}
@@ -61,7 +62,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .carousel-caption{  background: #335568; font-family: 'Open Sans Condensed'}
   .carousel-indicators li{background-color: rgba(0, 0, 0, 0);border: 1px solid #fff;  border-radius: 0px;cursor: pointer;display: inline-block;height: 10px;  margin: 1px;text-indent: -999px;  width: 10px;}
   .center-aligned{margin-top:20%;margin-left:25%;}  
-  .circle{border-radius:50%; height:120px; width:120px; margin:15px 0px; }
+  .circle{border-radius:50%; height:120px; width:120px; margin:15px 0px;border:1px solid #3ab3db; }
   .circle-name{color: #3aa4b1;font-family: 'Abel';font-size: 16px;font-weight: 900;letter-spacing: 0.001em;}
   .circle-designation{color:grey; font-size: 10px;}
   .circle-text{width: 140px;}
@@ -214,5 +215,5 @@ padding: 15px 15px;width: 12%;}
   .wrapper{  min-height: 76vh;}
   #iiits-faculty-header{    background: url('../images/red.png');    background-repeat: repeat-x;    height: 150px;}
  #open-options-div{position: absolute; top:5px;left:97%; z-index: 3010;}
- #login-form-container{background:white; color: #333;min-width: 20vw; max-width: 20vw; left:79vw;min-height: 100vh; top:0; max-height: 100vh; position: fixed; z-index: 3005;padding: 65px 15px;}
- #login-header{color:#333; font-family: 'Orbitron'; font-size: 20px; font-weight: bold;}
+ #login-form-container{background:white; font-family: 'Orbitron'; color: #333;min-width: 20vw; max-width: 20vw; left:79vw;min-height: 100vh; top:0; max-height: 100vh; position: fixed; z-index: 3005;padding: 65px 15px;}
+ #login-header{color:#333;  font-size: 20px; font-weight: bold;}

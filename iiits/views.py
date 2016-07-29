@@ -176,6 +176,7 @@ class FacultyProfile(TemplateView):
 	def get_context_data(self, **kwargs):
 		context = super(FacultyProfile,self).get_context_data(**kwargs)	
 		context['user_active']=False
+		context['can_edit'] = False
 		if self.request.user.is_active:
 			context['user_active']=True
 			context['user']=self.request.user
@@ -183,7 +184,12 @@ class FacultyProfile(TemplateView):
 		public_uri_name = getPublicURI(path)
 		try:
 			faculty=Faculty.objects.get(public_uri_name=public_uri_name)
-			
+			try: 
+				_fac =self.request.user.groups.get_by_natural_key('Faculty@IIITS')
+				if self.request.user.faculty.public_uri_name == public_uri_name:
+					context['can_edit']=True
+			except ObjectDoesNotExist:
+				pass
 			context['faculty']=faculty
 			context['search_status']=200
 		except ObjectDoesNotExist:
