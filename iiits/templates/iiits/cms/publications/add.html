@@ -3,25 +3,45 @@
 	<title>Add a publication - CMS@IIITS</title>
 {% endblock %}
 {% block main %}
- <form method="POST" enctype="multipart/form-data">
- 	{% csrf_token %}
- 	<div class="form-group">
- 	Title	
- 	</div>
- 	<div class="form-group">
- 		Description
- 	</div>
- 	<div class="form-group">
- 		Link
- 	</div>
- 	<div class="form-group">
- 		fileupload
- 	</div>
- 	<div class="form-group">
- 		year
- 	</div>
- 	<div class="form-group">
- 		keywords
- 	</div>
- </form>
+ <div class="container"> 
+ <div class="col-lg-3 col-sm-2 col-md-3 hidden-xs"></div>
+ <div class="col-lg-6 col-sm-8 col-md-6 col-xs-12">	
+ 	<form method="POST" enctype="multipart/form-data">
+ 		{% csrf_token %}
+ 		<div class="form-group">
+ 			<label>Title</label><br>
+ 			{{ form.title}}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>Description</label><br>
+ 			{{ form.description }}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>Link</label><br>
+ 			{{ form.link }}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>File Upload</label><br>
+ 			{{ form.fileupload}}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>Year</label><br>
+ 			{{ form.year }}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>Keywords</label><br>
+ 			{{ form.keywords }}
+ 		</div>
+ 		<div class="form-group">
+ 			<label>Authors</label><br>
+ 			{{ form.authors }}
+ 		</div>
+ 		<div class="form-group">
+ 		<button type="submit" class="btn btn-danger">Add Publication</button>
+ 		</div>
+ 	</form>
+ </div>
+ <div class="col-lg-3 col-sm-2 col-md-3 hidden-xs"></div>
+ </div>
+ <script type="text/javascript"></script>
 {% endblock %}

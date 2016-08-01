@@ -1,5 +1,5 @@
 from django.views.generic.edit import CreateView
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from iiits.config import templates, urls
 from iiits.mixins import AjaxableResponseMixin
 from iiits.models import *
@@ -26,3 +26,6 @@ class AddPublication(AjaxableResponseMixin, CreateView):
 
 def addStarPublication(request):
 	return HttpResponse("Hi")		
+
+def successPublication(request):
+	return HttpResponseRedirect('/faculty/')	

@@ -1,6 +1,11 @@
 import re
 import math
 from iiits.models import *
+def get_iterable_users(list_users):
+	Results = list()
+	for i in list_users:
+		Results.append(tuple([i.username, i.get_full_name()]))
+	return Results
 def chunksIntoThree(List):
 	sz = len(List)
 	L1 = list()
@@ -67,10 +72,11 @@ def getPageButtons(num_pages, curr_page, entries_per_page):
 
 def getAllPublicationsFaculty(public_uri_name):
 	Results = list()
+	faculty= Faculty.objects.get(public_uri_name=public_uri_name)
 	publications = Publication.objects.all()
 	for p in publications:
 		p_authors = p.authors.split(',')
-		if public_uri_name in p_authors:
+		if faculty.user.username in p_authors:
 			Results.append(p)
 	return Results			
 

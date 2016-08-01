@@ -52,6 +52,7 @@ a:hover{cursor: pointer; opacity: 0.8;}
   .brand-text-l2{    font-family: 'Orbitron', sans-serif;    font-size: 40px;    color:white;    font-variant: small-caps;}
   .btn-333{background: #333; color:white; font-family: 'Orbitron';}
   .btn-333:hover{color: white; opacity: 0.8;}
+  .btn-danger{background: #800; color:white !important; }
   .btn-panel-home{color: #dd4b39;font-size: 15px; font-weight: bold;    background: white;}
   .caption{color:white; padding: 0 15px;}
   .card-title{font-weight:bold !important; font-size: 32px;    letter-spacing: -0.61111pt;    font-weight: 400;    margin-bottom: .3em;  font-family: 'Orbitron';color:#800000;}

@@ -92,7 +92,7 @@ STATICFILES_DIRS = (
 )
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/iiits/files')
 MEDIA_URL = '/media/'
-LOGIN_REDIRECT_URL = '/cms/'
+LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = '/accounts/login/'
 LOGOUT_URL = LOGIN_REDIRECT_URL
 CKEDITOR_CONFIGS = {

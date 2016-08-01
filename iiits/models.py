@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from iiits.config import values, static_locations
 from django.utils.text import slugify
 from ckeditor.fields import RichTextField
+
 import math
 
 from django.utils.timezone import now, timedelta
@@ -246,12 +247,12 @@ class ResearchStudent(Model):
 		return self.photo.__bool__()
 class Publication(Model):
 	title= CharField(db_index=True,max_length=200)
-	description=RichTextField(default='NA')
-	link=RichTextField(default='NA')
+	description=TextField(default='NA')
+	link=TextField(default='NA')
 	fileupload = FileField(upload_to='iiits/static/files/publications/', null=True, blank=True)
 	year=CharField(db_index=True,max_length=4, choices=values['YEAR_PUBLICATIONS'])	
 	starred=BooleanField(db_index=True,default=False)
-	authors = RichTextField(default='NA')
+	authors = TextField(default='NA')
 	add_date = DateTimeField(auto_now_add=True, db_index=True)
 	keywords=TextField(default='NA')
 	def __str__(self):

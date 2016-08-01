@@ -501,9 +501,9 @@ def login_view(request):
 		if user.is_active:
 			login(request,user)
 		else:
-			return JsonResponse({"code":300,"message":"Email or Password incorrect!"})
+			return JsonResponse(json.dumps({"code":300,"message":"Email or Password incorrect!"}), safe=False)
 	else:		
-		return JsonResponse({"code":300,"message":"Email or Password incorrect!"})
+		return JsonResponse(json.dumps({"code":300,"message":"Email or Password incorrect!"}), safe=False)
     	return HttpResponseRedirect('/')
 def write_to_us(request):
    	name = request.POST['name']
