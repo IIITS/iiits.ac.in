@@ -45,7 +45,8 @@ urlpatterns = [
     url(r'^get/image-slider/sliders/$', views.image_slider_number, name='image-slider-number'),
     #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome'),
     url(r'^cms/publications/add/$', create.AddPublication.as_view(), name='add_publication'),
-    url(r'^success/add/publication/$', 	create.successPublication,  name='success_pub')
+    url(r'^success/add/publication/$', 	create.successPublication,  name='success_pub'),
+    url(r'^faculty/edit/profile/$', update.ChangeFacultyProfile.as_view(), name='changefaculty')
 ]
 
 if settings.SERVE_MEDIA:

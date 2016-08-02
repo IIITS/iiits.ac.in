@@ -19,9 +19,15 @@
 			<div class="iiits-profile-subheader">
 				<span>{{ faculty.title }}</span>
 			</div>
+			{% if can_edit %}
+				<div class="pull-right iiits-apply-now">
+				<a href="/faculty/edit/profile/" target="_blank"><button>Edit Profile</button></a>
+			</div>
+			{% else %}
 			<div class="pull-right iiits-apply-now">
 				<button>Apply for Research</button>
 			</div>
+			{% endif %}
 		</div>
 	</div>
 	<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="faculty-subnav">

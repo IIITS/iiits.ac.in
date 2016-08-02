@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 from django.db.models import Q
 from iiits.methods import get_iterable_users
 from django import forms
+from ckeditor.widgets import CKEditorWidget
 
 class SetPasswordForm(forms.Form):
     error_messages = {
@@ -125,3 +126,27 @@ class LoginForm(AuthenticationForm):
 			'placeholder':'Enter your password'
 			})
 		}	
+
+class EditFacultyProfileForm(ModelForm):
+	class Meta:
+		model = Faculty
+		fields = ['research_areas','contact','website','achievements','other_info', 'courses']
+		widgets = {
+				'research_areas':CKEditorWidget(attrs={'class':'form-control',
+										 'placeholder':'Interested areas of research'
+								}),
+				'contact':CKEditorWidget(attrs={'class':'form-control',
+										 'placeholder':'Your contact '
+								}),
+				'website':TextInput(attrs={'class':'form-control',
+										 'placeholder':'Please provide a link (if any)'
+								}),
+				'achievements':CKEditorWidget(attrs={'class':'form-control',
+										 'placeholder':'Achievements'
+								}),
+				'other_info':CKEditorWidget(attrs={'class':'form-control',
+										 'placeholder':'Other information about you'
+								}),
+				'courses':CKEditorWidget(attrs={'class': 'form-control',
+										 'placeholder':'Courses offered by you'})
+		}			

@@ -45,6 +45,9 @@ templates={
 		"publications":{
 			"add_publication":"iiits/cms/publications/add.html",
 			"added_success":"iiits/cms/publications/success.html"
+		},
+		"faculty":{
+			"profile":"iiits/cms/faculty/update.html"
 		}
 
 

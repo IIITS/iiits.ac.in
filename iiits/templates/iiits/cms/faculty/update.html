@@ -1,0 +1,17 @@
+{% extends 'iiits/base/base.html' %}
+{% load staticfiles %}
+{% block title %}<title>Edit My Profile : Faculty {{ request.user.get_full_name }}</title>{% endblock %}
+{% block main %}
+<div class="container">
+<script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+<script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+
+<div style="margin:20px 0px;" class="col-lg-6 col-sm-10 col-xs-10 col-md-6">
+	<form action="" method="post">{% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" class="btn-danger btn"value="Update Profile" />
+	</form>
+</div>	
+
+</div>
+{% endblock %}

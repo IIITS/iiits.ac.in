@@ -190,6 +190,8 @@ class FacultyProfile(TemplateView):
 					context['can_edit']=True
 			except ObjectDoesNotExist:
 				pass
+			except AttributeError as Error:
+				pass	
 			context['faculty']=faculty
 			context['search_status']=200
 		except ObjectDoesNotExist:
