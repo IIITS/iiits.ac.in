@@ -1,11 +1,18 @@
 from django.conf import settings
+<<<<<<< HEAD
 from django.conf.urls import *
+=======
+from django.conf.urls import url,include, patterns
+>>>>>>> d91a6c4794ef75e9177cc93f14e31d22b9fe2cd0
 from django.contrib import admin
 from iiits import views, create, delete, update, config
 from iiits.forms import PasswordChangeForm
 from django.contrib.auth.views import logout, password_change
 from django.contrib.auth.decorators import login_required
+<<<<<<< HEAD
 from django.views import static
+=======
+>>>>>>> d91a6c4794ef75e9177cc93f14e31d22b9fe2cd0
 urlpatterns = [
     url(r'^$', views.Home.as_view(), name='home'),
     url(r'^login/$', views.login_view, name='login'),
@@ -52,6 +59,11 @@ urlpatterns = [
 
 if settings.SERVE_MEDIA:
 	urlpatterns += (
+<<<<<<< HEAD
 		url(r'^static/(?P<path>.*)$', static.serve, {'document_root':settings.STATIC_ROOT}),
 		url(r'^media/(?P<path>.*)$', static.serve, {'document_root':settings.MEDIA_ROOT})
+=======
+		url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.STATIC_ROOT}),
+		url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT})
+>>>>>>> d91a6c4794ef75e9177cc93f14e31d22b9fe2cd0
 )
