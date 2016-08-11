@@ -2,7 +2,6 @@ from django.conf import settings
 
 from django.conf.urls import *
 
-from django.conf.urls import url,include, patterns
 from django.contrib import admin
 from iiits import views, create, delete, update, config
 from iiits.forms import PasswordChangeForm
