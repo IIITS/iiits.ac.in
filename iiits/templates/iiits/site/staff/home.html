@@ -1,0 +1,27 @@
+{% extends base %}
+{% block title %}
+<title>Staff | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
+{% block main %}
+
+	<div class="container">
+		<div class="row">
+			<center><h3>Staff at IIITS</h3></center>
+			<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				{% for x in staff_list %}
+					<div class="profiler">
+						<div class="circle" style="background:url('{{x.photo.url}}');background-position: 50%; background-repeat: no-repeat; background-size:120px; background-origin:content-box;">
+						</div>
+						<div class="circle-text">
+							<center class="circle-name"><b>{{x.user.get_full_name | capfirst |upper }}</b></center>
+							<center class="circle-designation">{{x.designation |upper}}</center>
+						</div>			
+					</div>							
+				{%endfor%}
+			</center>
+		</div>
+	</div>		
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
+{% endblock %}

@@ -1,0 +1,8 @@
+<h3><b>Academic Programmes</b></h3>
+{% for p in programmes %}
+	<p><span class="glyphicon glyphicon-book" aria-hidden="true"></span>&nbsp;{{ p.programme }}&nbsp;-&nbsp;{{p.seats}}</p> 
+{% empty %}
+ <p>Sorry, No data Available</p>
+{% endfor %} 
+<br>
+<p>{{ note_programmes.notes | linebreaks }}</p>

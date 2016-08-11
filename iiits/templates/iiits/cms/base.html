@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+	{% block head %}
+	<head>
+		{% block title %}
+		 	<title>{{title}}</title>
+		{% endblock %}
+		{% include 'iiits/base/cms_resources.html' %}
+	</head>
+	{% endblock %}
+	<body>
+		{% block topnav %}
+			{% include 'iiits/cms/nav.html' %}
+		{% endblock %}
+		{% block mast %}
+			
+		{% endblock %}
+		<div class="wrapper">
+			{% block main %}
+			
+			{% endblock %}
+		</div>
+		{% block footer %}
+			{% include 'iiits/build/cms-footer.html' %}
+		{% endblock %}
+	</body>
+</html>

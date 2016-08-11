@@ -1,0 +1,78 @@
+<div class="iiits-card-full iiits-padding-15">
+	<h3>Under Graduate Admissions</h3>
+	<p>Admission to Indian Institute of Information Technology is through Joint Seat Allocation Authority(JoSAA). All the interested candidates are requested to follow the admissions criteria explained on the JoSAA website.
+	</p> 	
+	<p>Seat allocation for different categories of students will be as per JoSAA norms. The institute has no role in seat allocation process. For any other queries, please write to admissions@iiits.in</p>
+</div>
+<div class="iiits-card-full">
+	<center>
+	<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
+			<span class="iiits-tab-text">
+				POLICY
+			</span>
+		</div>
+		<div class="iiits-tab-header-4" id="iiits-tab-link-1" onclick="tabNavigate(1)">
+			<span class="iiits-tab-text">
+				FEE STRUCTURE
+			</span>
+		</div>
+		<div class="iiits-tab-header-4" id="iiits-tab-link-2" onclick="tabNavigate(2)">
+			<span class="iiits-tab-text">
+				FINANCIAL ASSISTANCE
+			</span>
+		</div>
+	</center>
+	
+		<div class="iiits-padding-25" id="iiits-tab-content-0">
+			<h4><b>Policy</b></h4>
+			<p>{{ policy.notes | linebreaks }}</p>
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-1">
+			<p><b>Fee structure for the academic year {{ fee_structure.academic_year }}</b></p>
+			<table class="table table-striped table-hover table-responsive">
+				<tr>
+					<td>Tution Fee</td>
+					<td>{{fee_structure.tution_fee | linebreaks}}</td>
+				</tr>
+				<tr>
+					<td>Admission Fee</td>
+					<td>{{fee_structure.admission | linebreaks}}</td>
+				</tr>
+				<tr>
+					<td>Caution Deposit</td>
+					<td>{{fee_structure.caution_deposit | linebreaks}}</td>
+				</tr>
+				<tr>
+					<td>Hostel, Water and Electric Charges</td>
+					<td>{{fee_structure.hostel_water_electric | linebreaks}}</td>
+				</tr>
+				<tr>
+					<td>Mess Fee</td>
+					<td>{{fee_structure.mess | linebreaks}}</td>
+				</tr>
+				<tr>
+					<td>Text books</td>
+					<td>{{fee_structure.textbooks | linebreaks}}</td>
+				</tr>
+			</table>
+			<br><h5><b> Mode of Payment </b></h5>
+			{% for fmop in fee_mode_of_payment %}
+				<p><b>{{fmop.title }}</b></p>
+				<p>{{ fmop.description | linebreaks }}</p>
+			{% empty %}
+				<p>Sorry No modes are available</p>
+			{% endfor %}
+			<br><br>
+			<p>{{ fee_mode_of_payment_notes.notes | linebreaks }}</p>
+			
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-2">
+			{% for fa in financial_assistance %}
+				<h5><b>{{fa.title}}</b></h5>
+				<p>{{fa.content | linebreaks }}</p>
+			{% empty %}
+				<p>Sorry, No data available</p>
+			{% endfor %}
+		</div>
+		
+</div>

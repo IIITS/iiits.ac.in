@@ -1,0 +1,19 @@
+<div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 iiits-card-full">
+	{% if can_edit %}
+	<center><a target="_blank" href="/cms/publications/add/">Add a publication</a></center>
+	{% endif %}
+	<ol>
+		{% for pub in publications %}
+			<li>
+				{% if pub.fileupload.bool %}
+					<a href="{{pub.fileupload.url}}"
+				>{{pub.title}}</a>
+				{% else %}
+				{{ pub.title }}
+				{% endif %}	
+				</li>
+		{% empty%}
+			<center class="title">Sorry, No publications are available now.</center>
+		{% endfor %}
+	</ol>
+</div>

@@ -1,0 +1,67 @@
+{%load staticfiles %}
+<img class="iiits-image-wrapped" src="{% static 'iiits/images/tenders.jpg' %}">
+<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
+<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+		<center>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
+				<span class="iiits-tab-text">
+					<b>Construction</b>
+				</span>
+			</div>
+			<div class="iiits-tab-header-4" id="iiits-tab-link-1" onclick="tabNavigate(1)">
+				<span class="iiits-tab-text">
+					<b>Other</b>
+				</span>
+			</div>
+		</center>
+	
+		<div class="iiits-padding-25" id="iiits-tab-content-0">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    			{% for x in tender_construction %}
+  	  				<div class="panel panel-default">
+  		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  				<h4 class="panel-title">
+        						<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        						</a>
+      		  				</h4>
+          				</div>
+	    				<div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      					<div class="panel-body">
+	      						{% if x.show_description %}
+	    							{{x.description}}
+    							{% endif %}
+    							{% if x.show_fileupload %}
+									<a href="{{x.fileupload}}">View attached file here</a>
+								{% endif %}	
+      						</div>
+    					</div>
+  					</div>
+    			{% endfor %}
+  			</div>
+		</div>
+		<div class="iiits-padding-25" id="iiits-tab-content-1">
+			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    			{% for x in tender_other %}
+  	  				<div class="panel panel-default">
+  		  				<div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  				<h4 class="panel-title">
+        						<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        						</a>
+      		  				</h4>
+          				</div>
+	    				<div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      					<div class="panel-body">
+	      						{% if x.show_description %}
+	    							{{x.description}}
+    							{% endif %}
+    							{% if x.show_fileupload %}
+									<a href="{{x.fileupload}}">View attached file here</a>
+								{% endif %}	
+      						</div>
+    					</div>
+  					</div>
+    			{% endfor %}
+  			</div>
+		</div>
+		</div>
+</div>		

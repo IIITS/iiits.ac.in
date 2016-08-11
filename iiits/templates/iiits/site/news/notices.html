@@ -1,0 +1,66 @@
+{% autoescape off %}
+<h3 class="card-title">Notices </h3>
+<div class="col-lg-8 col-sm-8 col-md-8 col-xs-8 iiits-card-bordered-black iiits-card-full">
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    {% for x in notices %}
+  	  <div class="panel panel-default">
+  		  <div class="panel-heading" role="tab" id="heading-{{x.title | slugify}}">
+    		  <h4 class="panel-title">
+        		<a role="button" class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{x.title | slugify}}" aria-expanded="false" aria-controls="collapse-{{x.title | slugify}}" onclick="collapse(collapse-{{x.title | slugify}})">{{x.title}}
+        		</a>
+      		  </h4>
+          </div>
+	    <div id="collapse-{{x.title | slugify}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading-{{x.title | slugify}}">
+	      <div class="panel-body">
+	      	{% if x.show_description %}
+	    		{{x.description}}
+    		{% endif %}
+    		{% if x.show_fileupload %}
+				<a href="{{x.fileupload}}">View attached file here</a>
+			{% endif %}	
+      	  </div>
+    	</div>
+  	</div>
+    
+  {% endfor %}
+  </div>
+  
+  <nav>
+    <ul class="pager">
+      {%if has_previous %}
+        <li class="previous">
+          <a href="?page={{prev}}">
+            <span aria-hidden="true">&larr;</span>Newer 
+          </a>
+        </li>
+      {%endif%} 
+      {% if has_next %} 
+        <li class="next">
+          <a href="?page={{next}}">Older 
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </li>
+      {%endif%}
+    </ul>
+  </nav>
+</div>
+{% for x in page_news %}
+  <div id="{{ x.title | slugify}}" class="iiits-card-bordered-black iiits-card-full col-lg-4 col-sm-4 col-md-4 col-xs-4">
+      <center><h4 class="news-title">{{x.title }}</h4></center>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <img class="image-crop" style="width:100%; height:auto; padding:15px;"src="{{x.image.url}}">
+      </div>
+      <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
+        <p class="news-content">{{x.content | linebreaksbr }}</p>
+      </div>
+  </div>
+{% endfor %}
+
+<center>
+
+</center>
+<style>
+  body{background: #8D1A43;}
+
+</style>
+{% endautoescape %}

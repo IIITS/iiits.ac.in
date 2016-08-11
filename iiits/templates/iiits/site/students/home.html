@@ -1,0 +1,19 @@
+{% extends base %}
+{% block title %}
+<title>Students | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
+{% block main %}
+	<div class="container">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 center-aligned">
+			<form id="students_search">
+				<div class="col-lg-11 col-md-11 col-sm-11 col-xs-11">
+					<input class="form-control-big form-control" type="text" placeholder="Search by Student Name">
+				</div>
+				<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"><a><span style="color:#800000; opacity:0.6; margin:0.2em -0.2em 0 -0.6em; font-size:30px;" class="glyphicon glyphicon-search" aria-hidden="true"></span></a></div>	
+			</form>
+		</div>
+	</div>
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
+{% endblock %}

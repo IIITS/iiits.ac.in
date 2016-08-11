@@ -1,0 +1,15 @@
+{% autoescape off %}
+<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+  {% for x in scholars %}
+    <div class="iiits-card-full">
+      <p><b>{{ x.user.get_full_name }}</b>
+      <p>centre: {{x.research_centres}}</p>
+      <p>mentors: {{x.mentors}}</p>
+    </div>  
+  {% endfor %}
+</div>
+<div class="col-lg-3 col-sm-3 col-xs-3 col-md-3">
+  <div class="right-nav">
+  </div>
+</div>
+{% endautoescape %}

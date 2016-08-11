@@ -1,0 +1,33 @@
+{% extends base %}
+{% block title %}
+<title>
+{{ story.title }} | Top Stories | IIIT Chittoor, Sri City
+</title>
+{% endblock %}
+{% block main %}
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 nb-4n5m3m2t">
+	<span class="mn-2j3kk1m">{{ story.title}}</span>
+	<img src="{{story.image.url}}"/ width="100%">
+</div>
+<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 nb-4n5m3m2t ik-mk5b4n52k">
+{% autoescape off %}
+	{{ story.body | linebreaksbr }}
+{% endautoescape %}
+</div>
+<div class="col-lg-1 col-md-1 col-sm-1 col-xs-1"></div>
+<style type="text/css">
+	.ik-mk5b4n52k{
+		padding: 15px 20px;
+		font-size: 13px;
+	}
+	.mn-2j3kk1m{font-family: "Open Sans Condensed", sans-serif;
+font-style: normal;
+font-weight: 700;
+font-size: 38px;
+line-height: 48px;
+-webkit-font-smoothing: auto;
+margin: 40px 0}
+	.nb-4n5m3m2t{margin-top: 30px;}
+</style>
+{% endblock %}
