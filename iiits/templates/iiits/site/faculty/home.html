@@ -1,8 +1,10 @@
 {% extends base %}
+{% block title %}
+<title>Faculty | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 <div class="container">
-	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
-	<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+	<div class="iiits-card col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<center>
 			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
 				<span class="iiits-tab-text">
@@ -17,79 +19,42 @@
 		</center>
 	
 		<div class="iiits-padding-25" id="iiits-tab-content-0">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-				{% for fac in inst_faculty_list1 %}
-				<div class="row">
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
+			<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				{% for x in inst_faculty_list %}
+					<div class="profiler">
+						<div class="circle" style="background:url('{{x.photo.url}}');background-position: 50%; background-repeat: no-repeat; background-size:120px; background-origin:content-box;">
 						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
-							<p>({{fac.title}})</p>
-						</div>
-					</div>	
-				</div>
-				{% endfor %}
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">	
-				{% for fac in inst_faculty_list2 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{fac.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{fac.public_uri_name}}">{{fac.getFullName}}</a></b></p>
-							<p>({{fac.title}})</p>
-						</div>	
+						<div class="circle-text">
+							<center class="circle-name"><b><a  href="/faculty/~{{x.public_uri_name}}">{{x.user.get_full_name | capfirst |upper }}</a></b></center>
+							<center class="circle-designation">{{x.title |upper}}</center>
+						</div>			
 					</div>
-				</div>		
 				{% endfor %}
-			</div>
-			
+			</center>	
 		</div>
+			
 		<div class="iiits-padding-25" id="iiits-tab-content-1">
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				{% for vs_fac in vs_faculty_list1 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
+			<center class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				{% for x in vs_faculty_list %}
+					<div class="profiler">
+						<div class="circle" style="background:url('{{x.photo.url}}');background-position: 50%; background-repeat: no-repeat; background-size:120px; background-origin:content-box;">
 						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
-							<p>({{vs_fac.title}})</p>
-							<a target="_blank" href="https://{{vs_fac.institute.website }}">
-								<span style="font-size:12px;">{{vs_fac.institute}}</span>
-							</a>
-						</div>	
+						<div class="circle-text">
+							<center class="circle-name"><b><a  href="/faculty/~{{x.public_uri_name}}">{{x.user.get_full_name | capfirst |upper }}</a></b></center>
+							<center class="circle-designation">{{x.title |upper}}</center>
+							<center class="circle-designation" style="color:green;"><a target="_blank" href="https://{{x.institute.website }}">
+								<span style="font-size:12px;">{{x.institute}}</span>
+							</a></center>
+						</div>			
 					</div>
-				</div>
 				{% endfor %}
-			</div>
-			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-				{% for vs_fac in vs_faculty_list2 %}
-				<div class="row">	
-					<div class="iiits-card-full">
-						<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> 
-							<img class="iiits-thumb-80-80" src="{{vs_fac.photo.url}}">
-						</div>
-						<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-							<p><b><a href="/faculty/~{{vs_fac.public_uri_name}}">{{vs_fac.getFullName}}</a></b></p>
-							<p>({{vs_fac.title}})</p>
-							<a target="_blank" href="https://{{vs_fac.institute.website }}">
-								<span style="font-size:12px;">{{vs_fac.institute}}</span>
-							</a>
-						</div>	
-					</div>
-				</div>
-				{% endfor %}
-			</div>
-				
+			</center>	
 		</div>
 	</div>
 	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs">
 	</div>
 </div>
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
 {% endblock %}

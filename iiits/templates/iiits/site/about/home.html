@@ -1,8 +1,13 @@
 {% extends base %}
+{%load staticfiles %}
+
+{% block title %}
+<title>About | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 <div class="container">
-	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs"></div>
-	<div class="iiits-card col-xs-10 col-sm-10 col-md-10 col-lg-10">
+	
+	<div class="iiits-card col-xs-12 col-sm-12 col-md-12 col-lg-12">
 		<center>
 			<div class="iiits-tab-header-4" id="iiits-tab-link-0" onclick="tabNavigate(0)">
 				<span class="iiits-tab-text">
@@ -16,38 +21,33 @@
 			</div>
 			<div class="iiits-tab-header-4" id="iiits-tab-link-2" onclick="tabNavigate(2)">
 				<span class="iiits-tab-text">
-					<b>Location</b>
+					<b>How to Reach</b>
 				</span>
 			</div>
 			<div class="iiits-tab-header-4" id="iiits-tab-link-3" onclick="tabNavigate(3)">
-				<span class="iiits-tab-text">
-					<b>Reaching IIIT</b>
-				</span>
-			</div>
-			<div class="iiits-tab-header-4" id="iiits-tab-link-4" onclick="tabNavigate(4)">
 				<span class="iiits-tab-text">
 					<b>Contact us</b>
 				</span>
 			</div>
 		</center>
 	
-		<div class="iiits-padding-25" id="iiits-tab-content-0">
+		<div class="iiits-padding-25 col-xs-10 col-sm-10 col-md-10 col-lg-10" id="iiits-tab-content-0">
 			{% include template_bog %}
 		</div>
-		<div class="iiits-padding-25" id="iiits-tab-content-1">
+		<div class="iiits-padding-25 col-xs-10 col-sm-10 col-md-10 col-lg-10" id="iiits-tab-content-1">
 			{% include template_about_iiit %}
 		</div>
-		<div class="iiits-padding-25" id="iiits-tab-content-2">
-			{% include template_location %}
-		</div>
-		<div class="iiits-padding-25" id="iiits-tab-content-3">
+		<div class="iiits-padding-25 col-xs-12 col-sm-12 col-md-12 col-lg-12" id="iiits-tab-content-2">
 			{% include template_reaching_iiit %}
 		</div>
-		<div class="iiits-padding-25" id="iiits-tab-content-4">
+		<div class="iiits-padding-25 col-xs-12 col-sm-12 col-md-12 col-lg-12" id="iiits-tab-content-3">
 			{% include template_contact_us %}
 		</div>
 	</div>
 	<div class="col-lg-1 col-sm-1 col-md-1 hidden-xs">
 	</div>
 </div>
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
 {% endblock %}

@@ -1,9 +1,16 @@
 from django.conf import settings
-from django.conf.urls import url,include, patterns
+
+from django.conf.urls import *
+
 from django.contrib import admin
 from iiits import views, create, delete, update, config
+from iiits.forms import PasswordChangeForm
+from django.contrib.auth.views import logout, password_change
+from django.contrib.auth.decorators import login_required
+from django.views import static
 urlpatterns = [
     url(r'^$', views.Home.as_view(), name='home'),
+    url(r'^login/$', views.login_view, name='login'),
     url(r'^faculty/$', views.FacultyPage.as_view(), name='facultypage'),
     url(r'^faculty/(~*)([a-z-._A-Z]*)$', views.FacultyProfile.as_view(),	name='facultyprofile'),
     url(r'^newsroom/$', views.NewsRoom.as_view(), name='newsroom'),
@@ -18,13 +25,35 @@ urlpatterns = [
     url(r'^students/(~*)([a-z-._A-Z]*)$',	views.Students.as_view(),	name='students'),
     url(r'^staff/(~*)([a-z-._A-Z]*)$',		views.Staff.as_view(),	name='staff'),
     url(r'^alumni/(~*)([a-z-._A-Z]*)$',	views.Alumni.as_view(),	name='alumni'),
-    url(r'^mediaroom/(?P<path>.*)$',			views.MediaRoom.as_view(),	name='media'),
+    url(r'^mediaroom/$',			views.MediaRoom.as_view(),	name='media'),
+    url(r'^mediaroom/topstories/',  views.TopStoryProfile.as_view(), name='topstory-profile'),
     url(r'^campuslife/$', views.CampusLife.as_view(), name='campuslife'),
-    url(r'^careers/$', views.Career.as_view(), name='career')	
+    url(r'^careers/$', views.Career.as_view(), name='career'),
+    url(r'^accounts/login/$', views.LoginView.as_view(), name='login'),
+    url(r'^accounts/signout/$', 
+        login_required(logout), 
+        kwargs={'next_page':settings.LOGOUT_URL },  
+        name='logout'), 
+    url(r'^accounts/change-password/$', 
+        login_required(password_change), 
+        name='passwordchange',
+        kwargs={'post_change_redirect':settings.LOGIN_URL,
+            'template_name':'iiits/accounts/passwordchange.html',
+            'password_change_form':PasswordChangeForm
+        }),
+    #AJAX CALLS
+    url(r'^campuslife/get_cl_codes/$',views.get_cl_codes, name='get_campus_life_entitty_codes'),
+    url(r'^stafflist/$', views.staff_list, name='stafflist'),
+    url(r'^get/image-slider/images/$', views. image_slider, name='image-slider'),
+    url(r'^get/image-slider/sliders/$', views.image_slider_number, name='image-slider-number'),
+    #url(r'^/cms/$', views.CMSHome.as_view(), name='cmshome'),
+    url(r'^cms/publications/add/$', create.AddPublication.as_view(), name='add_publication'),
+    url(r'^success/add/publication/$', 	create.successPublication,  name='success_pub'),
+    url(r'^faculty/edit/profile/$', update.ChangeFacultyProfile.as_view(), name='changefaculty')
 ]
 
 if settings.SERVE_MEDIA:
 	urlpatterns += (
-		url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.STATIC_ROOT}),
-		url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root':settings.MEDIA_ROOT})
+		url(r'^static/(?P<path>.*)$', static.serve, {'document_root':settings.STATIC_ROOT}),
+		url(r'^media/(?P<path>.*)$', static.serve, {'document_root':settings.MEDIA_ROOT})
 )

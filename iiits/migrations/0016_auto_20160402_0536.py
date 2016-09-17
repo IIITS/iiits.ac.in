@@ -12,15 +12,6 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Course',
-            fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('courseid', models.CharField(db_index=True, max_length=20)),
-                ('name', models.TextField()),
-                ('faculties', models.TextField()),
-            ],
-        ),
         migrations.AlterField(
             model_name='faculty',
             name='public_uri_name',

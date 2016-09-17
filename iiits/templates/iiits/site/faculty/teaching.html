@@ -1,11 +1,9 @@
-<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3"></div>
-<div class="col-lg-9 col-sm-9 col-md-9 col-xs-9">
-	<p>{{ faculty.getFullName}} teaches the following courses:</p>
-	<ol>
-		{% for course in courses %}
-			<li>{{course.name}}</li>
-		{% empty%}
-			Sorry, No courses available yet.
-		{% endfor %}
-	</ol>
+<div class="col-lg-3 col-sm-3 col-md-3 col-xs-3" ></div>
+<br><br>
+{% autoescape off %}
+
+<div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 iiits-card-full">
+	<div class="title">Courses offered</div>
+	{{ faculty.courses | linebreaksbr }}
 </div>
+{% endautoescape %}

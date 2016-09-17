@@ -1,1 +1,67 @@
 {% extends base %}
+{%load staticfiles %}
+
+{% block title %}
+<title>Campus Life| Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
+{% block main %}
+	{% autoescape off %}
+	<div class="container-fluid">
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 iiits-sidenav">
+			<div class="iiits-logo-sidenav">
+				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
+			</div>
+			<ul>
+				{% for entity in campus_life_entities %}
+				<li id="sn-{{entity.code}}">	
+					<a  onclick="showOnly({{entity.code}})">
+				 		{{entity.name | upper }}
+				 	</a>
+				</li>
+				{% endfor %}
+			</ul>
+		</div>		 
+		<div class="col-lg-7 col-sm-7 col-md-7 col-xs-12">
+			{% for x in cl_sub %}
+				<div class="iiits-card-full iiits-padding-25" data-type="show-only" id="{{x.code}}">
+					{% for y in x.items %}
+						<p class="cl-title">{{y.title}}</p>
+						<div class="cl-description">{{y.description}}</div>
+						{% if y.show_picture %}
+							<img src="{{y.picture}}" class="cl-image"/>
+						{% endif %}	
+						{% if y.show_links %}
+							Links:
+							{{y.links}}
+						{% endif %}	
+					{% endfor %}							
+				</div>
+			{% endfor %}	
+			
+		</div>
+		<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2">
+  			<div class="right-nav">
+  			</div>
+		</div>	
+	</div>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$.get("get_cl_codes/",function(data){
+			var json = $.parseJSON(data);
+			for(var i=0; i<json.length;i++){
+				if(i==0){
+					$("#"+json[i]).show();
+					$('#sn-'+json[i]).addClass('iiits-sidenav-hover');
+				}
+				else{
+					$("#"+json[i]).hide();
+				}
+			}
+		})
+	});
+	</script>
+	{%endautoescape%}
+
+{% endblock %}
+

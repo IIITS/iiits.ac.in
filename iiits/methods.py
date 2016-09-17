@@ -1,6 +1,11 @@
 import re
 import math
 from iiits.models import *
+def get_iterable_users(list_users):
+	Results = list()
+	for i in list_users:
+		Results.append(tuple([i.username, i.get_full_name()]))
+	return Results
 def chunksIntoThree(List):
 	sz = len(List)
 	L1 = list()
@@ -37,7 +42,6 @@ def ifNone(obj, beautifier):
 
 def getPublicURI(path):
 	results = re.search(r'(?<=~)[A-Za-z_.]*',path)
-	print path
 	return results.group(0)
 
 def getAllFacultyByRA(raid):
@@ -65,39 +69,118 @@ def getPageButtons(num_pages, curr_page, entries_per_page):
 	buttons = [ x for x in range(lower, upper+1)]	
 	return buttons
 
-def getAllCoursesFaculty(public_uri_name):
-	Results = list()
-	courses = Course.objects.all()
-	for c in courses:
-		c_fac = c.faculties.split(',')
-		if public_uri_name in  c_fac:
-			Results.append(c)
-	return Results		
 
 def getAllPublicationsFaculty(public_uri_name):
 	Results = list()
+	faculty= Faculty.objects.get(public_uri_name=public_uri_name)
 	publications = Publication.objects.all()
 	for p in publications:
 		p_authors = p.authors.split(',')
-		if public_uri_name in p_authors:
+		if faculty.user.username in p_authors:
 			Results.append(p)
 	return Results			
 
 def getAllFaculty():
-	return chunksIntoTwo(Faculty.objects.order_by('user__first_name'))
+	return Faculty.objects.order_by('user__first_name')
 def getAllVisitingFaculty():
-	return chunksIntoTwo(VisitingFaculty.objects.order_by('user__first_name'))
+	return VisitingFaculty.objects.order_by('user__first_name')
 def getAllStaff():
 	return Staff.objects.order_by('user__first_name')
 def getAllResearchCentres():
-	centres = ResearchCentre.objects.order_by('title')
-	return chunksIntoThree(centres)
+	results = dict()
+	ra = ResearchCentre.objects.order_by('title')
+	
+	for x in xrange(ra.count()):
+		alpha = ra[x].title[0]
+		if alpha.upper() not in results.keys():
+			results[alpha.upper()]=list()
+		results[alpha.upper()].append(ra[x])
+	final = list()
+	for x in sorted(results.keys()):
+		print x
+		final.append({
+			'alpha':x,
+			'centres':results[x]
+			})
+	return final
 def getAllResearchAreas():
-	areas =  ResearchArea.objects.order_by('title')
-	return chunksIntoThree(areas)
-#def getAllPublications():
-#	return Publication.objects.
-#def getPortfolio():
+	results = dict()
+	ra = ResearchArea.objects.order_by('title')
+	for x in xrange(ra.count()):
+		alpha = ra[x].title[0]
+		if alpha.upper() not in results.keys():
+			results[alpha.upper()]=list()
+		results[alpha.upper()].append(ra[x])
+	final = list()
+	for x in sorted(results.keys()):
+		final.append({
+			'alpha':x,
+			'areas':results[x]
+			})
+	return final	
+def beautifyPublications(pub):
+	results = list()
+	for _p in xrange(0, pub.count()):
+		p = pub[_p]
+		P= dict()
+		P['display_authors']=True
+		P['display_link']=True
+		P['display_keywords']=True
+		P['display_description']=True
+		P['title']=p.title
+		P['description']=p.description
+		P['authors']=p.authors
+		P['link']=p.link
+		P['starred']=p.starred
+		P['keywords']=p.keywords
+		P['fileupload']=p.fileupload
+		P['year']=p.year
+		if p.authors == '<p>NA</p>':
+			P['display_authors']=False
+		if p.link == '<p>NA</p>':
+			P['display_link']=False
+		if p.keywords == '<p>NA</p>':
+			P['display_keywords']=False
+		if p.description == '<p>NA</p>':
+			P['display_description']=False	
+		results.append(P)	
+	return results
+def getPublications():
+	pub = Publication.objects.order_by('year','add_date')
+	return beautifyPublications(pub)
+
+def getPublicationsByYear(year):
+	return Publication.objects.filter(year=year)
 
 def getListOfScholars():
 	return ResearchStudent.objects.order_by('user__first_name')
+
+def beautifyCLSE(clse):
+	results = list()
+	tempdict = dict()
+	for _x in xrange(0,clse.count()):
+		x = clse[_x]
+		cd = x.belongs_to.code
+		if cd not in tempdict.keys():
+			tempdict[cd] = dict()
+			tempdict[cd]['code']=cd
+			tempdict[cd]['items']=list()
+		tempdict[cd]['items'].append({
+			"title":x.title,
+			"description":x.description,
+			"picture":x.picture.url,
+			"show_picture":x.show_picture,
+			"links":x.links,
+			"show_links":x.show_links
+			})
+	for x in tempdict.keys():
+		results.append(tempdict[x])
+
+	return results		
+def get_by_slug( slug):
+		ts = TopStory.objects.all()
+		for _x in xrange(0, ts.count()):
+			x = ts[_x]
+			if x.slug() == slug	:
+				return x 
+		return None	

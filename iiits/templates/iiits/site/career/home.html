@@ -1,38 +1,143 @@
 {% extends base %}
+{%load staticfiles %}
+
+{% block title %}
+<title>Careers | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 <div class="container-fluid">
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
-		<a href="#faculty-positions" onclick="slideTo(faculty-positions)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
-				Faculty positions
+	
+		<div class="col-lg-1 col-md-1"></div>
+		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+			<div class="iiits-card-bordered-black iiits-card-full col-lg-8 col-md-8 col-sm-12 col-xs-12" style="background:linear-gradient( to bottom,#800000, grey, white);">
+				<span class="card-title" style="color:white; ">Join the IIITS work force</span><br>
+				<span class="card-text"><span style="color:white">We aim to attract the best staff to join the work force. IIIT owns a culture of research, innovation and entrepreneurship, where every staff member complements the family of faculty and students who work together to produce excellence. </span><br><br><br>Explore our <a href="/about/">About</a> section to know if IIIT is the right place for you.</span>
 			</div>
-		</a>
-		<a href="#non-faculty-positions" onclick="slideTo(non-faculty-positions)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Non-faculty positions
+		
+			<div class="iiits-card-bordered-black iiits-card-full col-lg-3 col-md-3">
+				<center><span class="card-title" style="font-size:20px;">Meet our staff</span></center>
+				<div id="staff-slider-small">
+					<div id="staff-image-holder"></div>
+					<div id="staff-name-holder"></div>
+					<div id="staff-position-holder"></div>
+				</div>
 			</div>
-		</a>
-		<a href="#consultancy" onclick="slideTo(consultancy)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Consultancy / Contract
-			</div>
-		</a>
+			<div class="col-lg-1 col-md-1"></div>
+		
 	</div>
-	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
-		<div id="faculty-positions">
-			{% include templates_fac %}
+	
+		<div class="col-lg-2 col-md-2"></div>
+		<div class="col-lg-9 col-md-9 col-sm-12 col-xs-12" style="margin-bottom:15vh;">
+			<div style="min-height:250px; background: url({% static 'iiits/images/fac-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-1" ><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Faculty positions</span></center>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#fac-positions-modal">View Jobs</button>
+			</div>
+			<div style="min-height:250px; background: url({% static 'iiits/images/oth-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-2"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:15px;">Other positions</span></center>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#oth-positions-modal">View Jobs</button>
+			</div>
+			<div style="min-height:250px; background: url({% static 'iiits/images/con-holder.jpg' %}) repeat scroll center center;" class="col-lg-3 col-md-3 col-sm-3 iiits-card-full iiits-card-bordered-brown">
+				<center id="holder-3"><span class="card-title" style="color:black; letter-spacing:0.389pt; font-size:13px;">Consultancy / Contract</span></center>
+				<button class="btn btn-view btn-lg" data-toggle="modal" data-target="#contract-modal">View Jobs</button>
+			</div>
 		</div>
-		<div id="non-faculty-positions">
-			{% include templates_non_fac %}
-		</div>
-		<div id="consultancy">
-			{% include templates_consultancy %}
-		</div>
-	</div>	
+		<div class="col-lg-1 col-md-1"></div>
+		<div id="fac-positions-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
 
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Apply for a faculty position</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Notification</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		<div id="oth-positions-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Academic / Administrative / other positions</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Advertisement</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+		<div id="contract-modal" class="modal fade" role="dialog">
+  			<div class="modal-dialog">
+
+    			<!-- Modal content-->
+    			<div class="modal-content">
+    			  	<div class="modal-header">
+        				<button type="button" class="close" data-dismiss="modal">&times;</button>
+        				<h4 class="modal-title">Consultancy / Contracts</h4>
+      		  		</div>
+      				<div class="modal-body">
+        				<p>View Advertisement</p>
+      				</div>
+      				<div class="modal-footer">
+        				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      				</div>
+    			</div>
+  			</div>
+		</div>
+	
 </div>
+<script type="text/javascript">
+$(document).ready(function(){
+	$.get('/stafflist/', function(data){
+		var d = $.parseJSON(data);
+		var i=0;
+		function loop(k){
+			$('#staff-name-holder').html("<center class=\"card-text\">"+d[k]['name']+"</center>");$('#staff-position-holder').html("<center style=\"color:#800; font-size:15px;\" class=\"card-text\">"+d[k]['position']+"</center>");$('#staff-image-holder').html("<center><img src=\""+d[k]['image_url']+"\" style=\"height:auto; width:40%; \"/></center>").css('opacity','0.2').animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'}).animate({opacity:'+=0.2'});
+			setTimeout(function() {i++; if(i>=d.length){i=0;};loop(i);}, 3000);
+		}
+		loop(i);
+	});
+});
+</script>
+<style>
+	body{background: #333;height:96%;}
+	.iiits-card-bordered-brown{background-position: center; min-height: 40px; color:white !important;}
+	#left{position:absolute;top:40%;left:0%;}
+	#right{top:40%; left:85%; position: absolute;}
+	.controls-chevrons{color: black;opacity: 0.5;}
+	#holder-1{background: url('../images/fac-holder.jpg');}
+	#holder-2{background: url('../images/fac-holder.jpg');}
+	#holder-3{background: url('../images/fac-holder.jpg');}
+	.btn-view{
+    left: 24%;
+    top: 50%;
+    background: rgb(136, 0, 0) none repeat scroll 0% 0%;
+    border-radius: 0px;
+    border: 1px solid white;
+    font-weight: bold;
+    position: absolute;}
+    .btn-view:hover{
+    	opacity: 0.8;
+    	border-radius:12px; 
+    	color:white;
+    }
+    .btn-view:visited{
+    	color:white;
+    }
+</style>
+{% endblock %}
+{% block footer %}
+	{% include 'iiits/build/home-footer.html' %}
 {% endblock %}

@@ -1,29 +1,40 @@
 {% extends base %}
+{%load staticfiles %}
 
+{% block title %}
+<title>Admissions | Indian Institute of Information Technology, Chittoor, Sri City</title>
+{% endblock %}
 {% block main %}
 <div class="container-fluid">
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
-	<div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 iiits-sidenav">
-		<a href="#undergrad" onclick="slideTo(undergrad)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp; 
-				Under Graduate 
-			</div>
-		</a>
-		<a href="#postgrad" onclick="slideTo(postgrad)">
-			<div>
-				<span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;
-				 Post Graduate
-			</div>
-		</a>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12"></div>
+	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 iiits-sidenav">
+		<div class="iiits-logo-sidenav">
+				<img src="{% static 'iiits/images/iiits-logo-grey.png' %}">
+		</div>
+		<ul>
+			<li id="sn-undergrad">
+				<a  href="#undergrad" onclick="slideTo(undergrad)">
+					UNDER GRADUATE
+				</a>
+			</li>	
+			<li id="sn-postgrad">
+				<a  href="#postgrad" onclick="slideTo(postgrad)">
+					POST GRADUATE
+				</a>
+			</li>
+		</ul>		
 	</div>
-	<div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
+	<div class="col-lg-7 col-md-7 col-sm-7 col-xs-10">
 		<div id="undergrad">
 			{% include admissions_undergraduate %}
 		</div>
 		<div id="postgrad">
 			{% include admissions_postgraduate %}
 		</div>
+	</div>	
+	<div class="col-lg-2 col-sm-2 col-xs-2 col-md-2">
+  		<div class="right-nav">
+  		</div>
 	</div>	
 
 </div>

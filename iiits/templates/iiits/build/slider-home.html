@@ -1,4 +1,5 @@
 {% load staticfiles %}
+{% autoescape off %}
 <header id="myCarousel" class="carousel slide">
         <!-- Indicators -->
         <ol class="carousel-indicators">
@@ -8,15 +9,7 @@
         </ol>
 
         <!-- Wrapper for Slides -->
-        <div class="carousel-inner">
-            {% for x in image_slider_images %}
-            <div class="item {% ifequal x.order_no '1' %}active{% endifequal %}">
-                <div class="fill" id="slider-image-{{x.order_no}}" style="background:url({{x.image.url}}); background-size:cover; background-position:center;"></div>
-                <div class="carousel-caption">
-                    <h2>{{x.caption}}</h2>
-                </div>
-            </div>
-            {% endfor %}
+        <div class="carousel-inner" id="image-container">
         </div>
 
         <!-- Controls -->
@@ -28,4 +21,39 @@
         </a>
 
     </header>
-    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $.ajax({
+            method:'GET', 
+            url:'/get/image-slider/sliders/', 
+            success:function(data){
+                var ij=0;
+                var ic = document.getElementById('image-container');
+              
+                for(ij=1; ij<=data['sliders'];ij++){
+                    $.ajax({
+                        method:'GET', 
+                        url:'/get/image-slider/images/?q='+ij, 
+                        success:function(im){
+                           
+                            if(im['status']=="200"){
+                                console.log("check :: "+im['q']);
+                                if( im['q'] == 1){
+                                    console.log("ij=0:"+im['q']);
+                                     ic.innerHTML+="<div class=\"item active\"><div class=\"fill\" id=\"image-slider-"+im['id']+"\" ><img height=\"100%\" width=\"100%\" src=\""+im['src']+"\"/></div><div class=\"carousel-caption\"><h2 class=\"caption\">"+im['caption']+"</h2></div></div>";
+                                }
+                                else{
+                                    console.log("ij:"+im['q']);
+                                    ic.innerHTML+="<div class=\"item\"><div class=\"fill\" id=\"image-slider-"+im['id']+"\"><img height=\"100%\" width=\"100%\" src=\""+im['src']+"\"/></div><div class=\"carousel-caption\"><h2 class=\"caption\">"+im['caption']+"</h2></div></div>";
+                                }    
+
+                            }
+                        }
+                    });    
+                }
+            }
+        });
+        
+    });
+    </script>
+{% endautoescape %}

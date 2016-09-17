@@ -17,9 +17,11 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from iiits import urls as iiits_urls
+#from tinymce import urls as tinymce_urls
 
 urlpatterns = [
     url(r'^webmaster/doc/', include('django.contrib.admindocs.urls')),
     url(r'^webmaster/', admin.site.urls),
-    url(r'', include(iiits_urls))	
+    url(r'', include(iiits_urls)),
+	# url(r'^editor/', include(tinymce_urls))	
 ]
